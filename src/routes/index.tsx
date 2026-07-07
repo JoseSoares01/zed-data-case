@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, Globe, Plus, Quote } from "lucide-react";
+import { useState } from "react";
 import heroPortrait from "@/assets/hero-portrait.png.asset.json";
 import aboutPortrait from "@/assets/about-portrait.png.asset.json";
 import logoZeDosDados from "@/assets/logo-ze-dos-dados.png.asset.json";
 import { MusicPlayer } from "@/components/MusicPlayer";
+import { IntroLoader } from "@/components/IntroLoader";
 
 import proj1 from "@/assets/proj1.jpg";
 import proj2 from "@/assets/proj2.jpg";
@@ -25,9 +27,11 @@ const projects = [
 
 
 function Index() {
+  const [introDone, setIntroDone] = useState(false);
   return (
     <div className="min-h-screen bg-cream text-ink">
-      <MusicPlayer />
+      {!introDone && <IntroLoader onComplete={() => setIntroDone(true)} />}
+      <MusicPlayer autoStart={introDone} />
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-6">
         {/* Nav */}
         <header className="flex items-center justify-between border-b border-ink/15 pb-6">
