@@ -115,7 +115,7 @@ function Index() {
                 height={1024}
                 className="absolute inset-0 w-full h-full object-cover rounded-[2.5rem]"
               />
-              <div className="absolute font-script text-4xl text-cream/90 rotate-[-6deg] pointer-events-none top-6 left-4 lg:top-10 lg:left-8">
+              <div className="absolute font-script text-4xl text-cream/90 rotate-[-6deg] pointer-events-none top-6 left-2 lg:top-10 lg:left-8">
                 data · design
               </div>
 
