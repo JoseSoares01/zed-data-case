@@ -13,12 +13,13 @@ export const Route = createFileRoute("/")({
 });
 
 const projects = [
-  { title: "Dr. Mauricio Sergio", tag: "Medical · Personal Brand", url: "https://mauricio-soares.vercel.app/", img: proj2, year: "2024" },
-  { title: "Dra. Joaquina Maria", tag: "Political Campaign", url: "https://joaquina-maria-deputada.lovable.app", img: proj1, year: "2024" },
-  { title: "Dr. Joaquim Mendes", tag: "Professional Site", url: "https://joaquim-magic-site.lovable.app", img: proj3, year: "2024" },
-  { title: "Prof. Jaqueline Soares", tag: "Literature · Education", url: "https://jaquelinesoares-letras.lovable.app", img: proj4, year: "2024" },
-  { title: "José Soares Profile", tag: "Personal Portfolio", url: "https://zedosdados-xp.vercel.app/", img: proj5, year: "2024" },
+  { title: "Dr. Mauricio Sergio", tag: "Político · Marca Pessoal", url: "https://mauricio-soares.vercel.app/", img: proj2, year: "2026" },
+  { title: "Dra. Joaquina Maria", tag: "Campanha Política", url: "https://joaquina-maria-deputada.lovable.app", img: proj1, year: "2026" },
+  { title: "Dr. Joaquim Mendes", tag: "Político · Site Oficial", url: "https://joaquim-magic-site.lovable.app", img: proj3, year: "2026" },
+  { title: "Profª. Jaqueline Soares", tag: "Professora · Letras", url: "https://jaquelinesoares-letras.lovable.app", img: proj4, year: "2026" },
+  { title: "José Soares — Perfil", tag: "Portfólio Pessoal", url: "https://zedosdados-xp.vercel.app/", img: proj5, year: "2026" },
 ];
+
 
 function Index() {
   return (
@@ -31,8 +32,8 @@ function Index() {
             <span className="inline-block h-4 w-4 rounded-full bg-ink -ml-1" />
           </a>
           <nav className="hidden md:flex items-center gap-1 text-sm">
-            {["Home", "About", "Portfolio", "Projects", "Contact"].map((l, i) => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="px-4 py-2 hover:text-accent transition-colors flex items-center gap-4">
+            {["Início", "Sobre", "Portfólio", "Projetos", "Contato"].map((l, i) => (
+              <a key={l} href={`#s${i}`} className="px-4 py-2 hover:text-accent transition-colors flex items-center gap-4">
                 {i > 0 && <span className="text-ink/30">/</span>}
                 {l}
               </a>
@@ -46,16 +47,17 @@ function Index() {
         </header>
 
         {/* Hero */}
-        <section id="home" className="grid lg:grid-cols-2 gap-6 pt-10 lg:pt-14">
+        <section id="s0" className="grid lg:grid-cols-2 gap-6 pt-10 lg:pt-14">
           <div className="flex flex-col justify-between">
             <div>
-              <h1 className="font-display text-[18vw] lg:text-[10.5rem] leading-[0.85] tracking-tight">
-                visual<br />poetry
+              <h1 className="font-display text-[16vw] lg:text-[10rem] leading-[0.85] tracking-tight">
+                Zé dos<br />Dados
               </h1>
               <p className="mt-8 max-w-md text-base text-ink/70 lg:ml-auto lg:text-right">
                 Bem-vindo a uma jornada visual que atravessa dados, design e código. Descubro a arte dos momentos capturados em movimento — e em números.
               </p>
             </div>
+
 
             <div className="mt-12 space-y-8">
               <div className="flex gap-2">
