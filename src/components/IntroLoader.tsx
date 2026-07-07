@@ -7,11 +7,11 @@ export function IntroLoader({ onComplete }: { onComplete: () => void }) {
 
   useEffect(() => {
     if (count >= 100) {
-      const t1 = setTimeout(() => setOpening(true), 250);
+      const t1 = setTimeout(() => setOpening(true), 350);
       const t2 = setTimeout(() => {
         setHidden(true);
         onComplete();
-      }, 1550);
+      }, 1700);
       return () => {
         clearTimeout(t1);
         clearTimeout(t2);
@@ -23,38 +23,38 @@ export function IntroLoader({ onComplete }: { onComplete: () => void }) {
 
   if (hidden) return null;
 
+  const Inner = () => (
+    <div className="absolute inset-0 flex flex-col items-center justify-center">
+      <span className="font-display text-white text-[22vw] md:text-[13rem] leading-none font-bold tabular-nums tracking-tight select-none">
+        {count}
+      </span>
+      <div
+        className="mt-6 h-px bg-[#c9a96a] transition-all duration-300 ease-out"
+        style={{ width: `${Math.min(count * 3.2, 320)}px` }}
+      />
+    </div>
+  );
+
   return (
-    <div className="fixed inset-0 z-[100] pointer-events-none">
+    <div className="fixed inset-0 z-[100] overflow-hidden pointer-events-none">
       {/* Left curtain */}
       <div
-        className="absolute top-0 left-0 h-full w-1/2 bg-[#0d0d0d] flex items-center justify-end pr-[2px] transition-transform duration-[1200ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
+        className="absolute top-0 left-0 h-full w-1/2 bg-[#0d0d0d] overflow-hidden transition-transform duration-[1300ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
         style={{ transform: opening ? "translateX(-100%)" : "translateX(0)" }}
       >
-        <div className="flex items-center">
-          <span className="font-display text-white text-[18vw] md:text-[12rem] leading-none font-bold tabular-nums tracking-tight">
-            {String(count).padStart(1, "0").slice(0, Math.ceil(String(count).length / 2)) || "0"}
-          </span>
+        <div className="absolute inset-y-0 left-0 w-[200vw]">
+          <Inner />
         </div>
       </div>
       {/* Right curtain */}
       <div
-        className="absolute top-0 right-0 h-full w-1/2 bg-[#0d0d0d] flex items-center justify-start pl-[2px] transition-transform duration-[1200ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
+        className="absolute top-0 right-0 h-full w-1/2 bg-[#0d0d0d] overflow-hidden transition-transform duration-[1300ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
         style={{ transform: opening ? "translateX(100%)" : "translateX(0)" }}
       >
-        <div className="flex items-center">
-          <span className="font-display text-white text-[18vw] md:text-[12rem] leading-none font-bold tabular-nums tracking-tight">
-            {String(count).slice(Math.ceil(String(count).length / 2)) || ""}
-          </span>
+        <div className="absolute inset-y-0 right-0 w-[200vw]">
+          <Inner />
         </div>
       </div>
-      {/* Underline accent centered */}
-      <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 mt-24 md:mt-32 h-px bg-[#c9a96a] transition-all duration-[800ms] ease-out"
-        style={{
-          width: opening ? "0px" : `${Math.min(count * 3.6, 360)}px`,
-          opacity: opening ? 0 : 1,
-        }}
-      />
     </div>
   );
 }
