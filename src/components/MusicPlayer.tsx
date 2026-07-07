@@ -85,6 +85,7 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
       .then(() => setPlaying(true))
       .catch(() => {});
 
+    const events = ["pointerdown", "touchstart", "keydown", "wheel", "scroll", "mousemove"] as const;
     const unmuteOnGesture = async () => {
       const a = audioRef.current;
       if (!a) return;
@@ -97,18 +98,14 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
           setPlaying(true);
         }
       } catch {}
-      window.removeEventListener("pointerdown", unmuteOnGesture);
-      window.removeEventListener("touchstart", unmuteOnGesture);
-      window.removeEventListener("keydown", unmuteOnGesture);
+      events.forEach((ev) => window.removeEventListener(ev, unmuteOnGesture as EventListener));
     };
-    window.addEventListener("pointerdown", unmuteOnGesture, { once: true });
-    window.addEventListener("touchstart", unmuteOnGesture, { once: true });
-    window.addEventListener("keydown", unmuteOnGesture, { once: true });
+    events.forEach((ev) =>
+      window.addEventListener(ev, unmuteOnGesture as EventListener, { once: true, passive: true }),
+    );
 
     return () => {
-      window.removeEventListener("pointerdown", unmuteOnGesture);
-      window.removeEventListener("touchstart", unmuteOnGesture);
-      window.removeEventListener("keydown", unmuteOnGesture);
+      events.forEach((ev) => window.removeEventListener(ev, unmuteOnGesture as EventListener));
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoStart]);
