@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, Globe, Plus } from "lucide-react";
+import { ArrowUpRight, Globe, Plus, Quote } from "lucide-react";
 import heroPortrait from "@/assets/hero-portrait.png.asset.json";
 import aboutPortrait from "@/assets/about-portrait.png.asset.json";
 
