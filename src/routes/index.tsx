@@ -63,7 +63,7 @@ function Index() {
             <div className="mt-12 space-y-8">
               <div className="flex gap-2">
                 {[
-                  { label: "in", href: "https://www.linkedin.com/feed/" },
+                  { label: "in", href: "https://www.linkedin.com/in/janyel-rodrigues-1b998a190/?skipRedirect=true" },
                   { label: "gh", href: "https://github.com/JoseSoares01" },
                   { label: "x", href: "#" },
                   { label: "ig", href: "#" },
