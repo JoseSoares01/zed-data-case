@@ -115,21 +115,19 @@ function Index() {
                 height={1024}
                 className="absolute inset-0 w-full h-full object-cover rounded-[2.5rem]"
               />
-              <div className="absolute font-script text-4xl text-cream/90 rotate-[-6deg] pointer-events-none top-10 left-8">
-                data · design
+              <div className="absolute font-script text-4xl text-cream/90 rotate-[-6deg] pointer-events-none top-6 left-4 lg:top-10 lg:left-8">
+une 119:                 data · design
               </div>
 
               {/* Floating globe – overlaps top-right corner */}
               <div
-                className="absolute w-[76px] h-[76px] rounded-full bg-ink flex items-center justify-center z-20"
+                className="absolute w-[64px] h-[64px] lg:w-[76px] lg:h-[76px] rounded-full bg-ink flex items-center justify-center z-20 top-4 right-4 lg:top-[-32px] lg:right-[-32px]"
                 style={{
-                  top: "-32px",
-                  right: "-32px",
                   border: "6px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
                 }}
               >
-                <Globe className="w-7 h-7 text-cream" />
+                <Globe className="w-6 h-6 lg:w-7 lg:h-7 text-cream" />
               </div>
 
               {/* Floating column – overlaps bottom-left corner */}
