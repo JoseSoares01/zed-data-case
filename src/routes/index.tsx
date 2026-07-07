@@ -38,7 +38,7 @@ function Index() {
         {/* Nav */}
         <header className="flex items-center justify-between border-b border-ink/15 pb-6">
           <a href="#" className="flex items-center">
-            <img src={logoZeDosDados.url} alt="Zé dos Dados" className="h-10 md:h-12 w-auto object-contain" />
+            <img src={logoZeDosDados.url} alt="Zé dos Dados" className="h-14 md:h-16 w-auto object-contain" />
           </a>
           <nav className="hidden md:flex items-center gap-1 text-sm">
             {["Início", "Sobre", "Portfólio", "Projetos", "Contato"].map((l, i) => (
