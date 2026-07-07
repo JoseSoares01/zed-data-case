@@ -53,33 +53,32 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    const onEnded = () => {
-      setIndex((i) => nextIndex(i));
-    };
+    const onEnded = () => setIndex((i) => nextIndex(i));
     audio.addEventListener("ended", onEnded);
     return () => audio.removeEventListener("ended", onEnded);
   }, []);
 
-  // Whenever the track index changes, load & play.
+  // Whenever the track index changes, load & try to play (muted).
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
     audio.src = current.url;
     audio.load();
-    if (playing || autoStart) {
-      audio
-        .play()
-        .then(() => setPlaying(true))
-        .catch(() => {});
-    }
+    audio.muted = muted;
+    audio
+      .play()
+      .then(() => setPlaying(true))
+      .catch(() => {});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current.url]);
 
+  // Unmute on the first user gesture anywhere on the page.
   useEffect(() => {
     if (!autoStart) return;
     const audio = audioRef.current;
     if (!audio) return;
 
+    // Retry muted play once the intro clears (in case first attempt was too early).
     audio.muted = true;
     audio
       .play()
