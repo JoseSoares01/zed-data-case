@@ -55,8 +55,6 @@ function Index() {
           </div>
         </header>
 
-        <MusicPlayer autoStart={introDone} />
-
         {/* Hero */}
         <section id="s0" className="grid lg:grid-cols-2 gap-6 pt-10 lg:pt-14">
           <div className="flex flex-col justify-between">
