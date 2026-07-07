@@ -176,38 +176,39 @@ function Index() {
 
 
         {/* About */}
-        <section className="relative bg-ink text-cream -mx-4 sm:-mx-6 lg:-mx-10 px-4 sm:px-6 lg:px-10 pb-24 pt-8">
-          {/* Horizontal stripes — desktop only */}
-          <div className="hidden lg:block absolute inset-x-0 top-1/3 h-px bg-cream/15 pointer-events-none" />
-          <div className="hidden lg:block absolute inset-x-0 top-2/3 h-px bg-cream/15 pointer-events-none" />
+        <section className="bg-ink text-cream -mx-4 sm:-mx-6 lg:-mx-10">
+          <div className="relative px-4 sm:px-6 lg:px-10 pb-24 pt-8">
+            {/* Horizontal stripes — desktop only */}
+            <div className="hidden lg:block absolute inset-x-0 top-1/3 h-px bg-cream/15 pointer-events-none" />
+            <div className="hidden lg:block absolute inset-x-0 top-2/3 h-px bg-cream/15 pointer-events-none" />
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="absolute inset-0 grid grid-cols-2 opacity-30">
-                <div className="border-r border-cream/20" />
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="relative">
+                <div className="absolute inset-0 grid grid-cols-2 opacity-30">
+                  <div className="border-r border-cream/20" />
+                </div>
+                <img src={aboutPortrait.url} alt="Zé dos Dados portrait" width={1024} height={1024} className="relative w-full max-w-md mx-auto" loading="lazy" />
               </div>
-              <img src={aboutPortrait.url} alt="Zé dos Dados portrait" width={1024} height={1024} className="relative w-full max-w-md mx-auto" loading="lazy" />
-            </div>
-            <div className="max-w-lg">
-              <p className="font-script text-accent text-3xl mb-4">olá, eu sou o zé</p>
-              <h2 className="font-display text-5xl lg:text-6xl leading-[0.95] mb-6">
-                web designer,<br />analista de dados<br />& desenvolvedor.
-              </h2>
-              <p className="text-cream/70 leading-relaxed mb-4">
-                +6 anos construindo produtos digitais em Lisboa. Mestrado em Ciências de Dados,
-                com foco em transformar dados complexos em interfaces claras e experiências memoráveis.
-              </p>
-              <p className="text-cream/70 leading-relaxed">
-                Trabalho na interseção entre design, engenharia e análise —
-                das primeiras linhas do wireframe até a última query do pipeline.
-              </p>
-              <div className="mt-8 grid grid-cols-3 gap-4 text-sm">
-                <div><div className="font-display text-2xl text-accent">06+</div><div className="text-cream/60 mt-1">anos</div></div>
-                <div><div className="font-display text-2xl text-accent">MSc</div><div className="text-cream/60 mt-1">ciência de dados</div></div>
-                <div><div className="font-display text-2xl text-accent">PT</div><div className="text-cream/60 mt-1">lisboa</div></div>
+              <div className="max-w-lg">
+                <p className="font-script text-accent text-3xl mb-4">olá, eu sou o zé</p>
+                <h2 className="font-display text-5xl lg:text-6xl leading-[0.95] mb-6">
+                  web designer,<br />analista de dados<br />& desenvolvedor.
+                </h2>
+                <p className="text-cream/70 leading-relaxed mb-4">
+                  +6 anos construindo produtos digitais em Lisboa. Mestrado em Ciências de Dados,
+                  com foco em transformar dados complexos em interfaces claras e experiências memoráveis.
+                </p>
+                <p className="text-cream/70 leading-relaxed">
+                  Trabalho na interseção entre design, engenharia e análise —
+                  das primeiras linhas do wireframe até a última query do pipeline.
+                </p>
+                <div className="mt-8 grid grid-cols-3 gap-4 text-sm">
+                  <div><div className="font-display text-2xl text-accent">06/6+</div><div className="text-cream/60 mt-1">anos</div></div>
+                  <div><div className="font-display text-2xl text-accent">MSc</div><div className="text-cream/60 mt-1">ciência de dados</div></div>
+                  <div><div className="font-display text-2xl text-accent">PT</div><div className="text-cream/60 mt-1">lisboa</div></div>
+                </div>
               </div>
             </div>
-
           </div>
         </section>
 
