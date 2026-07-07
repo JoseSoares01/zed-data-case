@@ -105,7 +105,7 @@ function Index() {
                 alt="Zé dos Dados"
                 width={1024}
                 height={1024}
-                className="absolute inset-0 w-full h-full object-cover mix-blend-multiply rounded-[2.5rem]"
+                className="absolute inset-0 w-full h-full object-cover rounded-[2.5rem]"
               />
               <div className="absolute font-script text-4xl text-cream/90 rotate-[-6deg] pointer-events-none top-10 left-8">
                 data · design
