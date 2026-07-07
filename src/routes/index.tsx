@@ -91,7 +91,10 @@ function Index() {
 
           {/* Hero image card */}
           <div className="relative">
-            <div className="relative aspect-[4/5] lg:aspect-auto lg:h-full rounded-[2.5rem] bg-accent" style={{ overflow: "visible" }}>
+            <div
+              className="relative aspect-[4/5] lg:aspect-auto lg:h-full rounded-[2.5rem] bg-accent"
+              style={{ overflow: "visible" }}
+            >
               <img
                 src={heroPortrait.url}
                 alt="Zé dos Dados"
@@ -105,12 +108,12 @@ function Index() {
 
               {/* Floating globe – overlaps top-right corner */}
               <div
-                className="absolute w-[72px] h-[72px] rounded-full bg-ink flex items-center justify-center z-20"
+                className="absolute w-[76px] h-[76px] rounded-full bg-ink flex items-center justify-center z-20"
                 style={{
-                  top: "-24px",
-                  right: "-24px",
+                  top: "-32px",
+                  right: "-32px",
                   border: "6px solid #fff",
-                  boxShadow: "0 8px 24px rgba(0,0,0,0.18)",
+                  boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
                 }}
               >
                 <Globe className="w-7 h-7 text-cream" />
@@ -119,24 +122,24 @@ function Index() {
               {/* Floating column – overlaps bottom-left corner */}
               <div
                 className="absolute flex flex-col gap-4 z-20"
-                style={{ bottom: "24px", left: "-36px" }}
+                style={{ bottom: "24px", left: "-32px" }}
               >
                 <div
-                  className="w-[72px] h-[72px] rounded-full overflow-hidden bg-white"
-                  style={{ border: "6px solid #fff", boxShadow: "0 8px 24px rgba(0,0,0,0.18)" }}
+                  className="w-[76px] h-[76px] rounded-full overflow-hidden bg-white"
+                  style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
                   <img src={proj3} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div
-                  className="w-[72px] h-[72px] rounded-full overflow-hidden bg-white"
-                  style={{ border: "6px solid #fff", boxShadow: "0 8px 24px rgba(0,0,0,0.18)" }}
+                  className="w-[76px] h-[76px] rounded-full overflow-hidden bg-white"
+                  style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
                   <img src={proj5} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <a
                   href="#portfolio"
-                  className="w-[72px] h-[72px] rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform"
-                  style={{ border: "6px solid #fff", boxShadow: "0 8px 24px rgba(0,0,0,0.18)" }}
+                  className="w-[76px] h-[76px] rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform"
+                  style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
                   <ArrowUpRight className="w-7 h-7" />
                 </a>
