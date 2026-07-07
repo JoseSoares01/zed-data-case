@@ -91,30 +91,35 @@ function Index() {
 
           {/* Hero image card */}
           <div className="relative">
-            <div className="relative aspect-[4/5] lg:aspect-auto lg:h-full rounded-[2.5rem] bg-accent overflow-hidden">
+            <div className="relative aspect-[4/5] lg:aspect-auto lg:h-full rounded-[2.5rem] bg-accent">
               <img
                 src={heroPortrait.url}
                 alt="Zé dos Dados"
                 width={1024}
                 height={1024}
-                className="absolute inset-0 w-full h-full object-cover mix-blend-multiply"
+                className="absolute inset-0 w-full h-full object-cover mix-blend-multiply rounded-[2.5rem]"
+                style={{
+                  WebkitMaskImage:
+                    "radial-gradient(circle at calc(100% - 1.5rem) 1.5rem, transparent 2.6rem, #000 2.61rem), radial-gradient(circle at 1.5rem calc(100% - 5.75rem), transparent 2.6rem, #000 2.61rem), radial-gradient(circle at 1.5rem calc(100% - 2.25rem), transparent 2.6rem, #000 2.61rem)",
+                  maskImage:
+                    "radial-gradient(circle at calc(100% - 1.5rem) 1.5rem, transparent 2.6rem, #000 2.61rem), radial-gradient(circle at 1.5rem calc(100% - 5.75rem), transparent 2.6rem, #000 2.61rem), radial-gradient(circle at 1.5rem calc(100% - 2.25rem), transparent 2.6rem, #000 2.61rem)",
+                  WebkitMaskComposite: "source-in",
+                  maskComposite: "intersect",
+                }}
               />
-              <div className="absolute top-6 right-6 w-14 h-14 rounded-full bg-ink flex items-center justify-center">
+              <div className="absolute top-6 right-6 w-14 h-14 rounded-full bg-ink flex items-center justify-center ring-[6px] ring-cream">
                 <Globe className="w-6 h-6 text-cream" />
               </div>
-              <div className="absolute top-10 left-8 font-script text-4xl text-cream/90 rotate-[-6deg]">
+              <div className="absolute top-10 left-8 font-script text-4xl text-cream/90 rotate-[-6deg] pointer-events-none">
                 data · design
               </div>
 
               {/* Floating thumbnails */}
               <div className="absolute bottom-6 left-6 flex flex-col gap-3">
-                <div className="w-14 h-14 rounded-full bg-cream border-4 border-cream overflow-hidden">
+                <div className="w-14 h-14 rounded-full overflow-hidden ring-[6px] ring-cream">
                   <img src={proj3} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </div>
-                <div className="w-14 h-14 rounded-full bg-cream border-4 border-cream overflow-hidden">
-                  <img src={proj5} alt="" className="w-full h-full object-cover" loading="lazy" />
-                </div>
-                <a href="#portfolio" className="w-14 h-14 rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform">
+                <a href="#portfolio" className="w-14 h-14 rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform ring-[6px] ring-cream">
                   <ArrowUpRight className="w-6 h-6" />
                 </a>
               </div>
