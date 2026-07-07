@@ -6,6 +6,7 @@ import aboutPortrait from "@/assets/about-portrait.png.asset.json";
 import logoZeDosDados from "@/assets/logo-ze-dos-dados.png.asset.json";
 import { MusicPlayer } from "@/components/MusicPlayer";
 import { IntroLoader } from "@/components/IntroLoader";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 import proj1 from "@/assets/proj1.jpg";
 import proj2 from "@/assets/proj2.jpg";
@@ -30,6 +31,7 @@ function Index() {
   const [introDone, setIntroDone] = useState(false);
   return (
     <div className="min-h-screen bg-cream text-ink">
+      <SmoothScroll />
       {!introDone && <IntroLoader onComplete={() => setIntroDone(true)} />}
       <MusicPlayer autoStart={introDone} />
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-6">
