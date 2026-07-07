@@ -122,11 +122,11 @@ function Index() {
         </section>
 
         {/* Marquee */}
-        <section id="about" className="mt-24 -mx-4 sm:-mx-6 lg:-mx-10 bg-ink text-cream py-8 overflow-hidden">
+        <section id="s1" className="mt-24 -mx-4 sm:-mx-6 lg:-mx-10 bg-ink text-cream py-8 overflow-hidden">
           <div className="flex marquee-track whitespace-nowrap">
             {Array.from({ length: 2 }).map((_, i) => (
               <div key={i} className="flex items-center gap-8 pr-8">
-                {["about", "about", "about", "about"].map((w, j) => (
+                {["sobre", "sobre", "sobre", "sobre"].map((w, j) => (
                   <span key={j} className="font-display text-[10rem] leading-none">
                     {w}<span className="text-accent">.</span>
                   </span>
@@ -135,6 +135,7 @@ function Index() {
             ))}
           </div>
         </section>
+
 
         {/* About */}
         <section className="bg-ink text-cream -mx-4 sm:-mx-6 lg:-mx-10 px-4 sm:px-6 lg:px-10 pb-24 pt-8">
@@ -146,32 +147,33 @@ function Index() {
               <img src={aboutPortrait} alt="Zé dos Dados portrait" width={1024} height={1024} className="relative w-full max-w-md mx-auto" loading="lazy" />
             </div>
             <div className="max-w-lg">
-              <p className="font-script text-accent text-3xl mb-4">olá, sou o zé</p>
+              <p className="font-script text-accent text-3xl mb-4">olá, eu sou o zé</p>
               <h2 className="font-display text-5xl lg:text-6xl leading-[0.95] mb-6">
-                web designer,<br />data analyst<br />& developer.
+                web designer,<br />analista de dados<br />& desenvolvedor.
               </h2>
               <p className="text-cream/70 leading-relaxed mb-4">
-                +6 anos a construir produtos digitais em Lisboa. Formação em Ciências de Dados
-                (mestrado), com foco em transformar dados complexos em interfaces claras e experiências memoráveis.
+                +6 anos construindo produtos digitais em Lisboa. Mestrado em Ciências de Dados,
+                com foco em transformar dados complexos em interfaces claras e experiências memoráveis.
               </p>
               <p className="text-cream/70 leading-relaxed">
                 Trabalho na interseção entre design, engenharia e análise —
-                das primeiras linhas do wireframe à última query do pipeline.
+                das primeiras linhas do wireframe até a última query do pipeline.
               </p>
               <div className="mt-8 grid grid-cols-3 gap-4 text-sm">
                 <div><div className="font-display text-2xl text-accent">06+</div><div className="text-cream/60 mt-1">anos</div></div>
-                <div><div className="font-display text-2xl text-accent">MSc</div><div className="text-cream/60 mt-1">data science</div></div>
+                <div><div className="font-display text-2xl text-accent">MSc</div><div className="text-cream/60 mt-1">ciência de dados</div></div>
                 <div><div className="font-display text-2xl text-accent">PT</div><div className="text-cream/60 mt-1">lisboa</div></div>
               </div>
             </div>
+
           </div>
         </section>
 
         {/* Portfolio */}
-        <section id="portfolio" className="pt-20 relative">
+        <section id="s2" className="pt-20 relative">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 relative">
             <h2 className="col-span-full font-display text-[14vw] lg:text-[11rem] leading-none tracking-tight absolute inset-x-0 top-16 pointer-events-none z-10 pl-2">
-              portfolio
+              portfólio
             </h2>
             <div className="aspect-square rounded-3xl overflow-hidden bg-muted">
               <img src={proj1} alt="" className="w-full h-full object-cover" loading="lazy" />
@@ -195,10 +197,11 @@ function Index() {
         </section>
 
         {/* Projects list */}
-        <section id="projects" className="mt-32">
+        <section id="s3" className="mt-32">
           <h2 className="font-display text-[14vw] lg:text-[11rem] leading-none tracking-tight">
-            projects<span className="text-accent">.</span>
+            projetos<span className="text-accent">.</span>
           </h2>
+
 
           <div className="mt-12 border-t border-ink/15">
             {projects.map((p, i) => (
@@ -230,15 +233,15 @@ function Index() {
         </section>
 
         {/* Contact CTA */}
-        <section id="contact" className="mt-32 mb-16">
+        <section id="s4" className="mt-32 mb-16">
           <div className="rounded-[2.5rem] bg-accent p-10 lg:p-16 relative overflow-hidden">
-            <p className="font-script text-3xl text-ink/70">vamos criar algo?</p>
+            <p className="font-script text-3xl text-ink/70">vamos criar algo juntos?</p>
             <h2 className="font-display text-6xl lg:text-8xl leading-[0.9] mt-4 max-w-3xl">
-              have a project<br />in mind?
+              tem um projeto<br />em mente?
             </h2>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a href="mailto:hello@zedosdados.pt" className="inline-flex items-center gap-3 bg-ink text-cream rounded-full px-8 py-4 font-medium hover:scale-[1.02] transition-transform">
-                hello@zedosdados.pt
+              <a href="mailto:ola@zedosdados.pt" className="inline-flex items-center gap-3 bg-ink text-cream rounded-full px-8 py-4 font-medium hover:scale-[1.02] transition-transform">
+                ola@zedosdados.pt
                 <ArrowUpRight className="w-5 h-5" />
               </a>
               <span className="text-ink/70">— resposta em 24h</span>
@@ -254,12 +257,13 @@ function Index() {
             <span className="ml-2 font-medium">zé dos dados</span>
           </div>
           <nav className="flex gap-6 text-ink/70">
-            {["Home", "About", "Portfolio", "Projects", "Contact"].map((l) => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="hover:text-accent">{l}</a>
+            {["Início", "Sobre", "Portfólio", "Projetos", "Contato"].map((l, i) => (
+              <a key={l} href={`#s${i}`} className="hover:text-accent">{l}</a>
             ))}
           </nav>
           <div className="text-ink/60">© 2026 — Lisboa, PT</div>
         </footer>
+
       </div>
     </div>
   );
