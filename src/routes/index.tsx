@@ -33,7 +33,6 @@ function Index() {
     <div className="min-h-screen bg-cream text-ink">
       <SmoothScroll />
       {!introDone && <IntroLoader onComplete={() => setIntroDone(true)} />}
-      <MusicPlayer autoStart={introDone} />
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-6">
         {/* Nav */}
         <header className="flex items-center justify-between border-b border-ink/15 pb-6">
@@ -48,10 +47,13 @@ function Index() {
               </a>
             ))}
           </nav>
-          <div className="hidden md:flex items-center gap-2 text-sm">
-            <Plus className="w-4 h-4 text-accent" />
-            <span className="font-medium">Lisboa, PT</span>
-            <span className="text-muted-foreground">— disponível</span>
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="hidden md:flex items-center gap-2 text-sm">
+              <Plus className="w-4 h-4 text-accent" />
+              <span className="font-medium">Lisboa, PT</span>
+              <span className="text-muted-foreground">— disponível</span>
+            </div>
+            <MusicPlayer autoStart={introDone} />
           </div>
         </header>
 
