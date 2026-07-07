@@ -93,7 +93,7 @@ function Index() {
           <div className="relative">
             <div className="relative aspect-[4/5] lg:aspect-auto lg:h-full rounded-[2.5rem] bg-accent overflow-hidden">
               <img
-                src={heroPortrait}
+                src={heroPortrait.url}
                 alt="Zé dos Dados"
                 width={1024}
                 height={1024}
@@ -145,7 +145,7 @@ function Index() {
               <div className="absolute inset-0 grid grid-cols-2 opacity-30">
                 <div className="border-r border-cream/20" />
               </div>
-              <img src={aboutPortrait} alt="Zé dos Dados portrait" width={1024} height={1024} className="relative w-full max-w-md mx-auto" loading="lazy" />
+              <img src={aboutPortrait.url} alt="Zé dos Dados portrait" width={1024} height={1024} className="relative w-full max-w-md mx-auto" loading="lazy" />
             </div>
             <div className="max-w-lg">
               <p className="font-script text-accent text-3xl mb-4">olá, eu sou o zé</p>
