@@ -33,7 +33,7 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [index, setIndex] = useState<number>(() => pickInitialIndex());
   const [playing, setPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.4);
+  const [volume, setVolume] = useState(0.15);
   const [muted, setMuted] = useState(true);
 
   const current = useMemo(() => TRACKS[index], [index]);
