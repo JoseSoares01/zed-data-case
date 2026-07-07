@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 import track from "@/assets/soundsurfer-luxury-hotel.mp3.asset.json";
 
-export function MusicPlayer() {
+export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(0.4);
@@ -13,7 +13,12 @@ export function MusicPlayer() {
     if (!audio) return;
     audio.volume = volume;
     audio.loop = true;
+  }, []);
 
+  useEffect(() => {
+    if (!autoStart) return;
+    const audio = audioRef.current;
+    if (!audio) return;
     const tryPlay = async () => {
       try {
         await audio.play();
@@ -32,7 +37,7 @@ export function MusicPlayer() {
       }
     };
     tryPlay();
-  }, []);
+  }, [autoStart]);
 
   useEffect(() => {
     if (audioRef.current) audioRef.current.volume = muted ? 0 : volume;
