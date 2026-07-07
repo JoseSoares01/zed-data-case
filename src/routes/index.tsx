@@ -281,6 +281,84 @@ function Index() {
           </div>
         </section>
 
+        {/* Testimonials */}
+        <section className="mt-32 mb-16 overflow-hidden">
+          <h2 className="font-display text-5xl lg:text-7xl text-center mb-16 leading-tight">
+            o que dizem<br />sobre mim<span className="text-accent">.</span>
+          </h2>
+
+          <style>{`
+            @keyframes scroll-left {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            @keyframes scroll-right {
+              0% { transform: translateX(-50%); }
+              100% { transform: translateX(0); }
+            }
+            .animate-scroll-left {
+              animation: scroll-left 40s linear infinite;
+            }
+            .animate-scroll-right {
+              animation: scroll-right 40s linear infinite;
+            }
+            .animate-scroll-left:hover,
+            .animate-scroll-right:hover {
+              animation-play-state: paused;
+            }
+          `}</style>
+
+          {[
+            {
+              dir: "left",
+              items: [
+                { name: "Dr. Maurício Soares", role: "Candidato a Deputado", text: "A transformação digital da minha campanha foi impressionante. Zé conseguiu traduzir dados complexos em uma narrativa visual que realmente conectou com os eleitores." },
+                { name: "Dra. Joaquina Maria", role: "Deputada Estadual", text: "Profissionalismo e criatividade em cada detalhe. O site que ele desenvolveu elevou minha presença online para um nível completamente novo." },
+                { name: "Prof.ª Jaqueline Soares", role: "Professora de Letras", text: "Zé tem um dom para transformar conceitos abstratos em interfaces claras e intuitivas. Meu portfólio acadêmico nunca pareceu tão profissional." },
+                { name: "Dr. Joaquim Mendes", role: "Vereador", text: "A análise de dados que ele realizou mudou completamente nossa estratégia de campanha. Resultados concretos e visíveis em poucos meses." },
+                { name: "Carolina Ribeiro", role: "Diretora de Marketing, TechLisboa", text: "Trabalhar com Zé é garantia de qualidade. Ele entrega não apenas design bonito, mas soluções baseadas em dados que realmente funcionam." },
+                { name: "André Ferreira", role: "CEO, Startup Analytics PT", text: "O dashboard que ele construiu para nossa empresa reduziu nosso tempo de análise em 60%. Simplesmente revolucionário." },
+              ],
+            },
+            {
+              dir: "right",
+              items: [
+                { name: "Mariana Costa", role: "Fundadora, EducaDigital", text: "A plataforma que Zé desenvolveu para nós é intuitiva, rápida e linda. Nossos professores adoram usar todos os dias." },
+                { name: "Ricardo Almeida", role: "Consultor Político", text: "Raramente encontro alguém que combine tão bem habilidades técnicas com sensibilidade estética. Um profissional completo." },
+                { name: "Sofia Martins", role: "Gerente de Produto, DataViz Co", text: "Cada projeto com Zé é uma aula de como dados e design devem coexistir. Ele eleva o padrão de tudo que toca." },
+                { name: "Pedro Henrique", role: "Candidato a Prefeito", text: "Minha campanha ganhou vida digital graças ao trabalho do Zé. Engajamento triplicou em duas semanas." },
+                { name: "Luísa Fernandes", role: "Diretora Criativa, Agência Porto", text: "Contratamos Zé como freelancer e acabamos querendo tê-lo em todos os projetos. É um talento raro no mercado português." },
+                { name: "Tiago Sousa", role: "Fundador, PoliTech Portugal", text: "A visão analítica combinada com o design impecável faz do Zé um parceiro estratégico indispensável para nossos clientes políticos." },
+              ],
+            },
+          ].map((row) => (
+            <div key={row.dir} className="flex mb-6">
+              <div className={`flex gap-6 ${row.dir === "left" ? "animate-scroll-left" : "animate-scroll-right"}`}>
+                {[...row.items, ...row.items].map((item, i) => (
+                  <div
+                    key={i}
+                    className="w-[400px] shrink-0 rounded-3xl bg-white border border-ink/10 p-8 flex flex-col justify-between"
+                  >
+                    <div>
+                      <Quote className="w-8 h-8 text-accent mb-4 fill-accent/20" />
+                      <p className="text-ink/80 leading-relaxed text-sm">{item.text}</p>
+                    </div>
+                    <div className="flex items-center gap-3 mt-6">
+                      <div className="w-10 h-10 rounded-full bg-ink/10 flex items-center justify-center text-xs font-bold text-ink/70">
+                        {item.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
+                      </div>
+                      <div>
+                        <div className="font-medium text-sm text-ink">{item.name}</div>
+                        <div className="text-xs text-ink/50">{item.role}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </section>
+
         {/* Footer */}
         <footer className="border-t border-ink/15 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <div className="flex items-center gap-1">
