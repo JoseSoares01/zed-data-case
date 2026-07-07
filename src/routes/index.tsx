@@ -176,12 +176,12 @@ function Index() {
 
 
         {/* About */}
-        <section className="relative bg-ink text-cream lg:mx-16">
-          {/* Horizontal stripes — desktop only, bleed left out of the black section */}
-          <div className="hidden lg:block absolute right-full top-1/3 h-20 w-[50vw] bg-ink pointer-events-none z-0" />
-          <div className="hidden lg:block absolute right-full top-2/3 h-20 w-[50vw] bg-ink pointer-events-none z-0" />
+        <section className="relative bg-ink text-cream -mx-4 sm:-mx-6 lg:-mx-10">
+          {/* Horizontal stripes — desktop only, bleed full width */}
+          <div className="hidden lg:block absolute left-0 right-0 top-1/3 h-px bg-cream/15 pointer-events-none" />
+          <div className="hidden lg:block absolute left-0 right-0 top-2/3 h-px bg-cream/15 pointer-events-none" />
 
-          <div className="relative z-10 px-4 sm:px-6 lg:px-10 pb-24 pt-8">
+          <div className="px-4 sm:px-6 lg:px-10 pb-24 pt-8">
 
 
             <div className="grid lg:grid-cols-2 gap-12 items-center">
