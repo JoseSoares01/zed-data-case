@@ -135,7 +135,7 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
   const skip = () => setIndex((i) => nextIndex(i));
 
   return (
-    <div className="fixed top-20 right-4 z-50 flex items-center gap-2 rounded-full border border-ink/15 bg-cream/90 backdrop-blur-md px-3 py-2 shadow-lg">
+    <div className="flex items-center gap-2 rounded-full border border-ink/15 bg-cream/90 backdrop-blur-md px-3 py-2 shadow-lg">
       <audio ref={audioRef} preload="auto" playsInline />
       <button
         onClick={toggle}
