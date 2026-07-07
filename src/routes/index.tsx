@@ -272,7 +272,7 @@ function Index() {
               tem um projeto<br />em mente?
             </h2>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a href="mailto:ola@zedosdados.pt" className="inline-flex items-center gap-3 bg-ink text-cream rounded-full px-8 py-4 font-medium hover:scale-[1.02] transition-transform">
+              <a href="mailto:janyelrodrigues@hotmail.com" className="inline-flex items-center gap-3 bg-ink text-cream rounded-full px-8 py-4 font-medium hover:scale-[1.02] transition-transform">
                 ola@zedosdados.pt
                 <ArrowUpRight className="w-5 h-5" />
               </a>
