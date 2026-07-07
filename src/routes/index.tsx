@@ -116,7 +116,7 @@ function Index() {
                 className="absolute inset-0 w-full h-full object-cover rounded-[2.5rem]"
               />
               <div className="absolute font-script text-4xl text-cream/90 rotate-[-6deg] pointer-events-none top-6 left-4 lg:top-10 lg:left-8">
-une 119:                 data · design
+                data · design
               </div>
 
               {/* Floating globe – overlaps top-right corner */}
