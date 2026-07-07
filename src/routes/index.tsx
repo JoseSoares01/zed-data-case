@@ -62,9 +62,14 @@ function Index() {
 
             <div className="mt-12 space-y-8">
               <div className="flex gap-2">
-                {["in", "gh", "x", "ig"].map((s) => (
-                  <a key={s} href="#" className="w-10 h-10 rounded-full border border-ink flex items-center justify-center text-xs font-medium hover:bg-ink hover:text-cream transition-colors">
-                    {s}
+                {[
+                  { label: "in", href: "https://www.linkedin.com/feed/" },
+                  { label: "gh", href: "https://github.com/JoseSoares01" },
+                  { label: "x", href: "#" },
+                  { label: "ig", href: "#" },
+                ].map((s) => (
+                  <a key={s.label} href={s.href} target="_blank" rel="noreferrer noopener" className="w-10 h-10 rounded-full border border-ink flex items-center justify-center text-xs font-medium hover:bg-ink hover:text-cream transition-colors">
+                    {s.label}
                   </a>
                 ))}
               </div>
