@@ -47,15 +47,14 @@ function Index() {
               </a>
             ))}
           </nav>
-          <div className="flex items-center gap-3 md:gap-4">
-            <div className="hidden md:flex items-center gap-2 text-sm">
-              <Plus className="w-4 h-4 text-accent" />
-              <span className="font-medium">Lisboa, PT</span>
-              <span className="text-muted-foreground">— disponível</span>
-            </div>
-            <MusicPlayer autoStart={introDone} />
+          <div className="hidden md:flex items-center gap-2 text-sm">
+            <Plus className="w-4 h-4 text-accent" />
+            <span className="font-medium">Lisboa, PT</span>
+            <span className="text-muted-foreground">— disponível</span>
           </div>
         </header>
+
+        <MusicPlayer autoStart={introDone} />
 
         {/* Hero */}
         <section id="s0" className="grid lg:grid-cols-2 gap-6 pt-10 lg:pt-14">
