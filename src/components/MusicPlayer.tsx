@@ -6,41 +6,62 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(0.4);
-  const [muted, setMuted] = useState(false);
+  const [muted, setMuted] = useState(true); // start muted so mobile autoplay works
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    audio.volume = volume;
     audio.loop = true;
+    audio.muted = true;
+    audio.volume = volume;
   }, []);
 
   useEffect(() => {
     if (!autoStart) return;
     const audio = audioRef.current;
     if (!audio) return;
-    const tryPlay = async () => {
+
+    // Start muted — allowed by all browsers, including mobile.
+    audio.muted = true;
+    audio
+      .play()
+      .then(() => setPlaying(true))
+      .catch(() => {});
+
+    // On the first user gesture anywhere, unmute so the user hears the track.
+    const unmuteOnGesture = async () => {
+      const a = audioRef.current;
+      if (!a) return;
+      a.muted = false;
+      a.volume = volume;
+      setMuted(false);
       try {
-        await audio.play();
-        setPlaying(true);
-      } catch {
-        const onFirst = async () => {
-          try {
-            await audio.play();
-            setPlaying(true);
-          } catch {}
-          window.removeEventListener("pointerdown", onFirst);
-          window.removeEventListener("keydown", onFirst);
-        };
-        window.addEventListener("pointerdown", onFirst, { once: true });
-        window.addEventListener("keydown", onFirst, { once: true });
-      }
+        if (a.paused) {
+          await a.play();
+          setPlaying(true);
+        }
+      } catch {}
+      window.removeEventListener("pointerdown", unmuteOnGesture);
+      window.removeEventListener("touchstart", unmuteOnGesture);
+      window.removeEventListener("keydown", unmuteOnGesture);
     };
-    tryPlay();
+    window.addEventListener("pointerdown", unmuteOnGesture, { once: true });
+    window.addEventListener("touchstart", unmuteOnGesture, { once: true });
+    window.addEventListener("keydown", unmuteOnGesture, { once: true });
+
+    return () => {
+      window.removeEventListener("pointerdown", unmuteOnGesture);
+      window.removeEventListener("touchstart", unmuteOnGesture);
+      window.removeEventListener("keydown", unmuteOnGesture);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoStart]);
 
   useEffect(() => {
-    if (audioRef.current) audioRef.current.volume = muted ? 0 : volume;
+    const a = audioRef.current;
+    if (!a) return;
+    a.muted = muted;
+    a.volume = volume;
   }, [volume, muted]);
 
   const toggle = async () => {
@@ -51,6 +72,7 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
       setPlaying(false);
     } else {
       try {
+        audio.muted = muted;
         await audio.play();
         setPlaying(true);
       } catch {}
@@ -59,7 +81,7 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
 
   return (
     <div className="fixed top-4 right-4 z-50 flex items-center gap-2 rounded-full border border-ink/15 bg-cream/90 backdrop-blur-md px-3 py-2 shadow-lg">
-      <audio ref={audioRef} src={track.url} preload="auto" />
+      <audio ref={audioRef} src={track.url} preload="auto" playsInline />
       <button
         onClick={toggle}
         aria-label={playing ? "Pausar música" : "Tocar música"}
