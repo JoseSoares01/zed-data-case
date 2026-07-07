@@ -42,7 +42,7 @@ export function IntroLoader({ onComplete }: { onComplete: () => void }) {
         className="absolute top-0 left-0 h-full w-1/2 bg-[#0d0d0d] overflow-hidden transition-transform duration-[1300ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
         style={{ transform: opening ? "translateX(-100%)" : "translateX(0)" }}
       >
-        <div className="absolute inset-y-0 left-0 w-[200vw]">
+        <div className="absolute top-0 left-0 h-full w-screen">
           <Inner />
         </div>
       </div>
@@ -51,7 +51,7 @@ export function IntroLoader({ onComplete }: { onComplete: () => void }) {
         className="absolute top-0 right-0 h-full w-1/2 bg-[#0d0d0d] overflow-hidden transition-transform duration-[1300ms] ease-[cubic-bezier(0.77,0,0.175,1)]"
         style={{ transform: opening ? "translateX(100%)" : "translateX(0)" }}
       >
-        <div className="absolute inset-y-0 right-0 w-[200vw]">
+        <div className="absolute top-0 right-0 h-full w-screen">
           <Inner />
         </div>
       </div>
