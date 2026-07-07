@@ -33,6 +33,7 @@ function Index() {
     <div className="min-h-screen bg-cream text-ink">
       <SmoothScroll />
       {!introDone && <IntroLoader onComplete={() => setIntroDone(true)} />}
+      <MusicPlayer autoStart={introDone} />
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-6">
         {/* Nav */}
         <header className="flex items-center justify-between border-b border-ink/15 pb-6">
@@ -53,8 +54,6 @@ function Index() {
             <span className="text-muted-foreground">— disponível</span>
           </div>
         </header>
-
-        <MusicPlayer autoStart={introDone} />
 
         {/* Hero */}
         <section id="s0" className="grid lg:grid-cols-2 gap-6 pt-10 lg:pt-14">
