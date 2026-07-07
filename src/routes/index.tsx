@@ -203,7 +203,7 @@ function Index() {
                   das primeiras linhas do wireframe até a última query do pipeline.
                 </p>
                 <div className="mt-8 grid grid-cols-3 gap-4 text-sm">
-                  <div><div className="font-display text-2xl text-accent">06/6+</div><div className="text-cream/60 mt-1">anos</div></div>
+                  <div><div className="font-display text-2xl text-accent">06+</div><div className="text-cream/60 mt-1">anos</div></div>
                   <div><div className="font-display text-2xl text-accent">MSc</div><div className="text-cream/60 mt-1">ciência de dados</div></div>
                   <div><div className="font-display text-2xl text-accent">PT</div><div className="text-cream/60 mt-1">lisboa</div></div>
                 </div>
