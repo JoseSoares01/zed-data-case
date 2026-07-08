@@ -8,30 +8,42 @@ import type { Breakpoint, ComponentProperties, LayoutByBreakpoint, SavedLayoutRo
 const emptyByBreakpoint = (): LayoutByBreakpoint => ({ desktop: {}, tablet: {}, mobile: {} });
 
 // PUBLIC: read layout for a page (site visitors)
-export const getLayoutForPage = createServerFn({ method: "GET" })
+export const getLayoutForPage = createServerFn({ method: "POST" })
   .inputValidator((data: { page: string }) => z.object({ page: z.string().min(1).max(64) }).parse(data))
   .handler(async ({ data }): Promise<LayoutByBreakpoint> => {
-    const supabase = createClient<Database>(
-      process.env.SUPABASE_URL!,
-      process.env.SUPABASE_PUBLISHABLE_KEY!,
-      { auth: { storage: undefined, persistSession: false, autoRefreshToken: false } },
-    );
-    const { data: rows, error } = await supabase
-      .from("layout_editor")
-      .select("breakpoint, component, properties")
-      .eq("page", data.page);
-    if (error) return emptyByBreakpoint();
-    const out = emptyByBreakpoint();
-    for (const row of rows ?? []) {
-      const bp = row.breakpoint as Breakpoint;
-      if (!out[bp]) continue;
-      out[bp][row.component] = (row.properties as ComponentProperties) ?? {};
+    try {
+      const supabase = createClient<Database>(
+        process.env.SUPABASE_URL!,
+        process.env.SUPABASE_PUBLISHABLE_KEY!,
+        { auth: { storage: undefined, persistSession: false, autoRefreshToken: false } },
+      );
+      const { data: rows, error } = await supabase
+        .from("layout_editor")
+        .select("breakpoint, component, properties")
+        .eq("page", data.page);
+      if (error) {
+        console.error("[getLayoutForPage] db error", error);
+        return emptyByBreakpoint();
+      }
+      const out = emptyByBreakpoint();
+      for (const row of rows ?? []) {
+        const bp = row.breakpoint as Breakpoint;
+        if (!out[bp]) continue;
+        const props = (row.properties ?? {}) as ComponentProperties;
+        // Strip any exotic prototypes/Proxies by round-tripping through JSON.
+        out[bp][row.component] = JSON.parse(JSON.stringify(props));
+      }
+      // Ensure a fully plain object comes back to the serializer.
+      return JSON.parse(JSON.stringify(out)) as LayoutByBreakpoint;
+    } catch (e) {
+      console.error("[getLayoutForPage] fatal", e);
+      return emptyByBreakpoint();
     }
-    return out;
   });
 
+
 // AUTH: check if current user is admin
-export const checkIsAdmin = createServerFn({ method: "GET" })
+export const checkIsAdmin = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
     const { data, error } = await context.supabase
