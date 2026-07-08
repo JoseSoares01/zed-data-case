@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, Globe, Plus, Quote } from "lucide-react";
+import { ArrowUpRight, Camera, Globe, Plus, Quote, User } from "lucide-react";
 import { useState } from "react";
-import heroPortrait from "@/assets/hero-portrait.png.asset.json";
+import heroZeCartoon from "@/assets/hero-ze-cartoon.png.asset.json";
 import aboutPortrait from "@/assets/about-portrait.png.asset.json";
 import logoZeDosDados from "@/assets/logo-ze-dos-dados.png.asset.json";
 import { MusicPlayer } from "@/components/MusicPlayer";
