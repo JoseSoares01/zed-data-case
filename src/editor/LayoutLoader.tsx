@@ -9,7 +9,6 @@ const empty = (): LayoutByBreakpoint => ({ desktop: {}, tablet: {}, mobile: {} }
 
 export function LayoutLoader({ page, children }: { page: string; children: ReactNode }) {
   const [layouts, setLayouts] = useState<LayoutByBreakpoint>(empty());
-  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     let mounted = true;
@@ -17,19 +16,16 @@ export function LayoutLoader({ page, children }: { page: string; children: React
       .then((res) => {
         if (mounted) {
           setLayouts(res);
-          setLoaded(true);
         }
       })
-      .catch(() => {
-        if (mounted) setLoaded(true);
-      });
+      .catch(() => {});
     return () => {
       mounted = false;
     };
   }, [page]);
 
   return (
-    <EditorProvider page={page} initialLayouts={layouts} key={loaded ? `loaded-${page}` : `loading-${page}`}>
+    <EditorProvider page={page} initialLayouts={layouts} key={page}>
       <EditorAdminBridge />
       <UniversalApplier />
       {children}
