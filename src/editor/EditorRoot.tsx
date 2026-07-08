@@ -273,8 +273,8 @@ export function EditorRoot() {
     if (explicit) return explicit;
     if (selectedEl) {
       const tag = selectedEl.tagName.toLowerCase();
-      const txt = (selectedEl.textContent ?? "").trim().replace(/\s+/g, " ").slice(0, 24);
-      return txt ? `${tag} · ${txt}` : tag;
+      const txt = (selectedEl.textContent ?? "").trim().replace(/\s+/g, " ").slice(0, 16);
+      return txt ? `${tag} · ${txt}${txt.length >= 16 ? "…" : ""}` : tag;
     }
     return editor.selectedId.replace(/^auto:/, "").split(">").pop() ?? editor.selectedId;
   })();
