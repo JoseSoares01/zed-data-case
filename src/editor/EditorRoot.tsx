@@ -16,6 +16,7 @@ import {
   LogOut,
   Grid3x3,
   Ruler as RulerIcon,
+  SlidersHorizontal,
 } from "lucide-react";
 
 const BP_WIDTH: Record<Breakpoint, string> = {
@@ -32,7 +33,7 @@ export function EditorRoot() {
   const [dragging, setDragging] = useState<{ id: string; startX: number; startY: number; baseX: number; baseY: number } | null>(null);
   const [resizing, setResizing] = useState<{ id: string; startX: number; startY: number; baseW: number; baseH: number } | null>(null);
   const [snapLines, setSnapLines] = useState<{ v: number[]; h: number[] }>({ v: [], h: [] });
-  const [inspectorCollapsed, setInspectorCollapsed] = useState(false);
+  const [inspectorCollapsed, setInspectorCollapsed] = useState(true);
 
   // Force preview width when editor mode + non-desktop bp
   useEffect(() => {
@@ -267,6 +268,10 @@ export function EditorRoot() {
   }, [selectedEl]);
 
   const selectedProps = editor.selectedId ? editor.getEffectiveProps(editor.selectedId) : null;
+  useEffect(() => {
+    setInspectorCollapsed(true);
+  }, [editor.selectedId]);
+
   const selectedLabel = (() => {
     if (!editor.selectedId) return "";
     const explicit = selectedEl?.getAttribute("data-editable-label");
@@ -377,23 +382,26 @@ export function EditorRoot() {
 
       {/* Inspector Panel */}
       {editor.selectedId && selectedProps && (
-        <div data-editor-ui="1" className={`fixed top-16 right-3 z-[10001] ${inspectorCollapsed ? "w-auto" : "w-72 max-h-[85vh] overflow-y-auto"} rounded-2xl bg-white/90 dark:bg-neutral-900/90 backdrop-blur-xl border border-black/10 shadow-2xl shadow-black/20 text-sm`}>
+        <div data-editor-ui="1" className={`fixed bottom-4 right-4 z-[10001] ${inspectorCollapsed ? "w-auto" : "w-72 max-h-[78vh] overflow-y-auto"} rounded-2xl bg-white/90 dark:bg-neutral-900/90 backdrop-blur-xl border border-black/10 shadow-2xl shadow-black/20 text-sm`}>
           <div className="flex items-center gap-2 px-3 py-2 border-b border-black/10">
-            <div className="flex-1 text-xs text-neutral-700 dark:text-neutral-200 truncate" title={selectedLabel}>
+            {inspectorCollapsed && <SlidersHorizontal className="w-4 h-4 text-neutral-600 dark:text-neutral-300" />}
+            <div className={`${inspectorCollapsed ? "sr-only" : "flex-1"} text-xs text-neutral-700 dark:text-neutral-200 truncate`} title={selectedLabel}>
               {selectedLabel || "Elemento"}
             </div>
             <button
               onClick={() => setInspectorCollapsed((v) => !v)}
-              className="text-[10px] px-2 py-0.5 rounded hover:bg-black/5 text-neutral-500"
+              className="text-xs px-2 py-1 rounded-lg hover:bg-black/5 text-neutral-600 dark:text-neutral-300"
               title={inspectorCollapsed ? "Expandir" : "Recolher"}
             >
-              {inspectorCollapsed ? "▸" : "▾"}
+              {inspectorCollapsed ? "Ajustes" : "Recolher"}
             </button>
-            <button
-              onClick={() => editor.setSelectedId(null)}
-              className="text-[10px] px-2 py-0.5 rounded hover:bg-black/5 text-neutral-500"
-              title="Fechar"
-            >×</button>
+            {!inspectorCollapsed && (
+              <button
+                onClick={() => editor.setSelectedId(null)}
+                className="text-[10px] px-2 py-0.5 rounded hover:bg-black/5 text-neutral-500"
+                title="Fechar"
+              >×</button>
+            )}
           </div>
           {!inspectorCollapsed && (
             <div className="p-4">
