@@ -222,11 +222,12 @@ function Index() {
         </section></Editable>
 
         {/* Portfolio */}
-        <Editable id="Portfolio" label="Portfolio"><section id="s2" className="pt-20 relative">
+        <Editable id="Portfolio" label="Portfolio"><section id="s2" className="pt-20 relative overflow-hidden">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 relative">
             <h2 className="col-span-full font-display text-[14vw] lg:text-[11rem] leading-none tracking-tight absolute inset-x-0 top-16 pointer-events-none z-10 pl-2">
               portfólio
             </h2>
+
             <div className="aspect-square rounded-3xl overflow-hidden bg-muted">
               <img src={proj1} alt="" className="w-full h-full object-cover" loading="lazy" />
             </div>
