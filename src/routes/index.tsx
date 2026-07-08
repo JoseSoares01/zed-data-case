@@ -119,7 +119,7 @@ function Index() {
               {/* Floating globe – overlaps top-right corner */}
               <a
                 href="#contato"
-                className="absolute w-[52px] h-[52px] lg:w-[68px] lg:h-[68px] rounded-full bg-ink flex items-center justify-center z-20 top-3 right-3 lg:top-[-26px] lg:right-[-26px] hover:scale-105 transition-transform"
+                className="absolute w-[52px] h-[52px] lg:w-[64px] lg:h-[64px] rounded-full bg-ink flex items-center justify-center z-20 top-[3%] right-[3%] hover:scale-105 transition-transform"
                 style={{
                   border: "5px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
@@ -130,25 +130,25 @@ function Index() {
 
               {/* Floating column – overlaps left icons on the image */}
               <div
-                className="absolute flex flex-col gap-2 lg:gap-3 z-20 bottom-[18%] left-[3%] lg:bottom-[18%] lg:left-[-2%]"
+                className="absolute flex flex-col gap-2 lg:gap-3 z-20 top-[58%] left-[4%] lg:top-[58%] lg:left-[4%]"
               >
                 <a
                   href="#portfolio"
-                  className="w-[54px] h-[54px] lg:w-[70px] lg:h-[70px] rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
+                  className="w-[54px] h-[54px] lg:w-[66px] lg:h-[66px] rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
                   style={{ border: "5px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
                   <Camera className="w-5 h-5 lg:w-6 lg:h-6" />
                 </a>
                 <a
                   href="#sobre"
-                  className="w-[54px] h-[54px] lg:w-[70px] lg:h-[70px] rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
+                  className="w-[54px] h-[54px] lg:w-[66px] lg:h-[66px] rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
                   style={{ border: "5px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
                   <User className="w-5 h-5 lg:w-6 lg:h-6" />
                 </a>
                 <a
                   href="#projetos"
-                  className="w-[54px] h-[54px] lg:w-[70px] lg:h-[70px] rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform"
+                  className="w-[54px] h-[54px] lg:w-[66px] lg:h-[66px] rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform"
                   style={{ border: "5px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
                   <ArrowUpRight className="w-5 h-5 lg:w-6 lg:h-6" />
