@@ -26,11 +26,9 @@ export function UniversalPicker() {
         }
         setHoverRect(el.getBoundingClientRect());
         const tag = el.tagName.toLowerCase();
-        const label =
-          el.getAttribute("data-editable-label") ??
-          (el.textContent ? el.textContent.trim().slice(0, 28) : "") ??
-          "";
-        setHoverLabel(`${tag}${label ? " · " + label : ""}`);
+        const explicit = el.getAttribute("data-editable-label");
+        const raw = (el.textContent ?? "").trim().replace(/\s+/g, " ").slice(0, 24);
+        setHoverLabel(explicit ?? (raw ? `${tag} · ${raw}` : tag));
       });
     };
     const onLeave = () => setHoverRect(null);

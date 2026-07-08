@@ -32,6 +32,7 @@ export function EditorRoot() {
   const [dragging, setDragging] = useState<{ id: string; startX: number; startY: number; baseX: number; baseY: number } | null>(null);
   const [resizing, setResizing] = useState<{ id: string; startX: number; startY: number; baseW: number; baseH: number } | null>(null);
   const [snapLines, setSnapLines] = useState<{ v: number[]; h: number[] }>({ v: [], h: [] });
+  const [inspectorCollapsed, setInspectorCollapsed] = useState(false);
 
   // Force preview width when editor mode + non-desktop bp
   useEffect(() => {
@@ -266,7 +267,17 @@ export function EditorRoot() {
   }, [selectedEl]);
 
   const selectedProps = editor.selectedId ? editor.getEffectiveProps(editor.selectedId) : null;
-  const selectedLabel = selectedEl?.getAttribute("data-editable-label") ?? editor.selectedId ?? "";
+  const selectedLabel = (() => {
+    if (!editor.selectedId) return "";
+    const explicit = selectedEl?.getAttribute("data-editable-label");
+    if (explicit) return explicit;
+    if (selectedEl) {
+      const tag = selectedEl.tagName.toLowerCase();
+      const txt = (selectedEl.textContent ?? "").trim().replace(/\s+/g, " ").slice(0, 24);
+      return txt ? `${tag} · ${txt}` : tag;
+    }
+    return editor.selectedId.replace(/^auto:/, "").split(">").pop() ?? editor.selectedId;
+  })();
 
   return (
     <>
@@ -366,8 +377,26 @@ export function EditorRoot() {
 
       {/* Inspector Panel */}
       {editor.selectedId && selectedProps && (
-        <div data-editor-ui="1" className="fixed top-16 right-3 z-[10001] w-72 max-h-[85vh] overflow-y-auto rounded-2xl bg-white/85 dark:bg-neutral-900/85 backdrop-blur-xl border border-black/10 shadow-2xl shadow-black/20 p-4 text-sm">
-          <div className="text-xs uppercase tracking-wider text-neutral-500 mb-3 font-mono break-all">{selectedLabel}</div>
+        <div data-editor-ui="1" className={`fixed top-16 right-3 z-[10001] ${inspectorCollapsed ? "w-auto" : "w-72 max-h-[85vh] overflow-y-auto"} rounded-2xl bg-white/90 dark:bg-neutral-900/90 backdrop-blur-xl border border-black/10 shadow-2xl shadow-black/20 text-sm`}>
+          <div className="flex items-center gap-2 px-3 py-2 border-b border-black/10">
+            <div className="flex-1 text-xs text-neutral-700 dark:text-neutral-200 truncate" title={selectedLabel}>
+              {selectedLabel || "Elemento"}
+            </div>
+            <button
+              onClick={() => setInspectorCollapsed((v) => !v)}
+              className="text-[10px] px-2 py-0.5 rounded hover:bg-black/5 text-neutral-500"
+              title={inspectorCollapsed ? "Expandir" : "Recolher"}
+            >
+              {inspectorCollapsed ? "▸" : "▾"}
+            </button>
+            <button
+              onClick={() => editor.setSelectedId(null)}
+              className="text-[10px] px-2 py-0.5 rounded hover:bg-black/5 text-neutral-500"
+              title="Fechar"
+            >×</button>
+          </div>
+          {!inspectorCollapsed && (
+            <div className="p-4">
           <div className="grid grid-cols-2 gap-2">
             <NumField label="X" value={selectedProps.x ?? 0} onChange={(v) => editor.updateProperty(editor.selectedId!, { x: v })} />
             <NumField label="Y" value={selectedProps.y ?? 0} onChange={(v) => editor.updateProperty(editor.selectedId!, { y: v })} />
@@ -434,6 +463,8 @@ export function EditorRoot() {
           <div className="mt-3 text-[10px] text-neutral-500 leading-tight">
             Breakpoint: <b>{editor.activeBreakpoint}</b> · setas movem · shift = 10px · ESC = deselecionar
           </div>
+            </div>
+          )}
         </div>
       )}
     </>
