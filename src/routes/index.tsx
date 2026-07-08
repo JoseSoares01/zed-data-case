@@ -103,9 +103,9 @@ function Index() {
           </div>
 
           {/* Hero image card */}
-          <div className="relative">
+          <div className="relative self-start">
             <div
-              className="relative aspect-[496/563] lg:aspect-[496/563] lg:h-auto rounded-[2.5rem] bg-[#f5a623]"
+              className="relative aspect-[496/563] rounded-[2.5rem] bg-[#f5a623]"
               style={{ overflow: "visible" }}
             >
               <img
