@@ -109,7 +109,7 @@ function Index() {
           {/* Hero image card */}
           <div className="relative self-start">
             <div
-              className="relative aspect-[496/563] rounded-[2.5rem] bg-[#f5a623]"
+              className="relative aspect-[496/563] rounded-[2.5rem]"
               style={{ overflow: "visible" }}
             >
               <img
