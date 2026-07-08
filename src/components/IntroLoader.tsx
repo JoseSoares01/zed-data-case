@@ -31,7 +31,6 @@ export function IntroLoader({ onComplete }: { onComplete: () => void }) {
           onCompleteRef.current();
         }, INTRO_FADE_DELAY_MS + INTRO_FADE_MS);
       }
-      }
     };
 
     const timer = window.setInterval(tick, 18);
