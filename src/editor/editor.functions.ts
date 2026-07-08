@@ -56,7 +56,7 @@ export const saveLayoutChanges = createServerFn({ method: "POST" })
             z.object({
               page: z.string(),
               breakpoint: z.enum(["desktop", "tablet", "mobile"]),
-              component: z.string().min(1).max(128),
+              component: z.string().min(1).max(2048),
               properties: z.record(z.string(), z.any()),
             }),
           )
