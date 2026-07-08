@@ -7,6 +7,7 @@ import logoZeDosDados from "@/assets/logo-ze-dos-dados.png.asset.json";
 import { MusicPlayer } from "@/components/MusicPlayer";
 import { IntroLoader } from "@/components/IntroLoader";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { Editable } from "@/editor/Editable";
 
 import proj1 from "@/assets/proj1.jpg";
 import proj2 from "@/assets/proj2.jpg";
