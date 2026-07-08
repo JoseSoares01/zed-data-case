@@ -141,21 +141,21 @@ function Index() {
                   className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] translate-x-[-20px] translate-y-[-6px] md:translate-x-[-32px] md:translate-y-[-16px]"
                   style={{ border: "3px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
-                  <Camera className="w-3 h-3 md:w-6 md:h-6" />
+                  <Camera className="w-5 h-5 md:w-6 md:h-6" />
                 </a>
                 <a
                   href="#sobre"
                   className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] translate-x-[-20px] translate-y-[-6px] md:translate-x-[-32px] md:translate-y-[-16px]"
                   style={{ border: "3px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
-                  <User className="w-3 h-3 md:w-6 md:h-6" />
+                  <User className="w-5 h-5 md:w-6 md:h-6" />
                 </a>
                 <a
                   href="#projetos"
                   className="rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] translate-x-[-20px] translate-y-[-6px] md:translate-x-[-32px] md:translate-y-[-16px]"
                   style={{ border: "3px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
-                  <ArrowUpRight className="w-3 h-3 md:w-6 md:h-6" />
+                  <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6" />
                 </a>
               </div>
 
