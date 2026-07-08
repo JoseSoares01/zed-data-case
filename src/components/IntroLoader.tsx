@@ -16,26 +16,28 @@ export function IntroLoader({ onComplete }: { onComplete: () => void }) {
   }, [onComplete]);
 
   useEffect(() => {
-    const start = performance.now();
-    let frame = 0;
-    const tick = (now: number) => {
+    const start = Date.now();
+    const tick = () => {
+      if (doneRef.current) return;
+      const now = Date.now();
       const progress = Math.min(1, (now - start) / INTRO_DURATION_MS);
       setCount(Math.round(progress * 100));
-      if (progress < 1) {
-        frame = requestAnimationFrame(tick);
-      } else if (!doneRef.current) {
+      if (progress >= 1) {
         doneRef.current = true;
+        clearInterval(timer);
         window.setTimeout(() => setFadeOut(true), INTRO_FADE_DELAY_MS);
         window.setTimeout(() => {
           setHidden(true);
           onCompleteRef.current();
         }, INTRO_FADE_DELAY_MS + INTRO_FADE_MS);
       }
+      }
     };
 
-    frame = requestAnimationFrame(tick);
+    const timer = window.setInterval(tick, 18);
+    tick();
     return () => {
-      cancelAnimationFrame(frame);
+      clearInterval(timer);
     };
   }, []);
 
