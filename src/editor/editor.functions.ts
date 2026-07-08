@@ -5,12 +5,12 @@ import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 import type { Breakpoint, ComponentProperties, LayoutByBreakpoint, SavedLayoutRow } from "./types";
 
-const emptyByBreakpoint = (): LayoutByBreakpoint => ({ desktop: {}, tablet: {}, mobile: {} });
-
 // PUBLIC: read layout for a page (site visitors)
 export const getLayoutForPage = createServerFn({ method: "POST" })
   .inputValidator((data: { page: string }) => z.object({ page: z.string().min(1).max(64) }).parse(data))
   .handler(async ({ data }): Promise<LayoutByBreakpoint> => {
+    const emptyByBreakpoint = (): LayoutByBreakpoint => ({ desktop: {}, tablet: {}, mobile: {} });
+
     try {
       const supabase = createClient<Database>(
         process.env.SUPABASE_URL!,
