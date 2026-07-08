@@ -62,8 +62,8 @@ export function EditorProvider({
 }) {
   const [editorMode, setEditorMode] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [detectedBreakpoint, setDetectedBreakpoint] = useState<Breakpoint>("desktop");
-  const [activeBreakpoint, setActiveBreakpoint] = useState<Breakpoint>("desktop");
+  const [detectedBreakpoint, setDetectedBreakpoint] = useState<Breakpoint>(() => detectBp());
+  const [activeBreakpoint, setActiveBreakpoint] = useState<Breakpoint>(() => detectBp());
   const [savedLayouts, setSavedLayouts] = useState<LayoutByBreakpoint>(initialLayouts);
   const [currentLayouts, setCurrentLayouts] = useState<LayoutByBreakpoint>(initialLayouts);
   const [selectedId, setSelectedId] = useState<string | null>(null);
