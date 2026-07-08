@@ -31,11 +31,12 @@ const projects = [
 function Index() {
   const [introDone, setIntroDone] = useState(false);
   return (
-    <div className="min-h-screen bg-cream text-ink">
+    <div className="min-h-screen bg-cream text-ink overflow-x-hidden w-full">
       <SmoothScroll />
       {!introDone && <IntroLoader onComplete={() => setIntroDone(true)} />}
       <MusicPlayer autoStart={introDone} />
-      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-6">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-6 overflow-x-hidden">
+
         {/* Nav */}
         <Editable id="Navbar" label="Navbar">
           <header className="flex items-center justify-between border-b border-ink/15 pb-6">
@@ -221,11 +222,12 @@ function Index() {
         </section></Editable>
 
         {/* Portfolio */}
-        <Editable id="Portfolio" label="Portfolio"><section id="s2" className="pt-20 relative">
+        <Editable id="Portfolio" label="Portfolio"><section id="s2" className="pt-20 relative overflow-hidden">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 relative">
             <h2 className="col-span-full font-display text-[14vw] lg:text-[11rem] leading-none tracking-tight absolute inset-x-0 top-16 pointer-events-none z-10 pl-2">
               portfólio
             </h2>
+
             <div className="aspect-square rounded-3xl overflow-hidden bg-muted">
               <img src={proj1} alt="" className="w-full h-full object-cover" loading="lazy" />
             </div>
@@ -248,10 +250,11 @@ function Index() {
         </section></Editable>
 
         {/* Projects list */}
-        <Editable id="Projects" label="Projects"><section id="s3" className="mt-32">
+        <Editable id="Projects" label="Projects"><section id="s3" className="mt-32 overflow-hidden">
           <h2 className="font-display text-[14vw] lg:text-[11rem] leading-none tracking-tight">
             projetos<span className="text-accent">.</span>
           </h2>
+
 
 
           <div className="mt-12 border-t border-ink/15">
