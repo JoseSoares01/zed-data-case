@@ -37,7 +37,8 @@ function Index() {
       <MusicPlayer autoStart={introDone} />
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-6">
         {/* Nav */}
-        <header className="flex items-center justify-between border-b border-ink/15 pb-6">
+        <Editable id="Navbar" label="Navbar">
+          <header className="flex items-center justify-between border-b border-ink/15 pb-6">
           <a href="#" className="flex items-center">
             <img src={logoZeDosDados.url} alt="Zé dos Dados" className="h-14 md:h-20 lg:h-24 w-auto object-contain" />
           </a>
@@ -54,7 +55,8 @@ function Index() {
             <span className="font-medium">Lisboa, PT</span>
             <span className="text-muted-foreground">— disponível</span>
           </div>
-        </header>
+          </header>
+        </Editable>
 
         {/* Hero */}
         <section id="s0" className="grid lg:grid-cols-2 gap-6 pt-10 lg:pt-14">
