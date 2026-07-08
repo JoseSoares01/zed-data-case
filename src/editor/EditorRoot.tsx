@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useEditor } from "./EditorContext";
 import type { Breakpoint } from "./types";
 import { saveLayoutChanges, resetLayoutForPage } from "./editor.functions";
+import { UniversalPicker } from "./UniversalPicker";
 import { toast } from "sonner";
 import {
   Save,
