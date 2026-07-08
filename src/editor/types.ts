@@ -12,6 +12,11 @@ export type ComponentProperties = {
   opacity?: number;
   background?: string;
   zIndex?: number;
+  color?: string;
+  fontSize?: number;
+  fontWeight?: number;
+  textAlign?: "left" | "center" | "right" | "justify";
+  text?: string;
 };
 
 export type LayoutMap = Record<string, ComponentProperties>;

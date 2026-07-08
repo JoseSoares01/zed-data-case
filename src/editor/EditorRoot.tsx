@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useEditor } from "./EditorContext";
 import type { Breakpoint } from "./types";
 import { saveLayoutChanges, resetLayoutForPage } from "./editor.functions";
+import { UniversalPicker } from "./UniversalPicker";
 import { toast } from "sonner";
 import {
   Save,
@@ -81,6 +82,36 @@ export function EditorRoot() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
+  }, [editor.editorMode, editor.selectedId, editor]);
+
+  // Double-click to edit text on the selected element
+  useEffect(() => {
+    if (!editor.editorMode) return;
+    const onDbl = (e: MouseEvent) => {
+      const el = e.target as HTMLElement | null;
+      if (!el || el.closest("[data-editor-ui]")) return;
+      if (!editor.selectedId) return;
+      const selectedEl = editor.registry.get(editor.selectedId);
+      if (!selectedEl || !selectedEl.contains(el)) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const target = selectedEl;
+      target.setAttribute("contenteditable", "true");
+      target.focus();
+      const range = document.createRange();
+      range.selectNodeContents(target);
+      const sel = window.getSelection();
+      sel?.removeAllRanges();
+      sel?.addRange(range);
+      const onBlur = () => {
+        target.removeAttribute("contenteditable");
+        editor.updateProperty(editor.selectedId!, { text: target.textContent ?? "" });
+        target.removeEventListener("blur", onBlur);
+      };
+      target.addEventListener("blur", onBlur);
+    };
+    document.addEventListener("dblclick", onDbl, true);
+    return () => document.removeEventListener("dblclick", onDbl, true);
   }, [editor.editorMode, editor.selectedId, editor]);
 
   const handleSave = async () => {
@@ -239,17 +270,11 @@ export function EditorRoot() {
 
   return (
     <>
-      {/* Deselect on click outside */}
-      <div
-        className="fixed inset-0 z-[9998]"
-        style={{ pointerEvents: editor.selectedId ? "auto" : "none" }}
-        onMouseDown={(e) => {
-          if (e.target === e.currentTarget) editor.setSelectedId(null);
-        }}
-      />
+      {/* Universal picker (hover + click to select any element) */}
+      <UniversalPicker />
 
       {/* Toolbar */}
-      <div className="fixed top-3 left-1/2 -translate-x-1/2 z-[10001] flex items-center gap-1 rounded-2xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border border-black/10 shadow-2xl shadow-black/20 px-2 py-1.5">
+      <div data-editor-ui="1" className="fixed top-3 left-1/2 -translate-x-1/2 z-[10001] flex items-center gap-1 rounded-2xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border border-black/10 shadow-2xl shadow-black/20 px-2 py-1.5">
         <ToolbarButton icon={<Save className="w-4 h-4" />} label={saving ? "Salvando..." : "Salvar"} onClick={handleSave} primary />
         <ToolbarButton icon={<X className="w-4 h-4" />} label="Cancelar" onClick={editor.cancelChanges} />
         <ToolbarButton icon={<RotateCcw className="w-4 h-4" />} label="Restaurar" onClick={handleReset} />
@@ -270,10 +295,10 @@ export function EditorRoot() {
       {/* Rulers */}
       {showRulers && (
         <>
-          <div className="fixed top-0 left-6 right-0 h-6 bg-white/70 dark:bg-neutral-900/70 backdrop-blur border-b border-black/10 z-[9999] pointer-events-none overflow-hidden">
+          <div data-editor-ui="1" className="fixed top-0 left-6 right-0 h-6 bg-white/70 dark:bg-neutral-900/70 backdrop-blur border-b border-black/10 z-[9999] pointer-events-none overflow-hidden">
             <RulerMarks orientation="h" />
           </div>
-          <div className="fixed top-0 left-0 bottom-0 w-6 bg-white/70 dark:bg-neutral-900/70 backdrop-blur border-r border-black/10 z-[9999] pointer-events-none overflow-hidden">
+          <div data-editor-ui="1" className="fixed top-0 left-0 bottom-0 w-6 bg-white/70 dark:bg-neutral-900/70 backdrop-blur border-r border-black/10 z-[9999] pointer-events-none overflow-hidden">
             <RulerMarks orientation="v" />
           </div>
         </>
@@ -282,6 +307,7 @@ export function EditorRoot() {
       {/* Grid overlay */}
       {showGrid && (
         <div
+          data-editor-ui="1"
           className="fixed inset-0 z-[9997] pointer-events-none"
           style={{
             backgroundImage:
@@ -293,15 +319,16 @@ export function EditorRoot() {
 
       {/* Snap guides */}
       {snapLines.v.map((x, i) => (
-        <div key={"v" + i} className="fixed top-0 bottom-0 w-px bg-[#FF3B6C] z-[10000] pointer-events-none" style={{ left: x }} />
+        <div key={"v" + i} data-editor-ui="1" className="fixed top-0 bottom-0 w-px bg-[#FF3B6C] z-[10000] pointer-events-none" style={{ left: x }} />
       ))}
       {snapLines.h.map((y, i) => (
-        <div key={"h" + i} className="fixed left-0 right-0 h-px bg-[#FF3B6C] z-[10000] pointer-events-none" style={{ top: y }} />
+        <div key={"h" + i} data-editor-ui="1" className="fixed left-0 right-0 h-px bg-[#FF3B6C] z-[10000] pointer-events-none" style={{ top: y }} />
       ))}
 
       {/* Selection overlay */}
       {rect && editor.selectedId && (
         <div
+          data-editor-ui="1"
           className="fixed z-[10000] pointer-events-none"
           style={{ top: rect.top, left: rect.left, width: rect.width, height: rect.height }}
         >
@@ -339,8 +366,8 @@ export function EditorRoot() {
 
       {/* Inspector Panel */}
       {editor.selectedId && selectedProps && (
-        <div className="fixed top-16 right-3 z-[10001] w-64 rounded-2xl bg-white/85 dark:bg-neutral-900/85 backdrop-blur-xl border border-black/10 shadow-2xl shadow-black/20 p-4 text-sm">
-          <div className="text-xs uppercase tracking-wider text-neutral-500 mb-3">{selectedLabel}</div>
+        <div data-editor-ui="1" className="fixed top-16 right-3 z-[10001] w-72 max-h-[85vh] overflow-y-auto rounded-2xl bg-white/85 dark:bg-neutral-900/85 backdrop-blur-xl border border-black/10 shadow-2xl shadow-black/20 p-4 text-sm">
+          <div className="text-xs uppercase tracking-wider text-neutral-500 mb-3 font-mono break-all">{selectedLabel}</div>
           <div className="grid grid-cols-2 gap-2">
             <NumField label="X" value={selectedProps.x ?? 0} onChange={(v) => editor.updateProperty(editor.selectedId!, { x: v })} />
             <NumField label="Y" value={selectedProps.y ?? 0} onChange={(v) => editor.updateProperty(editor.selectedId!, { y: v })} />
@@ -350,31 +377,62 @@ export function EditorRoot() {
             <NumField label="Radius" value={selectedProps.borderRadius ?? 0} onChange={(v) => editor.updateProperty(editor.selectedId!, { borderRadius: v })} />
             <NumField label="Rot" value={selectedProps.rotation ?? 0} onChange={(v) => editor.updateProperty(editor.selectedId!, { rotation: v })} />
             <NumField label="Z" value={selectedProps.zIndex ?? 0} onChange={(v) => editor.updateProperty(editor.selectedId!, { zIndex: v })} />
+            <NumField label="Font" value={selectedProps.fontSize ?? 0} onChange={(v) => editor.updateProperty(editor.selectedId!, { fontSize: v || undefined })} />
+            <NumField label="Peso" value={selectedProps.fontWeight ?? 0} onChange={(v) => editor.updateProperty(editor.selectedId!, { fontWeight: v || undefined })} />
           </div>
           <div className="mt-3">
             <label className="text-xs text-neutral-500">Opacidade</label>
             <input
-              type="range"
-              min={0}
-              max={1}
-              step={0.05}
+              type="range" min={0} max={1} step={0.05}
               value={selectedProps.opacity ?? 1}
               onChange={(e) => editor.updateProperty(editor.selectedId!, { opacity: Number(e.target.value) })}
               className="w-full"
             />
           </div>
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <div>
+              <label className="text-xs text-neutral-500">Cor texto</label>
+              <input
+                type="color"
+                value={selectedProps.color ?? "#000000"}
+                onChange={(e) => editor.updateProperty(editor.selectedId!, { color: e.target.value })}
+                className="w-full h-8 mt-1 rounded border border-black/10 bg-white/70"
+              />
+            </div>
+            <div>
+              <label className="text-xs text-neutral-500">Fundo</label>
+              <input
+                type="text" placeholder="#f5a623"
+                value={selectedProps.background ?? ""}
+                onChange={(e) => editor.updateProperty(editor.selectedId!, { background: e.target.value || undefined })}
+                className="w-full h-8 mt-1 px-2 rounded border border-black/10 bg-white/70 text-xs"
+              />
+            </div>
+          </div>
           <div className="mt-3">
-            <label className="text-xs text-neutral-500">Background</label>
-            <input
-              type="text"
-              placeholder="#f5a623 ou transparent"
-              value={selectedProps.background ?? ""}
-              onChange={(e) => editor.updateProperty(editor.selectedId!, { background: e.target.value || undefined })}
-              className="w-full mt-1 px-2 py-1 rounded border border-black/10 bg-white/70 text-xs"
+            <label className="text-xs text-neutral-500">Alinhamento</label>
+            <div className="flex gap-1 mt-1">
+              {(["left", "center", "right", "justify"] as const).map((a) => (
+                <button
+                  key={a}
+                  onClick={() => editor.updateProperty(editor.selectedId!, { textAlign: a })}
+                  className={`flex-1 px-2 py-1 rounded text-xs border ${selectedProps.textAlign === a ? "bg-[#0D99FF] text-white border-[#0D99FF]" : "border-black/10 hover:bg-black/5"}`}
+                >{a}</button>
+              ))}
+            </div>
+          </div>
+          <div className="mt-3">
+            <label className="text-xs text-neutral-500">Texto (duplo-clique no elemento para editar inline)</label>
+            <textarea
+              rows={3}
+              value={selectedProps.text ?? ""}
+              onChange={(e) => editor.updateProperty(editor.selectedId!, { text: e.target.value })}
+              placeholder="Deixe vazio para manter o texto original"
+              className="w-full mt-1 px-2 py-1 rounded border border-black/10 bg-white/70 text-xs resize-none"
             />
           </div>
           <div className="mt-3 text-[10px] text-neutral-500 leading-tight">
-            Breakpoint: <b>{editor.activeBreakpoint}</b> · setas movem · shift = 10px
+            Breakpoint: <b>{editor.activeBreakpoint}</b> · setas movem · shift = 10px · ESC = deselecionar
           </div>
         </div>
       )}

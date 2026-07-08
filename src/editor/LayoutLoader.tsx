@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { EditorProvider } from "./EditorContext";
 import { EditorAdminBridge } from "./AdminBridge";
+import { UniversalApplier } from "./UniversalApplier";
 import { getLayoutForPage } from "./editor.functions";
 import type { LayoutByBreakpoint } from "./types";
 
@@ -30,6 +31,7 @@ export function LayoutLoader({ page, children }: { page: string; children: React
   return (
     <EditorProvider page={page} initialLayouts={layouts} key={loaded ? `loaded-${page}` : `loading-${page}`}>
       <EditorAdminBridge />
+      <UniversalApplier />
       {children}
     </EditorProvider>
   );

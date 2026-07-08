@@ -17,6 +17,10 @@ function propsToStyle(p: ComponentProperties): CSSProperties {
   if (p.opacity !== undefined) s.opacity = p.opacity;
   if (p.background) s.background = p.background;
   if (p.zIndex !== undefined) s.zIndex = p.zIndex;
+  if (p.color) s.color = p.color;
+  if (p.fontSize !== undefined) s.fontSize = p.fontSize;
+  if (p.fontWeight !== undefined) s.fontWeight = p.fontWeight;
+  if (p.textAlign) s.textAlign = p.textAlign;
   return s;
 }
 
