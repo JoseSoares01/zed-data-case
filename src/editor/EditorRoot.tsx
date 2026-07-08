@@ -521,24 +521,29 @@ function BpButton({
   active,
   onClick,
   icon,
+  label,
 }: {
   bp: Breakpoint;
   active: Breakpoint;
   onClick: (bp: Breakpoint) => void;
   icon: React.ReactNode;
+  label: string;
 }) {
+  const isActive = active === bp;
   return (
     <button
       onClick={() => onClick(bp)}
-      title={bp}
-      className={`p-1.5 rounded-lg transition ${
-        active === bp ? "bg-[#0D99FF] text-white" : "text-neutral-700 hover:bg-black/5"
+      title={`Editar layout: ${label}`}
+      className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
+        isActive ? "bg-[#0D99FF] text-white shadow-sm" : "text-neutral-700 dark:text-neutral-200 hover:bg-black/5"
       }`}
     >
       {icon}
+      <span>{label}</span>
     </button>
   );
 }
+
 
 function NumField({ label, value, onChange }: { label: string; value: number; onChange: (v: number) => void }) {
   return (
