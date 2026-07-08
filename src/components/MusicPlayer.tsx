@@ -33,6 +33,8 @@ function pickInitialIndex(): number {
 const POS_KEY = "zdd_player_pos";
 
 export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
+  const editor = useEditor();
+  const canDrag = editor.editorMode;
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const playerRef = useRef<HTMLDivElement | null>(null);
   const dragRef = useRef<{ startX: number; startY: number; initialLeft: number; initialTop: number; dragging: boolean } | null>(null);
