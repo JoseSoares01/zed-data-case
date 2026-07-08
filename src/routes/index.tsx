@@ -59,7 +59,7 @@ function Index() {
         </Editable>
 
         {/* Hero */}
-        <section id="s0" className="grid lg:grid-cols-2 gap-6 pt-10 lg:pt-14">
+        <Editable id="Hero" label="Hero"><section id="s0" className="grid lg:grid-cols-2 gap-6 pt-10 lg:pt-14">
           <div className="flex flex-col justify-between">
             <div>
               <h1 className="font-display text-[16vw] lg:text-[10rem] leading-[0.85] tracking-tight">
@@ -162,7 +162,7 @@ function Index() {
         </section>
 
         {/* Marquee */}
-        <section id="s1" className="mt-24 -mx-4 sm:-mx-6 lg:-mx-10 bg-ink text-cream py-8 overflow-hidden">
+        <Editable id="Marquee" label="Marquee"><section id="s1" className="mt-24 -mx-4 sm:-mx-6 lg:-mx-10 bg-ink text-cream py-8 overflow-hidden">
           <div className="flex marquee-track whitespace-nowrap">
             {Array.from({ length: 2 }).map((_, i) => (
               <div key={i} className="flex items-center gap-8 pr-8">
@@ -178,7 +178,7 @@ function Index() {
 
 
         {/* About */}
-        <section className="relative bg-ink text-cream -mx-4 sm:-mx-6 lg:-mx-10">
+        <Editable id="About" label="About"><section className="relative bg-ink text-cream -mx-4 sm:-mx-6 lg:-mx-10">
           {/* Horizontal stripes — desktop only, bleed full width */}
           <div className="hidden lg:block absolute left-0 right-0 top-1/3 h-px bg-cream/15 pointer-events-none" />
           <div className="hidden lg:block absolute left-0 right-0 top-2/3 h-px bg-cream/15 pointer-events-none" />
@@ -217,7 +217,7 @@ function Index() {
         </section>
 
         {/* Portfolio */}
-        <section id="s2" className="pt-20 relative">
+        <Editable id="Portfolio" label="Portfolio"><section id="s2" className="pt-20 relative">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 relative">
             <h2 className="col-span-full font-display text-[14vw] lg:text-[11rem] leading-none tracking-tight absolute inset-x-0 top-16 pointer-events-none z-10 pl-2">
               portfólio
@@ -244,7 +244,7 @@ function Index() {
         </section>
 
         {/* Projects list */}
-        <section id="s3" className="mt-32">
+        <Editable id="Projects" label="Projects"><section id="s3" className="mt-32">
           <h2 className="font-display text-[14vw] lg:text-[11rem] leading-none tracking-tight">
             projetos<span className="text-accent">.</span>
           </h2>
@@ -280,7 +280,7 @@ function Index() {
         </section>
 
         {/* Contact CTA */}
-        <section id="s4" className="mt-32 mb-16">
+        <Editable id="Contact" label="Contact"><section id="s4" className="mt-32 mb-16">
           <div className="rounded-[2.5rem] bg-accent p-10 lg:p-16 relative overflow-hidden">
             <p className="font-script text-3xl text-ink/70">vamos criar algo juntos?</p>
             <h2 className="font-display text-6xl lg:text-8xl leading-[0.9] mt-4 max-w-3xl">
@@ -297,7 +297,7 @@ function Index() {
         </section>
 
         {/* Testimonials */}
-        <section className="mt-32 mb-16 overflow-hidden">
+        <Editable id="Testimonials" label="Testimonials"><section className="mt-32 mb-16 overflow-hidden">
           <h2 className="font-display text-5xl lg:text-7xl text-center mb-16 leading-tight">
             o que dizem<br />sobre mim<span className="text-accent">.</span>
           </h2>
@@ -375,7 +375,7 @@ function Index() {
         </section>
 
         {/* Footer */}
-        <footer className="border-t border-ink/15 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+        <Editable id="Footer" label="Footer"><footer className="border-t border-ink/15 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <div className="flex items-center gap-1">
             <span className="inline-block h-3 w-3 rounded-full bg-ink" />
             <span className="inline-block h-3 w-3 rounded-full bg-ink -ml-1" />
