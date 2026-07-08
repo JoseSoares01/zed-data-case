@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Play, Pause, Volume2, VolumeX, SkipForward, GripVertical } from "lucide-react";
+import { useEditor } from "@/editor/EditorContext";
 import track1 from "@/assets/soundsurfer-luxury-hotel.mp3.asset.json";
 import track2 from "@/assets/poradovskyi-hotel-cafe-restaurant.mp3.asset.json";
 
