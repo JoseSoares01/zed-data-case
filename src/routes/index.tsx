@@ -122,13 +122,16 @@ function Index() {
               {/* Floating globe – overlaps top-right corner */}
               <a
                 href="#contato"
-                className="absolute w-[56px] h-[56px] lg:w-[72px] lg:h-[72px] rounded-full bg-ink flex items-center justify-center z-20 top-[2.5%] right-[1.5%] hover:scale-105 transition-transform"
+                className="absolute rounded-full bg-ink flex items-center justify-center z-20 top-[2.5%] right-[1.5%] hover:scale-105 transition-transform"
                 style={{
                   border: "6px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
+                  width: 88,
+                  height: 88,
+                  transform: "translate(-16px, 16px)",
                 }}
               >
-                <Globe className="w-6 h-6 lg:w-7 lg:h-7 text-cream" />
+                <Globe className="w-7 h-7 text-cream" />
               </a>
 
               {/* Floating column – overlaps left icons on the image */}
@@ -137,26 +140,27 @@ function Index() {
               >
                 <a
                   href="#portfolio"
-                  className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
-                  style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
+                  className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
+                  style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)", width: 76, height: 76, transform: "translate(-32px, -16px)" }}
                 >
-                  <Camera className="w-5 h-5 lg:w-6 lg:h-6" />
+                  <Camera className="w-6 h-6" />
                 </a>
                 <a
                   href="#sobre"
-                  className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
-                  style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
+                  className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
+                  style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)", width: 76, height: 76, transform: "translate(-32px, -16px)" }}
                 >
-                  <User className="w-5 h-5 lg:w-6 lg:h-6" />
+                  <User className="w-6 h-6" />
                 </a>
                 <a
                   href="#projetos"
-                  className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform"
-                  style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
+                  className="rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform"
+                  style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)", width: 76, height: 76, transform: "translate(-32px, -16px)" }}
                 >
-                  <ArrowUpRight className="w-5 h-5 lg:w-6 lg:h-6" />
+                  <ArrowUpRight className="w-6 h-6" />
                 </a>
               </div>
+
             </div>
           </div>
         </section></Editable>
