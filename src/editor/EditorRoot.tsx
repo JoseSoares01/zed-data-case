@@ -298,10 +298,13 @@ export function EditorRoot() {
         <ToolbarButton icon={<Undo2 className="w-4 h-4" />} label="Undo" onClick={editor.undo} disabled={!editor.canUndo} />
         <ToolbarButton icon={<Redo2 className="w-4 h-4" />} label="Redo" onClick={editor.redo} disabled={!editor.canRedo} />
         <div className="w-px h-6 bg-black/10 mx-1" />
-        <BpButton bp="desktop" active={editor.activeBreakpoint} onClick={editor.setActiveBreakpoint} icon={<Monitor className="w-4 h-4" />} />
-        <BpButton bp="tablet" active={editor.activeBreakpoint} onClick={editor.setActiveBreakpoint} icon={<Tablet className="w-4 h-4" />} />
-        <BpButton bp="mobile" active={editor.activeBreakpoint} onClick={editor.setActiveBreakpoint} icon={<Smartphone className="w-4 h-4" />} />
+        <div className="flex items-center gap-1 rounded-xl bg-black/5 dark:bg-white/5 p-0.5">
+          <BpButton bp="desktop" label="Desktop" active={editor.activeBreakpoint} onClick={editor.setActiveBreakpoint} icon={<Monitor className="w-4 h-4" />} />
+          <BpButton bp="tablet" label="Tablet" active={editor.activeBreakpoint} onClick={editor.setActiveBreakpoint} icon={<Tablet className="w-4 h-4" />} />
+          <BpButton bp="mobile" label="Mobile" active={editor.activeBreakpoint} onClick={editor.setActiveBreakpoint} icon={<Smartphone className="w-4 h-4" />} />
+        </div>
         <div className="w-px h-6 bg-black/10 mx-1" />
+
         <ToolbarButton icon={<Grid3x3 className="w-4 h-4" />} label="Grid" onClick={() => setShowGrid((v) => !v)} active={showGrid} />
         <ToolbarButton icon={<RulerIcon className="w-4 h-4" />} label="Réguas" onClick={() => setShowRulers((v) => !v)} active={showRulers} />
         <div className="w-px h-6 bg-black/10 mx-1" />
@@ -518,24 +521,29 @@ function BpButton({
   active,
   onClick,
   icon,
+  label,
 }: {
   bp: Breakpoint;
   active: Breakpoint;
   onClick: (bp: Breakpoint) => void;
   icon: React.ReactNode;
+  label: string;
 }) {
+  const isActive = active === bp;
   return (
     <button
       onClick={() => onClick(bp)}
-      title={bp}
-      className={`p-1.5 rounded-lg transition ${
-        active === bp ? "bg-[#0D99FF] text-white" : "text-neutral-700 hover:bg-black/5"
+      title={`Editar layout: ${label}`}
+      className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
+        isActive ? "bg-[#0D99FF] text-white shadow-sm" : "text-neutral-700 dark:text-neutral-200 hover:bg-black/5"
       }`}
     >
       {icon}
+      <span>{label}</span>
     </button>
   );
 }
+
 
 function NumField({ label, value, onChange }: { label: string; value: number; onChange: (v: number) => void }) {
   return (
