@@ -29,7 +29,7 @@ export function LayoutLoader({ page, children }: { page: string; children: React
   }, [page]);
 
   return (
-    <EditorProvider page={page} initialLayouts={layouts} key={loaded ? `loaded-${page}` : `loading-${page}`}>
+    <EditorProvider page={page} initialLayouts={layouts} key={page}>
       <EditorAdminBridge />
       <UniversalApplier />
       {children}

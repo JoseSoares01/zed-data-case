@@ -73,6 +73,14 @@ export function EditorProvider({
   const [undoStack, setUndoStack] = useState<LayoutByBreakpoint[]>([]);
   const [redoStack, setRedoStack] = useState<LayoutByBreakpoint[]>([]);
 
+  useEffect(() => {
+    setSavedLayouts(initialLayouts);
+    setCurrentLayouts(initialLayouts);
+    setUndoStack([]);
+    setRedoStack([]);
+    setSelectedId(null);
+  }, [initialLayouts]);
+
   // Detect breakpoint from viewport (for visitors)
   useEffect(() => {
     const update = () => {

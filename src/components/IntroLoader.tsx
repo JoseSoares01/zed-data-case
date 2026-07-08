@@ -1,45 +1,62 @@
 import { useEffect, useRef, useState } from "react";
 
+const INTRO_DURATION_MS = 1800;
+const INTRO_FADE_DELAY_MS = 250;
+const INTRO_FADE_MS = 700;
+
 export function IntroLoader({ onComplete }: { onComplete: () => void }) {
   const [count, setCount] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
   const [hidden, setHidden] = useState(false);
   const doneRef = useRef(false);
+  const onCompleteRef = useRef(onComplete);
 
-  // Count 0 -> 100
   useEffect(() => {
-    if (count >= 100) return;
-    const t = setTimeout(() => setCount((c) => Math.min(100, c + 1)), 18);
-    return () => clearTimeout(t);
-  }, [count]);
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
 
-  // Trigger fade + unmount once
   useEffect(() => {
-    if (count < 100 || doneRef.current) return;
-    doneRef.current = true;
-    const t1 = setTimeout(() => setFadeOut(true), 250);
-    const t2 = setTimeout(() => {
-      setHidden(true);
-      onComplete();
-    }, 250 + 700);
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
+    const start = performance.now();
+    let frame = 0;
+    const tick = (now: number) => {
+      const progress = Math.min(1, (now - start) / INTRO_DURATION_MS);
+      setCount(Math.round(progress * 100));
+      if (progress < 1) {
+        frame = requestAnimationFrame(tick);
+      } else if (!doneRef.current) {
+        doneRef.current = true;
+        window.setTimeout(() => setFadeOut(true), INTRO_FADE_DELAY_MS);
+        window.setTimeout(() => {
+          setHidden(true);
+          onCompleteRef.current();
+        }, INTRO_FADE_DELAY_MS + INTRO_FADE_MS);
+      }
     };
-  }, [count, onComplete]);
+
+    frame = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(frame);
+    };
+  }, []);
 
   if (hidden) return null;
 
   return (
     <div
       aria-hidden
-      className="fixed inset-0 z-[100] bg-[#0d0d0d] flex items-center justify-center"
+      className="fixed inset-0 z-[10000] bg-[#0d0d0d] flex items-center justify-center overflow-hidden"
       style={{
+        position: "fixed",
+        inset: 0,
         width: "100vw",
         height: "100dvh",
+        minWidth: "100vw",
+        minHeight: "100dvh",
         opacity: fadeOut ? 0 : 1,
-        transition: "opacity 700ms ease-out",
+        transition: `opacity ${INTRO_FADE_MS}ms ease-out`,
         pointerEvents: fadeOut ? "none" : "auto",
+        transform: "translateZ(0)",
+        contain: "layout paint size",
       }}
     >
       <div className="flex flex-col items-center">
