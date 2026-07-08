@@ -32,6 +32,7 @@ export function EditorRoot() {
   const [dragging, setDragging] = useState<{ id: string; startX: number; startY: number; baseX: number; baseY: number } | null>(null);
   const [resizing, setResizing] = useState<{ id: string; startX: number; startY: number; baseW: number; baseH: number } | null>(null);
   const [snapLines, setSnapLines] = useState<{ v: number[]; h: number[] }>({ v: [], h: [] });
+  const [inspectorCollapsed, setInspectorCollapsed] = useState(false);
 
   // Force preview width when editor mode + non-desktop bp
   useEffect(() => {
