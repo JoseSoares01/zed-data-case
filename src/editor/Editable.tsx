@@ -1,4 +1,4 @@
-import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useRef, type CSSProperties, type ElementType, type ReactNode } from "react";
 import { useEditor } from "./EditorContext";
 import type { ComponentProperties } from "./types";
 
@@ -30,7 +30,7 @@ export function Editable({
   id: string;
   label?: string;
   children: ReactNode;
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
   className?: string;
 }) {
   const editor = useEditor();
@@ -45,15 +45,14 @@ export function Editable({
   }, [id, editor]);
 
   const editorClasses = editor.editorMode
-    ? `outline-dashed outline-1 outline-transparent hover:outline-[#0D99FF]/50 transition-[outline-color] cursor-pointer ${
-        isSelected ? "!outline-solid !outline-2 !outline-[#0D99FF]" : ""
+    ? `outline outline-1 outline-transparent hover:outline-[#0D99FF]/60 cursor-pointer ${
+        isSelected ? "!outline-2 !outline-[#0D99FF]" : ""
       }`
     : "";
 
   return (
-    // @ts-expect-error dynamic tag
     <Tag
-      ref={ref}
+      ref={ref as never}
       data-editable-id={id}
       data-editable-label={label ?? id}
       className={[className, editorClasses].filter(Boolean).join(" ")}
