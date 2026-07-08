@@ -123,10 +123,8 @@ function Index() {
               {/* Floating globe – exact overlay on drawn icon (cx=89.01%, cy=10.39%) */}
               <a
                 href="#contato"
-                className="absolute rounded-full bg-ink flex items-center justify-center z-20 hover:scale-105 transition-transform w-[44px] h-[44px] md:w-[88px] md:h-[88px]"
+                className="absolute rounded-full bg-ink flex items-center justify-center z-20 hover:scale-105 transition-transform w-[44px] h-[44px] md:w-[88px] md:h-[88px] [left:calc(89.01%-22px)] [top:calc(10.39%-22px)] md:[left:calc(89.01%-44px)] md:[top:calc(10.39%-44px)]"
                 style={{
-                  left: "calc(89.01% - 22px)",
-                  top: "calc(10.39% - 22px)",
                   border: "3px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
                 }}
@@ -137,10 +135,8 @@ function Index() {
               {/* Camera icon – exact overlay (cx=7.86%, cy=66.25%) */}
               <a
                 href="#portfolio"
-                className="absolute rounded-full bg-[#f5a623] flex items-center justify-center text-ink z-20 hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px]"
+                className="absolute rounded-full bg-[#f5a623] flex items-center justify-center text-ink z-20 hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] [left:calc(7.86%-18px)] [top:calc(66.25%-18px)] md:[left:calc(7.86%-38px)] md:[top:calc(66.25%-38px)]"
                 style={{
-                  left: "calc(7.86% - 18px)",
-                  top: "calc(66.25% - 18px)",
                   border: "3px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
                 }}
@@ -151,10 +147,8 @@ function Index() {
               {/* Person icon – exact overlay (cx=7.86%, cy=76.91%) */}
               <a
                 href="#sobre"
-                className="absolute rounded-full bg-[#f5a623] flex items-center justify-center text-ink z-20 hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px]"
+                className="absolute rounded-full bg-[#f5a623] flex items-center justify-center text-ink z-20 hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] [left:calc(7.86%-18px)] [top:calc(76.91%-18px)] md:[left:calc(7.86%-38px)] md:[top:calc(76.91%-38px)]"
                 style={{
-                  left: "calc(7.86% - 18px)",
-                  top: "calc(76.91% - 18px)",
                   border: "3px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
                 }}
@@ -165,16 +159,15 @@ function Index() {
               {/* Arrow icon – exact overlay (cx=8.06%, cy=87.39%) */}
               <a
                 href="#projetos"
-                className="absolute rounded-full bg-ink flex items-center justify-center text-cream z-20 hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px]"
+                className="absolute rounded-full bg-ink flex items-center justify-center text-cream z-20 hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] [left:calc(8.06%-18px)] [top:calc(87.39%-18px)] md:[left:calc(8.06%-38px)] md:[top:calc(87.39%-38px)]"
                 style={{
-                  left: "calc(8.06% - 18px)",
-                  top: "calc(87.39% - 18px)",
                   border: "3px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
                 }}
               >
                 <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6" />
               </a>
+
 
 
 
