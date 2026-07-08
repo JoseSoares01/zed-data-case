@@ -119,7 +119,7 @@ function Index() {
               {/* Floating globe – overlaps top-right corner */}
               <a
                 href="#contato"
-                className="absolute w-[56px] h-[56px] lg:w-[72px] lg:h-[72px] rounded-full bg-ink flex items-center justify-center z-20 top-[3%] right-[1%] hover:scale-105 transition-transform"
+                className="absolute w-[56px] h-[56px] lg:w-[72px] lg:h-[72px] rounded-full bg-ink flex items-center justify-center z-20 top-[2%] right-[0.5%] hover:scale-105 transition-transform"
                 style={{
                   border: "6px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
@@ -130,25 +130,25 @@ function Index() {
 
               {/* Floating column – overlaps left icons on the image */}
               <div
-                className="absolute flex flex-col gap-1 z-20 top-[57%] left-[5%]"
+                className="absolute flex flex-col gap-1 z-20 top-[60%] left-[6%]"
               >
                 <a
                   href="#portfolio"
-                  className="w-[50px] h-[50px] lg:w-[64px] lg:h-[64px] rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
+                  className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
                   style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
                   <Camera className="w-5 h-5 lg:w-6 lg:h-6" />
                 </a>
                 <a
                   href="#sobre"
-                  className="w-[50px] h-[50px] lg:w-[64px] lg:h-[64px] rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
+                  className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
                   style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
                   <User className="w-5 h-5 lg:w-6 lg:h-6" />
                 </a>
                 <a
                   href="#projetos"
-                  className="w-[50px] h-[50px] lg:w-[64px] lg:h-[64px] rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform"
+                  className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform"
                   style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
                   <ArrowUpRight className="w-5 h-5 lg:w-6 lg:h-6" />
