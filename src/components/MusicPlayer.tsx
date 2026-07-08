@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Play, Pause, Volume2, VolumeX, SkipForward } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, SkipForward, GripVertical } from "lucide-react";
 import track1 from "@/assets/soundsurfer-luxury-hotel.mp3.asset.json";
 import track2 from "@/assets/poradovskyi-hotel-cafe-restaurant.mp3.asset.json";
 
@@ -29,12 +29,28 @@ function pickInitialIndex(): number {
   return idx;
 }
 
+const POS_KEY = "zdd_player_pos";
+
 export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const playerRef = useRef<HTMLDivElement | null>(null);
+  const dragRef = useRef<{ startX: number; startY: number; initialLeft: number; initialTop: number; dragging: boolean } | null>(null);
   const [index, setIndex] = useState<number>(() => pickInitialIndex());
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(0.15);
   const [muted, setMuted] = useState(true);
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+
+  // Restore saved position after hydration so SSR and client agree on initial render.
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(POS_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (typeof parsed.x === "number" && typeof parsed.y === "number") setPos(parsed);
+      }
+    } catch {}
+  }, []);
 
   const current = useMemo(() => TRACKS[index], [index]);
 
@@ -134,8 +150,59 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
 
   const skip = () => setIndex((i) => nextIndex(i));
 
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = playerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    dragRef.current = {
+      startX: e.clientX,
+      startY: e.clientY,
+      initialLeft: rect.left,
+      initialTop: rect.top,
+      dragging: false,
+    };
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragRef.current || !playerRef.current) return;
+    const dx = e.clientX - dragRef.current.startX;
+    const dy = e.clientY - dragRef.current.startY;
+    if (!dragRef.current.dragging && Math.hypot(dx, dy) > 4) {
+      dragRef.current.dragging = true;
+    }
+    if (dragRef.current.dragging) {
+      const next = { x: dragRef.current.initialLeft + dx, y: dragRef.current.initialTop + dy };
+      setPos(next);
+    }
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    e.currentTarget.releasePointerCapture(e.pointerId);
+    if (dragRef.current?.dragging && pos) {
+      try {
+        localStorage.setItem(POS_KEY, JSON.stringify(pos));
+      } catch {}
+    }
+    dragRef.current = null;
+  };
+
   return (
-    <div className="absolute top-20 right-4 z-50 flex items-center gap-2 rounded-full border border-ink/15 bg-cream/90 backdrop-blur-md px-3 py-2 shadow-lg lg:top-[7.5rem]">
+    <div
+      ref={playerRef}
+      className="fixed top-20 right-4 z-50 flex items-center gap-2 rounded-full border border-ink/15 bg-cream/90 backdrop-blur-md px-3 py-2 shadow-lg lg:top-[7.5rem]"
+      style={pos ? { left: pos.x, top: pos.y, right: "auto" } : undefined}
+    >
+      <div
+        className="cursor-grab active:cursor-grabbing touch-none select-none p-1 -ml-1"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        aria-label="Arrastar player"
+        title="Arrastar"
+      >
+        <GripVertical className="w-4 h-4 text-ink/40" />
+      </div>
       <audio ref={audioRef} preload="auto" playsInline />
       <button
         onClick={toggle}
