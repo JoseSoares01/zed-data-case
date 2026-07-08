@@ -122,41 +122,42 @@ function Index() {
               {/* Floating globe – overlaps top-right corner */}
               <a
                 href="#contato"
-                className="absolute rounded-full bg-ink flex items-center justify-center z-20 top-[2.5%] right-[1.5%] hover:scale-105 transition-transform w-[56px] h-[56px] md:w-[88px] md:h-[88px] translate-x-[-10px] translate-y-[10px] md:translate-x-[-16px] md:translate-y-[16px]"
+                className="absolute rounded-full bg-ink flex items-center justify-center z-20 top-[2.5%] right-[1.5%] hover:scale-105 transition-transform w-[44px] h-[44px] md:w-[88px] md:h-[88px] translate-x-[-6px] translate-y-[6px] md:translate-x-[-16px] md:translate-y-[16px]"
                 style={{
-                  border: "4px solid #fff",
+                  border: "3px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
                 }}
               >
-                <Globe className="w-4 h-4 md:w-7 md:h-7 text-cream" />
+                <Globe className="w-3.5 h-3.5 md:w-7 md:h-7 text-cream" />
               </a>
 
               {/* Floating column – overlaps left icons on the image */}
               <div
-                className="absolute flex flex-col gap-1 z-20 top-[63%] left-[7%]"
+                className="absolute flex flex-col gap-0.5 md:gap-1 z-20 top-[62%] left-[9%] md:top-[63%] md:left-[7%]"
               >
                 <a
                   href="#portfolio"
-                  className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform w-[48px] h-[48px] md:w-[76px] md:h-[76px] translate-x-[-20px] translate-y-[-10px] md:translate-x-[-32px] md:translate-y-[-16px]"
-                  style={{ border: "4px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
+                  className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] translate-x-[-12px] translate-y-[-6px] md:translate-x-[-32px] md:translate-y-[-16px]"
+                  style={{ border: "3px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
-                  <Camera className="w-4 h-4 md:w-6 md:h-6" />
+                  <Camera className="w-3 h-3 md:w-6 md:h-6" />
                 </a>
                 <a
                   href="#sobre"
-                  className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform w-[48px] h-[48px] md:w-[76px] md:h-[76px] translate-x-[-20px] translate-y-[-10px] md:translate-x-[-32px] md:translate-y-[-16px]"
-                  style={{ border: "4px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
+                  className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] translate-x-[-12px] translate-y-[-6px] md:translate-x-[-32px] md:translate-y-[-16px]"
+                  style={{ border: "3px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
-                  <User className="w-4 h-4 md:w-6 md:h-6" />
+                  <User className="w-3 h-3 md:w-6 md:h-6" />
                 </a>
                 <a
                   href="#projetos"
-                  className="rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform w-[48px] h-[48px] md:w-[76px] md:h-[76px] translate-x-[-20px] translate-y-[-10px] md:translate-x-[-32px] md:translate-y-[-16px]"
-                  style={{ border: "4px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
+                  className="rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] translate-x-[-12px] translate-y-[-6px] md:translate-x-[-32px] md:translate-y-[-16px]"
+                  style={{ border: "3px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
-                  <ArrowUpRight className="w-4 h-4 md:w-6 md:h-6" />
+                  <ArrowUpRight className="w-3 h-3 md:w-6 md:h-6" />
                 </a>
               </div>
+
 
 
 
