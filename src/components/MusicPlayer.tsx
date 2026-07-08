@@ -214,8 +214,8 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
   return (
     <div
       ref={playerRef}
-      className="fixed top-16 right-3 z-50 flex items-center gap-1.5 sm:gap-2 rounded-full border border-ink/15 bg-cream/90 backdrop-blur-md px-2 py-1.5 sm:px-3 sm:py-2 shadow-lg lg:top-[7.5rem] max-w-[calc(100vw-1.5rem)]"
-      style={pos && !isNarrow ? { left: pos.x, top: pos.y, right: "auto" } : undefined}
+      className="fixed top-[82px] md:top-[106px] lg:top-[122px] right-4 sm:right-6 lg:right-10 z-50 flex items-center gap-1.5 sm:gap-2 rounded-full border border-ink/15 bg-cream/90 backdrop-blur-md px-2 py-1.5 sm:px-3 sm:py-2 shadow-lg max-w-[calc(100vw-1.5rem)] -translate-y-1/2"
+      style={pos && !isNarrow ? { left: pos.x, top: pos.y, right: "auto", transform: "none" } : undefined}
     >
       {canDrag && (
         <div
