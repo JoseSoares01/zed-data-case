@@ -43,14 +43,35 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
   const [volume, setVolume] = useState(0.15);
   const [muted, setMuted] = useState(true);
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+  const [isNarrow, setIsNarrow] = useState(false);
 
-  // Restore saved position after hydration so SSR and client agree on initial render.
+  // Track viewport so we can ignore a desktop-saved position on mobile
+  // (a stored pos from desktop drag would put the player off-screen or
+  // over content on a small viewport).
   useEffect(() => {
+    const update = () => setIsNarrow(window.innerWidth < 768);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  // Restore saved position after hydration (desktop only).
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.innerWidth < 768) return;
     try {
       const raw = localStorage.getItem(POS_KEY);
       if (raw) {
         const parsed = JSON.parse(raw);
-        if (typeof parsed.x === "number" && typeof parsed.y === "number") setPos(parsed);
+        if (typeof parsed.x === "number" && typeof parsed.y === "number") {
+          // Clamp to viewport
+          const maxX = window.innerWidth - 220;
+          const maxY = window.innerHeight - 60;
+          setPos({
+            x: Math.max(8, Math.min(parsed.x, Math.max(8, maxX))),
+            y: Math.max(8, Math.min(parsed.y, Math.max(8, maxY))),
+          });
+        }
       }
     } catch {}
   }, []);
@@ -193,8 +214,8 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
   return (
     <div
       ref={playerRef}
-      className="fixed top-20 right-4 z-50 flex items-center gap-2 rounded-full border border-ink/15 bg-cream/90 backdrop-blur-md px-3 py-2 shadow-lg lg:top-[7.5rem]"
-      style={pos ? { left: pos.x, top: pos.y, right: "auto" } : undefined}
+      className="fixed top-16 right-3 z-50 flex items-center gap-1.5 sm:gap-2 rounded-full border border-ink/15 bg-cream/90 backdrop-blur-md px-2 py-1.5 sm:px-3 sm:py-2 shadow-lg lg:top-[7.5rem] max-w-[calc(100vw-1.5rem)]"
+      style={pos && !isNarrow ? { left: pos.x, top: pos.y, right: "auto" } : undefined}
     >
       {canDrag && (
         <div
