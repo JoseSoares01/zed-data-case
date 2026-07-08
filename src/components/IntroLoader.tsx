@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 
 const INTRO_DURATION_MS = 1800;
 const INTRO_FADE_DELAY_MS = 250;
@@ -9,7 +8,6 @@ export function IntroLoader({ onComplete }: { onComplete: () => void }) {
   const [count, setCount] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const doneRef = useRef(false);
   const onCompleteRef = useRef(onComplete);
 
@@ -18,11 +16,6 @@ export function IntroLoader({ onComplete }: { onComplete: () => void }) {
   }, [onComplete]);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
     const start = Date.now();
     const previousOverflow = document.documentElement.style.overflow;
     document.documentElement.style.overflow = "hidden";
@@ -48,11 +41,11 @@ export function IntroLoader({ onComplete }: { onComplete: () => void }) {
       clearInterval(timer);
       document.documentElement.style.overflow = previousOverflow;
     };
-  }, [mounted]);
+  }, []);
 
-  if (!mounted || hidden) return null;
+  if (hidden) return null;
 
-  return createPortal(
+  return (
     <div
       aria-hidden
       className="fixed inset-0 z-[10000] bg-[#0d0d0d] flex items-center justify-center overflow-hidden"
@@ -79,7 +72,6 @@ export function IntroLoader({ onComplete }: { onComplete: () => void }) {
           style={{ width: `${Math.min(count * 3.2, 320)}px` }}
         />
       </div>
-    </div>,
-    document.body,
+    </div>
   );
 }
