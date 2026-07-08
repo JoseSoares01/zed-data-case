@@ -7,13 +7,14 @@ export function getSelectorPath(el: Element): string {
   const parts: string[] = [];
   let node: Element | null = el;
   while (node && node !== document.body && node.nodeType === 1) {
-    const parent = node.parentElement;
+    const current: Element = node;
+    const parent: HTMLElement | null = current.parentElement;
     if (!parent) break;
-    const tag = node.tagName.toLowerCase();
-    const siblings = Array.from(parent.children).filter(
-      (c) => c.tagName === node!.tagName,
+    const tag = current.tagName.toLowerCase();
+    const siblings: Element[] = Array.from(parent.children).filter(
+      (c: Element) => c.tagName === current.tagName,
     );
-    const idx = siblings.indexOf(node) + 1;
+    const idx = siblings.indexOf(current) + 1;
     parts.unshift(`${tag}:nth-of-type(${idx})`);
     node = parent;
   }
