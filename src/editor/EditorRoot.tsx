@@ -266,7 +266,17 @@ export function EditorRoot() {
   }, [selectedEl]);
 
   const selectedProps = editor.selectedId ? editor.getEffectiveProps(editor.selectedId) : null;
-  const selectedLabel = selectedEl?.getAttribute("data-editable-label") ?? editor.selectedId ?? "";
+  const selectedLabel = (() => {
+    if (!editor.selectedId) return "";
+    const explicit = selectedEl?.getAttribute("data-editable-label");
+    if (explicit) return explicit;
+    if (selectedEl) {
+      const tag = selectedEl.tagName.toLowerCase();
+      const txt = (selectedEl.textContent ?? "").trim().replace(/\s+/g, " ").slice(0, 24);
+      return txt ? `${tag} · ${txt}` : tag;
+    }
+    return editor.selectedId.replace(/^auto:/, "").split(">").pop() ?? editor.selectedId;
+  })();
 
   return (
     <>
