@@ -84,6 +84,36 @@ export function EditorRoot() {
     return () => window.removeEventListener("keydown", onKey);
   }, [editor.editorMode, editor.selectedId, editor]);
 
+  // Double-click to edit text on the selected element
+  useEffect(() => {
+    if (!editor.editorMode) return;
+    const onDbl = (e: MouseEvent) => {
+      const el = e.target as HTMLElement | null;
+      if (!el || el.closest("[data-editor-ui]")) return;
+      if (!editor.selectedId) return;
+      const selectedEl = editor.registry.get(editor.selectedId);
+      if (!selectedEl || !selectedEl.contains(el)) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const target = selectedEl;
+      target.setAttribute("contenteditable", "true");
+      target.focus();
+      const range = document.createRange();
+      range.selectNodeContents(target);
+      const sel = window.getSelection();
+      sel?.removeAllRanges();
+      sel?.addRange(range);
+      const onBlur = () => {
+        target.removeAttribute("contenteditable");
+        editor.updateProperty(editor.selectedId!, { text: target.textContent ?? "" });
+        target.removeEventListener("blur", onBlur);
+      };
+      target.addEventListener("blur", onBlur);
+    };
+    document.addEventListener("dblclick", onDbl, true);
+    return () => document.removeEventListener("dblclick", onDbl, true);
+  }, [editor.editorMode, editor.selectedId, editor]);
+
   const handleSave = async () => {
     setSaving(true);
     try {
