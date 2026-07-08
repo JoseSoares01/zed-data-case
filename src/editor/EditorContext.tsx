@@ -176,13 +176,15 @@ export function EditorProvider({
   const getEffectiveProps = useCallback(
     (id: string, bp?: Breakpoint): ComponentProperties => {
       const target = bp ?? activeBreakpoint;
-      // Cascade: desktop base -> tablet override -> mobile override
+      // Desktop/tablet layout edits can break narrow screens when inherited.
+      // Mobile only uses mobile-specific overrides; otherwise it keeps the
+      // responsive source layout intact.
       const desktop = currentLayouts.desktop[id] ?? {};
       const tablet = currentLayouts.tablet[id] ?? {};
       const mobile = currentLayouts.mobile[id] ?? {};
       if (target === "desktop") return desktop;
       if (target === "tablet") return { ...desktop, ...tablet };
-      return { ...desktop, ...tablet, ...mobile };
+      return mobile;
     },
     [currentLayouts, activeBreakpoint],
   );
