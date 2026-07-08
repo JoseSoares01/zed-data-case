@@ -250,10 +250,11 @@ function Index() {
         </section></Editable>
 
         {/* Projects list */}
-        <Editable id="Projects" label="Projects"><section id="s3" className="mt-32">
+        <Editable id="Projects" label="Projects"><section id="s3" className="mt-32 overflow-hidden">
           <h2 className="font-display text-[14vw] lg:text-[11rem] leading-none tracking-tight">
             projetos<span className="text-accent">.</span>
           </h2>
+
 
 
           <div className="mt-12 border-t border-ink/15">
