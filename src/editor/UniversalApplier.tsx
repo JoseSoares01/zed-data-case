@@ -19,20 +19,16 @@ export function UniversalApplier() {
         ...Object.keys(layouts.tablet),
         ...Object.keys(layouts.mobile),
       ]);
-      console.log("[UniversalApplier] applyAll keys=", keys.size, "bp=", editor.activeBreakpoint);
       // Temporarily disconnect so our own style writes don't retrigger the
       // observer in a loop.
       obs?.disconnect();
-      let applied = 0;
       for (const key of keys) {
         if (!isAutoKey(key)) continue;
         const el = resolveAutoKey(key);
-        if (!el) { console.warn("[UniversalApplier] unresolved", key); continue; }
+        if (!el) continue;
         applyPropsToElement(el, editor.getEffectiveProps(key));
         editor.registerElement(key, el);
-        applied++;
       }
-      console.log("[UniversalApplier] applied", applied);
       obs?.observe(document.body, {
         childList: true,
         subtree: true,
