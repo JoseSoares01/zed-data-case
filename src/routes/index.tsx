@@ -7,6 +7,7 @@ import logoZeDosDados from "@/assets/logo-ze-dos-dados.png.asset.json";
 import { MusicPlayer } from "@/components/MusicPlayer";
 import { IntroLoader } from "@/components/IntroLoader";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { Editable } from "@/editor/Editable";
 
 import proj1 from "@/assets/proj1.jpg";
 import proj2 from "@/assets/proj2.jpg";
@@ -36,7 +37,8 @@ function Index() {
       <MusicPlayer autoStart={introDone} />
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-6">
         {/* Nav */}
-        <header className="flex items-center justify-between border-b border-ink/15 pb-6">
+        <Editable id="Navbar" label="Navbar">
+          <header className="flex items-center justify-between border-b border-ink/15 pb-6">
           <a href="#" className="flex items-center">
             <img src={logoZeDosDados.url} alt="Zé dos Dados" className="h-14 md:h-20 lg:h-24 w-auto object-contain" />
           </a>
@@ -53,10 +55,11 @@ function Index() {
             <span className="font-medium">Lisboa, PT</span>
             <span className="text-muted-foreground">— disponível</span>
           </div>
-        </header>
+          </header>
+        </Editable>
 
         {/* Hero */}
-        <section id="s0" className="grid lg:grid-cols-2 gap-6 pt-10 lg:pt-14">
+        <Editable id="Hero" label="Hero"><section id="s0" className="grid lg:grid-cols-2 gap-6 pt-10 lg:pt-14">
           <div className="flex flex-col justify-between">
             <div>
               <h1 className="font-display text-[16vw] lg:text-[10rem] leading-[0.85] tracking-tight">
@@ -156,10 +159,10 @@ function Index() {
               </div>
             </div>
           </div>
-        </section>
+        </section></Editable>
 
         {/* Marquee */}
-        <section id="s1" className="mt-24 -mx-4 sm:-mx-6 lg:-mx-10 bg-ink text-cream py-8 overflow-hidden">
+        <Editable id="Marquee" label="Marquee"><section id="s1" className="mt-24 -mx-4 sm:-mx-6 lg:-mx-10 bg-ink text-cream py-8 overflow-hidden">
           <div className="flex marquee-track whitespace-nowrap">
             {Array.from({ length: 2 }).map((_, i) => (
               <div key={i} className="flex items-center gap-8 pr-8">
@@ -171,11 +174,11 @@ function Index() {
               </div>
             ))}
           </div>
-        </section>
+        </section></Editable>
 
 
         {/* About */}
-        <section className="relative bg-ink text-cream -mx-4 sm:-mx-6 lg:-mx-10">
+        <Editable id="About" label="About"><section className="relative bg-ink text-cream -mx-4 sm:-mx-6 lg:-mx-10">
           {/* Horizontal stripes — desktop only, bleed full width */}
           <div className="hidden lg:block absolute left-0 right-0 top-1/3 h-px bg-cream/15 pointer-events-none" />
           <div className="hidden lg:block absolute left-0 right-0 top-2/3 h-px bg-cream/15 pointer-events-none" />
@@ -211,10 +214,10 @@ function Index() {
               </div>
             </div>
           </div>
-        </section>
+        </section></Editable>
 
         {/* Portfolio */}
-        <section id="s2" className="pt-20 relative">
+        <Editable id="Portfolio" label="Portfolio"><section id="s2" className="pt-20 relative">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 relative">
             <h2 className="col-span-full font-display text-[14vw] lg:text-[11rem] leading-none tracking-tight absolute inset-x-0 top-16 pointer-events-none z-10 pl-2">
               portfólio
@@ -238,10 +241,10 @@ function Index() {
               <img src={proj3} alt="" className="w-full h-full object-cover mix-blend-multiply" loading="lazy" />
             </div>
           </div>
-        </section>
+        </section></Editable>
 
         {/* Projects list */}
-        <section id="s3" className="mt-32">
+        <Editable id="Projects" label="Projects"><section id="s3" className="mt-32">
           <h2 className="font-display text-[14vw] lg:text-[11rem] leading-none tracking-tight">
             projetos<span className="text-accent">.</span>
           </h2>
@@ -274,10 +277,10 @@ function Index() {
               </a>
             ))}
           </div>
-        </section>
+        </section></Editable>
 
         {/* Contact CTA */}
-        <section id="s4" className="mt-32 mb-16">
+        <Editable id="Contact" label="Contact"><section id="s4" className="mt-32 mb-16">
           <div className="rounded-[2.5rem] bg-accent p-10 lg:p-16 relative overflow-hidden">
             <p className="font-script text-3xl text-ink/70">vamos criar algo juntos?</p>
             <h2 className="font-display text-6xl lg:text-8xl leading-[0.9] mt-4 max-w-3xl">
@@ -291,10 +294,10 @@ function Index() {
               <span className="text-ink/70">— resposta em 24h</span>
             </div>
           </div>
-        </section>
+        </section></Editable>
 
         {/* Testimonials */}
-        <section className="mt-32 mb-16 overflow-hidden">
+        <Editable id="Testimonials" label="Testimonials"><section className="mt-32 mb-16 overflow-hidden">
           <h2 className="font-display text-5xl lg:text-7xl text-center mb-16 leading-tight">
             o que dizem<br />sobre mim<span className="text-accent">.</span>
           </h2>
@@ -369,10 +372,10 @@ function Index() {
               </div>
             </div>
           ))}
-        </section>
+        </section></Editable>
 
         {/* Footer */}
-        <footer className="border-t border-ink/15 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+        <Editable id="Footer" label="Footer"><footer className="border-t border-ink/15 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <div className="flex items-center gap-1">
             <span className="inline-block h-3 w-3 rounded-full bg-ink" />
             <span className="inline-block h-3 w-3 rounded-full bg-ink -ml-1" />
@@ -384,7 +387,7 @@ function Index() {
             ))}
           </nav>
           <div className="text-ink/60">© 2026 — Lisboa, PT</div>
-        </footer>
+        </footer></Editable>
 
       </div>
     </div>
