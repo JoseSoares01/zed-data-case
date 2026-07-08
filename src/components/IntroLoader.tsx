@@ -2,26 +2,26 @@ import { useEffect, useRef, useState } from "react";
 
 export function IntroLoader({ onComplete }: { onComplete: () => void }) {
   const [count, setCount] = useState(0);
-  const [opening, setOpening] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
   const [hidden, setHidden] = useState(false);
   const doneRef = useRef(false);
 
-  // Count up 0 -> 100
+  // Count 0 -> 100
   useEffect(() => {
     if (count >= 100) return;
-    const step = setTimeout(() => setCount((c) => Math.min(100, c + 1)), 22);
-    return () => clearTimeout(step);
+    const t = setTimeout(() => setCount((c) => Math.min(100, c + 1)), 18);
+    return () => clearTimeout(t);
   }, [count]);
 
-  // Once we hit 100, start opening and finish
+  // Trigger fade + unmount once
   useEffect(() => {
     if (count < 100 || doneRef.current) return;
     doneRef.current = true;
-    const t1 = setTimeout(() => setOpening(true), 350);
+    const t1 = setTimeout(() => setFadeOut(true), 250);
     const t2 = setTimeout(() => {
       setHidden(true);
       onComplete();
-    }, 350 + 1300 + 50);
+    }, 250 + 700);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
@@ -32,40 +32,24 @@ export function IntroLoader({ onComplete }: { onComplete: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] overflow-hidden"
-      style={{ height: "100dvh", pointerEvents: "none" }}
       aria-hidden
+      className="fixed inset-0 z-[100] bg-[#0d0d0d] flex items-center justify-center"
+      style={{
+        width: "100vw",
+        height: "100dvh",
+        opacity: fadeOut ? 0 : 1,
+        transition: "opacity 700ms ease-out",
+        pointerEvents: fadeOut ? "none" : "auto",
+      }}
     >
-      {/* Left curtain */}
-      <div
-        className="absolute top-0 left-0 h-full w-1/2 bg-[#0d0d0d] overflow-hidden"
-        style={{
-          transform: opening ? "translate3d(-101%,0,0)" : "translate3d(0,0,0)",
-          transition: "transform 1300ms cubic-bezier(0.77,0,0.175,1)",
-          willChange: "transform",
-        }}
-      >
-        <div className="absolute inset-y-0 left-0 w-screen flex items-center justify-center">
-          <span className="font-display text-white text-[22vw] md:text-[13rem] leading-none font-bold tabular-nums tracking-tight select-none">
-            {count}
-          </span>
-        </div>
-      </div>
-
-      {/* Right curtain */}
-      <div
-        className="absolute top-0 right-0 h-full w-1/2 bg-[#0d0d0d] overflow-hidden"
-        style={{
-          transform: opening ? "translate3d(101%,0,0)" : "translate3d(0,0,0)",
-          transition: "transform 1300ms cubic-bezier(0.77,0,0.175,1)",
-          willChange: "transform",
-        }}
-      >
-        <div className="absolute inset-y-0 right-0 w-screen flex items-center justify-center">
-          <span className="font-display text-white text-[22vw] md:text-[13rem] leading-none font-bold tabular-nums tracking-tight select-none">
-            {count}
-          </span>
-        </div>
+      <div className="flex flex-col items-center">
+        <span className="font-display text-white text-[22vw] md:text-[13rem] leading-none font-bold tabular-nums tracking-tight select-none">
+          {count}
+        </span>
+        <div
+          className="mt-6 h-px bg-[#c9a96a] transition-all duration-200 ease-out"
+          style={{ width: `${Math.min(count * 3.2, 320)}px` }}
+        />
       </div>
     </div>
   );
