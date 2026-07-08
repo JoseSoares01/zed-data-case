@@ -159,7 +159,7 @@ function Index() {
               </div>
             </div>
           </div>
-        </section>
+        </section></Editable>
 
         {/* Marquee */}
         <Editable id="Marquee" label="Marquee"><section id="s1" className="mt-24 -mx-4 sm:-mx-6 lg:-mx-10 bg-ink text-cream py-8 overflow-hidden">
@@ -174,7 +174,7 @@ function Index() {
               </div>
             ))}
           </div>
-        </section>
+        </section></Editable>
 
 
         {/* About */}
@@ -214,7 +214,7 @@ function Index() {
               </div>
             </div>
           </div>
-        </section>
+        </section></Editable>
 
         {/* Portfolio */}
         <Editable id="Portfolio" label="Portfolio"><section id="s2" className="pt-20 relative">
@@ -241,7 +241,7 @@ function Index() {
               <img src={proj3} alt="" className="w-full h-full object-cover mix-blend-multiply" loading="lazy" />
             </div>
           </div>
-        </section>
+        </section></Editable>
 
         {/* Projects list */}
         <Editable id="Projects" label="Projects"><section id="s3" className="mt-32">
@@ -277,7 +277,7 @@ function Index() {
               </a>
             ))}
           </div>
-        </section>
+        </section></Editable>
 
         {/* Contact CTA */}
         <Editable id="Contact" label="Contact"><section id="s4" className="mt-32 mb-16">
@@ -294,7 +294,7 @@ function Index() {
               <span className="text-ink/70">— resposta em 24h</span>
             </div>
           </div>
-        </section>
+        </section></Editable>
 
         {/* Testimonials */}
         <Editable id="Testimonials" label="Testimonials"><section className="mt-32 mb-16 overflow-hidden">
@@ -372,7 +372,7 @@ function Index() {
               </div>
             </div>
           ))}
-        </section>
+        </section></Editable>
 
         {/* Footer */}
         <Editable id="Footer" label="Footer"><footer className="border-t border-ink/15 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
@@ -387,7 +387,7 @@ function Index() {
             ))}
           </nav>
           <div className="text-ink/60">© 2026 — Lisboa, PT</div>
-        </footer>
+        </footer></Editable>
 
       </div>
     </div>
