@@ -31,11 +31,12 @@ const projects = [
 function Index() {
   const [introDone, setIntroDone] = useState(false);
   return (
-    <div className="min-h-screen bg-cream text-ink">
+    <div className="min-h-screen bg-cream text-ink overflow-x-hidden w-full">
       <SmoothScroll />
       {!introDone && <IntroLoader onComplete={() => setIntroDone(true)} />}
       <MusicPlayer autoStart={introDone} />
-      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-6">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 py-6 overflow-x-hidden">
+
         {/* Nav */}
         <Editable id="Navbar" label="Navbar">
           <header className="flex items-center justify-between border-b border-ink/15 pb-6">
