@@ -39,16 +39,18 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(0.15);
   const [muted, setMuted] = useState(true);
-  const [pos, setPos] = useState<{ x: number; y: number } | null>(() => {
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+
+  // Restore saved position after hydration so SSR and client agree on initial render.
+  useEffect(() => {
     try {
       const raw = localStorage.getItem(POS_KEY);
       if (raw) {
         const parsed = JSON.parse(raw);
-        if (typeof parsed.x === "number" && typeof parsed.y === "number") return parsed;
+        if (typeof parsed.x === "number" && typeof parsed.y === "number") setPos(parsed);
       }
     } catch {}
-    return null;
-  });
+  }, []);
 
   const current = useMemo(() => TRACKS[index], [index]);
 
