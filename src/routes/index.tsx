@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, Globe, Plus, Quote } from "lucide-react";
+import { ArrowUpRight, Camera, Globe, Plus, Quote, User } from "lucide-react";
 import { useState } from "react";
-import heroPortrait from "@/assets/hero-portrait.png.asset.json";
+import heroZeCartoon from "@/assets/hero-ze-cartoon.png.asset.json";
 import aboutPortrait from "@/assets/about-portrait.png.asset.json";
 import logoZeDosDados from "@/assets/logo-ze-dos-dados.png.asset.json";
 import { MusicPlayer } from "@/components/MusicPlayer";
@@ -103,55 +103,55 @@ function Index() {
           </div>
 
           {/* Hero image card */}
-          <div className="relative">
+          <div className="relative self-start">
             <div
-              className="relative aspect-[4/5] lg:aspect-auto lg:h-full rounded-[2.5rem] bg-accent"
+              className="relative aspect-[496/563] rounded-[2.5rem] bg-[#f5a623]"
               style={{ overflow: "visible" }}
             >
               <img
-                src={heroPortrait.url}
+                src={heroZeCartoon.url}
                 alt="Zé dos Dados"
                 width={1024}
                 height={1024}
-                className="absolute inset-0 w-full h-full object-cover rounded-[2.5rem]"
+                className="absolute inset-0 w-full h-full object-contain rounded-[2.5rem]"
               />
-              <div className="absolute font-script text-4xl text-cream/90 rotate-[-6deg] pointer-events-none top-6 left-2 lg:top-10 lg:left-8">
-                data · design
-              </div>
 
               {/* Floating globe – overlaps top-right corner */}
-              <div
-                className="absolute w-[64px] h-[64px] lg:w-[76px] lg:h-[76px] rounded-full bg-ink flex items-center justify-center z-20 top-4 right-4 lg:top-[-32px] lg:right-[-32px]"
+              <a
+                href="#contato"
+                className="absolute w-[56px] h-[56px] lg:w-[72px] lg:h-[72px] rounded-full bg-ink flex items-center justify-center z-20 top-[2.5%] right-[1.5%] hover:scale-105 transition-transform"
                 style={{
                   border: "6px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
                 }}
               >
                 <Globe className="w-6 h-6 lg:w-7 lg:h-7 text-cream" />
-              </div>
+              </a>
 
-              {/* Floating column – overlaps bottom-left corner */}
+              {/* Floating column – overlaps left icons on the image */}
               <div
-                className="absolute flex flex-col gap-3 lg:gap-4 z-20 bottom-4 left-4 lg:bottom-6 lg:left-[-32px]"
+                className="absolute flex flex-col gap-1 z-20 top-[63%] left-[7%]"
               >
-                <div
-                  className="w-[60px] h-[60px] lg:w-[76px] lg:h-[76px] rounded-full overflow-hidden bg-white"
-                  style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
-                >
-                  <img src={proj3} alt="" className="w-full h-full object-cover" loading="lazy" />
-                </div>
-                <div
-                  className="w-[60px] h-[60px] lg:w-[76px] lg:h-[76px] rounded-full overflow-hidden bg-white"
-                  style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
-                >
-                  <img src={proj5} alt="" className="w-full h-full object-cover" loading="lazy" />
-                </div>
                 <a
                   href="#portfolio"
-                  className="w-[60px] h-[60px] lg:w-[76px] lg:h-[76px] rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform"
+                  className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
                   style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
-                  <ArrowUpRight className="w-6 h-6 lg:w-7 lg:h-7" />
+                  <Camera className="w-5 h-5 lg:w-6 lg:h-6" />
+                </a>
+                <a
+                  href="#sobre"
+                  className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform"
+                  style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
+                >
+                  <User className="w-5 h-5 lg:w-6 lg:h-6" />
+                </a>
+                <a
+                  href="#projetos"
+                  className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform"
+                  style={{ border: "6px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
+                >
+                  <ArrowUpRight className="w-5 h-5 lg:w-6 lg:h-6" />
                 </a>
               </div>
             </div>
