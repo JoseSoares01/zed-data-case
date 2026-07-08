@@ -105,7 +105,7 @@ function Index() {
           {/* Hero image card */}
           <div className="relative">
             <div
-              className="relative aspect-[4/5] lg:aspect-auto lg:h-full rounded-[2.5rem] bg-[#f5a623]"
+              className="relative aspect-[496/563] lg:aspect-[496/563] lg:h-auto rounded-[2.5rem] bg-[#f5a623]"
               style={{ overflow: "visible" }}
             >
               <img
@@ -113,13 +113,13 @@ function Index() {
                 alt="Zé dos Dados"
                 width={1024}
                 height={1024}
-                className="absolute inset-0 w-full h-full object-cover rounded-[2.5rem]"
+                className="absolute inset-0 w-full h-full object-contain rounded-[2.5rem]"
               />
 
               {/* Floating globe – overlaps top-right corner */}
               <a
                 href="#contato"
-                className="absolute w-[56px] h-[56px] lg:w-[72px] lg:h-[72px] rounded-full bg-ink flex items-center justify-center z-20 top-[1.5%] right-[1.5%] hover:scale-105 transition-transform"
+                className="absolute w-[56px] h-[56px] lg:w-[72px] lg:h-[72px] rounded-full bg-ink flex items-center justify-center z-20 top-[1%] right-[1%] hover:scale-105 transition-transform"
                 style={{
                   border: "5px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
@@ -130,7 +130,7 @@ function Index() {
 
               {/* Floating column – overlaps left icons on the image */}
               <div
-                className="absolute flex flex-col gap-2 lg:gap-3 z-20 top-[62%] left-[4.5%] lg:top-[62%] lg:left-[4.5%]"
+                className="absolute flex flex-col gap-2 lg:gap-3 z-20 top-[64%] left-[5%]"
               >
                 <a
                   href="#portfolio"
