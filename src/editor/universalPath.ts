@@ -50,7 +50,7 @@ export function resolveAutoKey(key: string): HTMLElement | null {
   const segments = rest.split(">");
   let cursor: Element = document.body;
   for (const seg of segments) {
-    const m = seg.match(/^([a-z0-9-]+):nth-child-stable\((\d+)\)$/i);
+    const m = seg.match(/^([a-z0-9-]+):(?:nth-child-stable|nth-of-type)\((\d+)\)$/i);
     if (!m) return null;
     const tag = m[1].toUpperCase();
     const idx = parseInt(m[2], 10);
