@@ -43,14 +43,35 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
   const [volume, setVolume] = useState(0.15);
   const [muted, setMuted] = useState(true);
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+  const [isNarrow, setIsNarrow] = useState(false);
 
-  // Restore saved position after hydration so SSR and client agree on initial render.
+  // Track viewport so we can ignore a desktop-saved position on mobile
+  // (a stored pos from desktop drag would put the player off-screen or
+  // over content on a small viewport).
   useEffect(() => {
+    const update = () => setIsNarrow(window.innerWidth < 768);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  // Restore saved position after hydration (desktop only).
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.innerWidth < 768) return;
     try {
       const raw = localStorage.getItem(POS_KEY);
       if (raw) {
         const parsed = JSON.parse(raw);
-        if (typeof parsed.x === "number" && typeof parsed.y === "number") setPos(parsed);
+        if (typeof parsed.x === "number" && typeof parsed.y === "number") {
+          // Clamp to viewport
+          const maxX = window.innerWidth - 220;
+          const maxY = window.innerHeight - 60;
+          setPos({
+            x: Math.max(8, Math.min(parsed.x, Math.max(8, maxX))),
+            y: Math.max(8, Math.min(parsed.y, Math.max(8, maxY))),
+          });
+        }
       }
     } catch {}
   }, []);
