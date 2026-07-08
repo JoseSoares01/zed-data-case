@@ -133,25 +133,25 @@ function Index() {
 
               {/* Floating column – overlaps left icons on the image */}
               <div
-                className="absolute flex flex-col gap-2.5 md:gap-1 z-20 top-[58%] left-[8%] md:top-[63%] md:left-[7%]"
+                className="absolute flex flex-col gap-2.5 md:gap-1 z-20 top-[58%] left-[5%] md:top-[63%] md:left-[7%]"
               >
                 <a
                   href="#portfolio"
-                  className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] translate-x-[14px] translate-y-[-1px] md:translate-x-[-32px] md:translate-y-[-16px]"
+                  className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] translate-x-[8px] translate-y-[-1px] md:translate-x-[-32px] md:translate-y-[-16px]"
                   style={{ border: "3px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
                   <Camera className="w-3 h-3 md:w-6 md:h-6" />
                 </a>
                 <a
                   href="#sobre"
-                  className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] translate-x-[14px] translate-y-[-1px] md:translate-x-[-32px] md:translate-y-[-16px]"
+                  className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] translate-x-[8px] translate-y-[-1px] md:translate-x-[-32px] md:translate-y-[-16px]"
                   style={{ border: "3px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
                   <User className="w-3 h-3 md:w-6 md:h-6" />
                 </a>
                 <a
                   href="#projetos"
-                  className="rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] translate-x-[14px] translate-y-[-1px] md:translate-x-[-32px] md:translate-y-[-16px]"
+                  className="rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] translate-x-[8px] translate-y-[-1px] md:translate-x-[-32px] md:translate-y-[-16px]"
                   style={{ border: "3px solid #fff", boxShadow: "0 12px 35px rgba(0,0,0,0.18)" }}
                 >
                   <ArrowUpRight className="w-3 h-3 md:w-6 md:h-6" />
