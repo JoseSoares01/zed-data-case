@@ -18,6 +18,7 @@ import servinformLogo from "@/assets/servinform-logo.png.asset.json";
 import mmbusLogo from "@/assets/mmbus-logo.png.asset.json";
 import pauseflowLogo from "@/assets/pauseflow-logo.png.asset.json";
 import joseSoaresLogo from "@/assets/jose-soares-logo.png.asset.json";
+import profJaquelineLogo from "@/assets/prof-jaqueline-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -27,7 +28,7 @@ const projects = [
   { title: "Dr. Mauricio Sergio", tag: "Político · Marca Pessoal", url: "https://mauricio-soares.vercel.app/", img: proj2, year: "2026" },
   { title: "Dra. Joaquina Maria", tag: "Campanha Política", url: "https://joaquina-maria-deputada.lovable.app", img: proj1, year: "2026" },
   { title: "Dr. Joaquim Mendes", tag: "Político · Site Oficial", url: "https://joaquim-magic-site.lovable.app", img: proj3, year: "2026" },
-  { title: "Profª. Jaqueline Soares", tag: "Professora · Letras", url: "https://jaquelinesoares-letras.lovable.app", img: proj4, year: "2025" },
+  { title: "Profª. Jaqueline Soares", tag: "Professora · Letras", url: "https://jaquelinesoares-letras.lovable.app", img: profJaquelineLogo.url, year: "2025" },
   { title: "José Soares — Perfil", tag: "Portfólio Pessoal", url: "https://zedosdados-xp.vercel.app/", img: joseSoaresLogo.url, year: "2026" },
   { title: "Pause Flow", tag: "App · Produtividade", url: "https://pause-floww.lovable.app/", img: pauseflowLogo.url, year: "2024" },
   { title: "MMBus", tag: "Mobilidade · Transporte", url: "https://mmbus.lovable.app", img: mmbusLogo.url, year: "2025" },
