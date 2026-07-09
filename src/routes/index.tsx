@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
 });
 
 const projects = [
-  { title: "Pata Amiga", tag: "App · Resgate", url: "https://pata-amiga.lovable.app/auth", img: pataAmigaLogo.url, year: "2024" },
+  { title: "Pata Amiga", tag: "App · Resgate de Animais", url: "https://pata-amiga.lovable.app/auth", img: pataAmigaLogo.url, year: "2024" },
   { title: "Mauricío Soares", tag: "Político · Marca Pessoal", url: "https://mauricio-soares.vercel.app/", img: mauricioLogo.url, year: "2026" },
   { title: "Dra. Joaquina Maria", tag: "Campanha Política", url: "https://joaquina-maria-deputada.lovable.app", img: proj1, year: "2026" },
   { title: "Dr. Joaquim Mendes", tag: "Político · Site Oficial", url: "https://joaquim-magic-site.lovable.app", img: joaquimMendesLogo.url, year: "2026" },
