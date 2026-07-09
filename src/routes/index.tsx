@@ -289,7 +289,7 @@ function Index() {
                 href={p.url}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="group grid grid-cols-12 items-center gap-4 border-b border-ink/15 py-8 hover:bg-ink hover:text-cream transition-colors px-2"
+                className="group grid grid-cols-12 items-center gap-x-4 gap-y-2 border-b border-ink/15 py-8 hover:bg-ink hover:text-cream transition-colors px-2"
               >
                 <div className="col-span-2 md:col-span-1 flex items-center gap-3">
                   <span className="font-mono text-sm opacity-60">0{i + 1}</span>
@@ -300,19 +300,22 @@ function Index() {
                     loading="lazy"
                   />
                 </div>
-                <div className="col-span-10 md:col-span-5 font-display text-2xl md:text-4xl italic">
+                <div className="col-span-8 md:col-span-5 font-display text-2xl md:text-4xl italic">
                   {p.title}
+                </div>
+                <div className="col-span-2 md:col-span-1 flex justify-end">
+                  <div className="w-12 h-12 rounded-full border border-current flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-ink transition-all">
+                    <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
+                  </div>
+                </div>
+                <div className="col-span-12 md:col-span-3 text-sm opacity-70 md:hidden">
+                  {p.tag} · {p.year}
                 </div>
                 <div className="hidden md:block col-span-3 text-sm opacity-70">
                   {p.tag}
                 </div>
                 <div className="hidden md:block col-span-2 text-sm opacity-70">
                   {p.year}
-                </div>
-                <div className="col-span-12 md:col-span-1 flex justify-end">
-                  <div className="w-12 h-12 rounded-full border border-current flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-ink transition-all">
-                    <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
-                  </div>
                 </div>
               </a>
             ))}
