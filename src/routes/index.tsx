@@ -85,7 +85,7 @@ function Index() {
                 Transformo dados em decisões, ideias em produtos e desafios em soluções digitais. Somando design, desenvolvimento e inteligência de dados.
               </p>
               <p className="mt-4 max-w-md text-xs text-ink/50 lg:ml-auto lg:text-right">
-                Ainda não substituído por uma robôt
+                “Ainda não substituído por uma robôt”
               </p>
             </div>
 
