@@ -16,6 +16,7 @@ import proj4 from "@/assets/proj4.jpg";
 import proj5 from "@/assets/proj5.jpg";
 import servinformLogo from "@/assets/servinform-logo.png.asset.json";
 import mmbusLogo from "@/assets/mmbus-logo.png.asset.json";
+import pauseflowLogo from "@/assets/pauseflow-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
