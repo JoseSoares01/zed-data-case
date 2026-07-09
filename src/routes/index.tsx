@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, Camera, Globe, Plus, Quote, User } from "lucide-react";
+import { ArrowUpRight, Camera, Github, Globe, Instagram, Linkedin, Plus, Quote, User } from "lucide-react";
 import { useState } from "react";
 import heroZeCartoon from "@/assets/hero-ze-new.png.asset.json";
 import aboutPortrait from "@/assets/about-portrait.png.asset.json";
