@@ -14,6 +14,7 @@ import proj2 from "@/assets/proj2.jpg";
 import proj3 from "@/assets/proj3.jpg";
 import proj4 from "@/assets/proj4.jpg";
 import proj5 from "@/assets/proj5.jpg";
+import servinformLogo from "@/assets/servinform-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
