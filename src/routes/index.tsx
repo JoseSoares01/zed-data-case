@@ -340,8 +340,8 @@ function Index() {
         </section></Editable>
 
         {/* Testimonials */}
-        <Editable id="Testimonials" label="Testimonials"><section className="mt-32 mb-16 overflow-hidden">
-          <h2 className="font-display text-5xl lg:text-7xl text-center mb-16 leading-tight">
+        <Editable id="Testimonials" label="Testimonials"><section className="mt-32 mb-16 overflow-hidden -mx-4 sm:-mx-6 lg:-mx-10">
+          <h2 className="font-display text-5xl lg:text-7xl text-center mb-16 leading-tight px-4 sm:px-6 lg:px-10">
             o que dizem<br />sobre mim<span className="text-accent">.</span>
           </h2>
 
@@ -395,7 +395,7 @@ function Index() {
                 {[...row.items, ...row.items].map((item, i) => (
                   <div
                     key={i}
-                    className="w-[400px] shrink-0 rounded-3xl bg-white border border-ink/10 p-8 flex flex-col justify-between"
+                    className="w-[85vw] max-w-[400px] shrink-0 rounded-3xl bg-white border border-ink/10 p-8 flex flex-col justify-between"
                   >
                     <div>
                       <Quote className="w-8 h-8 text-accent mb-4 fill-accent/20" />
