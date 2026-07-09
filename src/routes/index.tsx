@@ -281,8 +281,16 @@ function Index() {
                 rel="noreferrer noopener"
                 className="group grid grid-cols-12 items-center gap-4 border-b border-ink/15 py-8 hover:bg-ink hover:text-cream transition-colors px-2"
               >
-                <div className="col-span-1 font-mono text-sm opacity-60">0{i + 1}</div>
-                <div className="col-span-11 md:col-span-5 font-display text-2xl md:text-4xl italic">
+                <div className="col-span-2 md:col-span-1 flex items-center gap-3">
+                  <span className="font-mono text-sm opacity-60">0{i + 1}</span>
+                  <img
+                    src={p.img}
+                    alt=""
+                    className="w-6 h-6 rounded-full object-cover opacity-70 group-hover:opacity-100 transition-opacity border border-ink/10 group-hover:border-cream/20"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="col-span-10 md:col-span-5 font-display text-2xl md:text-4xl italic">
                   {p.title}
                 </div>
                 <div className="hidden md:block col-span-3 text-sm opacity-70">
