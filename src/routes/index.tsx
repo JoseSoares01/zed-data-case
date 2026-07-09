@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
 });
 
 const projects = [
-  { title: "Pata Amiga", tag: "App · Adoção de Animais", url: "https://pata-amiga.lovable.app/auth", img: pataAmigaLogo.url, year: "2026" },
+  { title: "Pata Amiga", tag: "App · Resgate", url: "https://pata-amiga.lovable.app/auth", img: pataAmigaLogo.url, year: "2024" },
   { title: "Mauricío Soares", tag: "Político · Marca Pessoal", url: "https://mauricio-soares.vercel.app/", img: mauricioLogo.url, year: "2026" },
   { title: "Dra. Joaquina Maria", tag: "Campanha Política", url: "https://joaquina-maria-deputada.lovable.app", img: proj1, year: "2026" },
   { title: "Dr. Joaquim Mendes", tag: "Político · Site Oficial", url: "https://joaquim-magic-site.lovable.app", img: joaquimMendesLogo.url, year: "2026" },
@@ -37,7 +37,7 @@ const projects = [
   { title: "José Soares — Perfil", tag: "Portfólio Pessoal", url: "https://zedosdados-xp.vercel.app/", img: joseSoaresLogo.url, year: "2026" },
   { title: "Pause Flow", tag: "App · Produtividade", url: "https://pause-floww.lovable.app/", img: pauseflowLogo.url, year: "2024" },
   { title: "MMBus", tag: "Mobilidade · Transporte", url: "https://mmbus.lovable.app", img: mmbusLogo.url, year: "2025" },
-  { title: "Ferramentas Servinform", tag: "Utilitários · Ferramentas", url: "https://ferramentasservinform.pt/index.html", img: servinformLogo.url, year: "2025" },
+  { title: "Ferramentas Servinform", tag: "Utilitários · Ferramentas", url: "https://ferramentasservinform.pt/index.html", img: servinformLogo.url, year: "2023" },
 ];
 
 
