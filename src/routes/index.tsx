@@ -340,8 +340,8 @@ function Index() {
         </section></Editable>
 
         {/* Testimonials */}
-        <Editable id="Testimonials" label="Testimonials"><section className="mt-32 mb-16 overflow-hidden">
-          <h2 className="font-display text-5xl lg:text-7xl text-center mb-16 leading-tight">
+        <Editable id="Testimonials" label="Testimonials"><section className="mt-32 mb-16 overflow-hidden -mx-4 sm:-mx-6 lg:-mx-10">
+          <h2 className="font-display text-5xl lg:text-7xl text-center mb-16 leading-tight px-4 sm:px-6 lg:px-10">
             o que dizem<br />sobre mim<span className="text-accent">.</span>
           </h2>
 
