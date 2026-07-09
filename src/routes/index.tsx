@@ -243,14 +243,14 @@ function Index() {
               </div>
               <div className="max-w-lg">
                 <p className="font-script text-accent text-3xl mb-4">olá, eu sou o zé</p>
-                <h2 className="font-display text-5xl lg:text-6xl leading-[0.95] mb-6">
+                <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[0.95] mb-6 break-words">
                   web designer,<br />analista de dados<br />& desenvolvedor.
                 </h2>
-                <p className="text-cream/70 leading-relaxed mb-4">
+                <p className="text-cream/70 leading-relaxed mb-4 break-words">
                   +6 anos construindo produtos digitais em Lisboa. Mestrado em Ciências de Dados,
                   com foco em transformar dados complexos em interfaces claras e experiências memoráveis.
                 </p>
-                <p className="text-cream/70 leading-relaxed">
+                <p className="text-cream/70 leading-relaxed break-words">
                   Trabalho na interseção entre design, engenharia e análise —
                   das primeiras linhas do wireframe até a última query do pipeline.
                 </p>
