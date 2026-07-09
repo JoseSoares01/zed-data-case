@@ -14,6 +14,7 @@ import proj2 from "@/assets/proj2.jpg";
 import proj3 from "@/assets/proj3.jpg";
 import proj4 from "@/assets/proj4.jpg";
 import proj5 from "@/assets/proj5.jpg";
+import servinformLogo from "@/assets/servinform-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -27,7 +28,7 @@ const projects = [
   { title: "José Soares — Perfil", tag: "Portfólio Pessoal", url: "https://zedosdados-xp.vercel.app/", img: proj5, year: "2026" },
   { title: "Pause Flow", tag: "App · Produtividade", url: "https://pause-floww.lovable.app/", img: proj1, year: "2024" },
   { title: "MMBus", tag: "Mobilidade · Transporte", url: "https://mmbus.lovable.app", img: proj2, year: "2025" },
-  { title: "Ferramentas Servinform", tag: "Utilitários · Ferramentas", url: "https://ferramentasservinform.pt/index.html", img: proj3, year: "2025" },
+  { title: "Ferramentas Servinform", tag: "Utilitários · Ferramentas", url: "https://ferramentasservinform.pt/index.html", img: servinformLogo.url, year: "2025" },
 ];
 
 
