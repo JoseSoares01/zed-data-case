@@ -80,7 +80,12 @@ function Index() {
                 Zé dos<br />Dados
               </h1>
               <p className="mt-8 max-w-md text-base text-ink/70 lg:ml-auto lg:text-right">
-                Bem-vindo a uma jornada visual que atravessa dados, design e código. Descubro a arte dos momentos capturados em movimento — e em números.
+                Bem-vindo ao meu universo digital.
+                <br />
+                Transformo dados em decisões, ideias em produtos e desafios em soluções digitais. Somando design, desenvolvimento e inteligência de dados.
+              </p>
+              <p className="mt-4 max-w-md text-xs text-ink/50 lg:ml-auto lg:text-right">
+                Ainda não substituído por uma robôt
               </p>
             </div>
 
