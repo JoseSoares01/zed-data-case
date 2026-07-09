@@ -20,6 +20,7 @@ import pauseflowLogo from "@/assets/pauseflow-logo.png.asset.json";
 import joseSoaresLogo from "@/assets/jose-soares-logo.png.asset.json";
 import profJaquelineLogo from "@/assets/prof-jaqueline-logo.png.asset.json";
 import mauricioLogo from "@/assets/mauricio-logo.png.asset.json";
+import pataAmigaLogo from "@/assets/pata-amiga-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
