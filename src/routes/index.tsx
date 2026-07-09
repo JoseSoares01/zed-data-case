@@ -395,7 +395,7 @@ function Index() {
                 {[...row.items, ...row.items].map((item, i) => (
                   <div
                     key={i}
-                    className="w-[400px] shrink-0 rounded-3xl bg-white border border-ink/10 p-8 flex flex-col justify-between"
+                    className="w-[85vw] max-w-[400px] shrink-0 rounded-3xl bg-white border border-ink/10 p-8 flex flex-col justify-between"
                   >
                     <div>
                       <Quote className="w-8 h-8 text-accent mb-4 fill-accent/20" />
