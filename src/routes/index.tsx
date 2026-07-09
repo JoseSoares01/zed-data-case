@@ -250,13 +250,13 @@ function Index() {
                   Transformo dados em decisões, ideias em produtos e processos em soluções inteligentes.
                 </p>
                 <p className="text-cream/70 leading-relaxed mb-4 break-words">
-                  Sou Analista de Dados e Desenvolvedor de Software, apaixonado por criar soluções que unem tecnologia, design e estratégia para resolver problemas reais. Mais do que desenvolver aplicações ou dashboards, meu objetivo é simplificar processos, automatizar tarefas e transformar informações em resultados.
+                  Sou Analista de Dados e Desenvolvedor de Software, apaixonado por criar soluções que unem tecnologia, design e estratégia para resolver problemas reais. Mais do que desenvolver aplicações ou dashboards, meu objetivo é simplificar processos.
                 </p>
                 <p className="text-cream/70 leading-relaxed mb-4 break-words">
                   Atualmente atuo na Servinform Portugal. Minha experiência combina Python, SQL, Power BI, React, TypeScript, JavaScript e Microsoft Azure, além de uma constante dedicação ao estudo de Ciência de Dados, Inteligência Artificial e desenvolvimento de produtos digitais. Acredito que tecnologia não deve ser apenas funcional, mas também intuitiva, escalável e capaz de gerar valor duradouro no mundo real.
                 </p>
                 <p className="text-cream/70 leading-relaxed break-words">
-                  Cada projeto representa uma oportunidade de transformar desafios complexos em soluções simples, elegantes e orientadas por dados. É essa combinação entre análise, desenvolvimento e criatividade que define a forma como trabalho e os resultados que busco entregar.
+                  Cada projeto representa uma oportunidade de transformar desafios complexos em soluções simples, elegantes, é essa combinação entre análise, desenvolvimento e criatividade que define a forma como trabalho.
                 </p>
                 <div className="mt-8 grid grid-cols-3 gap-4 text-sm">
                   <div><div className="font-display text-2xl text-accent">06+</div><div className="text-cream/60 mt-1">anos</div></div>
