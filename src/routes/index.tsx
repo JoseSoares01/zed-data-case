@@ -88,13 +88,26 @@ function Index() {
             <div className="mt-12 space-y-8">
               <div className="flex gap-2">
                 {[
-                  { label: "in", href: "https://www.linkedin.com/in/janyel-rodrigues-1b998a190/?skipRedirect=true" },
-                  { label: "gh", href: "https://github.com/JoseSoares01" },
-                  { label: "x", href: "#" },
-                  { label: "ig", href: "#" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/janyel-rodrigues-1b998a190/?skipRedirect=true", label: "LinkedIn" },
+                  { icon: Github, href: "https://github.com/JoseSoares01", label: "GitHub" },
+                  { icon: "x", href: "#", label: "X" },
+                  { icon: Instagram, href: "#", label: "Instagram" },
                 ].map((s) => (
-                  <a key={s.label} href={s.href} target="_blank" rel="noreferrer noopener" className="w-10 h-10 rounded-full border border-ink flex items-center justify-center text-xs font-medium hover:bg-ink hover:text-cream transition-colors">
-                    {s.label}
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    aria-label={s.label}
+                    className="w-10 h-10 rounded-full border border-ink flex items-center justify-center hover:bg-ink hover:text-cream transition-colors"
+                  >
+                    {s.icon === "x" ? (
+                      <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true">
+                        <path d="M17.3 4h2.6l-6.1 7.2L21.4 20h-5.4l-4.2-5.5L7.3 20H4.7l6.6-7.7L3 4h5.5l3.8 5.3L17.3 4Zm-1.1 14.3h1.4L8.1 5.6H6.6l11.6 12.7Z" />
+                      </svg>
+                    ) : (
+                      <s.icon className="w-4 h-4" strokeWidth={1.5} />
+                    )}
                   </a>
                 ))}
               </div>
