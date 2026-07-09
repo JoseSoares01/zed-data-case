@@ -18,6 +18,7 @@ import servinformLogo from "@/assets/servinform-logo.png.asset.json";
 import mmbusLogo from "@/assets/mmbus-logo.png.asset.json";
 import pauseflowLogo from "@/assets/pauseflow-logo.png.asset.json";
 import joseSoaresLogo from "@/assets/jose-soares-logo.png.asset.json";
+import profJaquelineLogo from "@/assets/prof-jaqueline-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
