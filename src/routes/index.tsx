@@ -20,12 +20,14 @@ import pauseflowLogo from "@/assets/pauseflow-logo.png.asset.json";
 import joseSoaresLogo from "@/assets/jose-soares-logo.png.asset.json";
 import profJaquelineLogo from "@/assets/prof-jaqueline-logo.png.asset.json";
 import mauricioLogo from "@/assets/mauricio-logo.png.asset.json";
+import pataAmigaLogo from "@/assets/pata-amiga-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
 const projects = [
+  { title: "Pata Amiga", tag: "App · Adoção de Animais", url: "https://pata-amiga.lovable.app/auth", img: pataAmigaLogo.url, year: "2026" },
   { title: "Dr. Mauricio Sergio", tag: "Político · Marca Pessoal", url: "https://mauricio-soares.vercel.app/", img: mauricioLogo.url, year: "2026" },
   { title: "Dra. Joaquina Maria", tag: "Campanha Política", url: "https://joaquina-maria-deputada.lovable.app", img: proj1, year: "2026" },
   { title: "Dr. Joaquim Mendes", tag: "Político · Site Oficial", url: "https://joaquim-magic-site.lovable.app", img: proj3, year: "2026" },
