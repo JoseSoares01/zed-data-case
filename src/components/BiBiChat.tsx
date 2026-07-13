@@ -115,21 +115,19 @@ export function BiBiChat() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label="Falar com BiBi"
-        className="fixed bottom-6 right-6 z-[9998] group"
+        className="fixed bottom-6 right-6 z-[9998] group flex flex-col items-start"
       >
-        <div className="relative">
-          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite]">
-            <img
-              src={EMOTIONS[open ? emotion : "tedio"]}
-              alt="BiBi"
-              className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-lg group-hover:-rotate-6 transition-transform"
-            />
-          </div>
-          {!open && (
-            <span className="absolute -top-2 -left-2 bg-[#0D99FF] text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-lg animate-pulse">
-              BiBi
-            </span>
-          )}
+        {!open && (
+          <span className="mb-1.5 bg-[#0D99FF] text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-lg animate-pulse">
+            BiBi
+          </span>
+        )}
+        <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite]">
+          <img
+            src={EMOTIONS[open ? emotion : "tedio"]}
+            alt="BiBi"
+            className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-lg group-hover:-rotate-6 transition-transform"
+          />
         </div>
       </button>
 
