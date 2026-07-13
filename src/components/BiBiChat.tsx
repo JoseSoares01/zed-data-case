@@ -115,25 +115,25 @@ export function BiBiChat() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label="Falar com BiBi"
-        className="fixed bottom-6 right-6 z-[9998] group flex flex-col items-start"
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9998] group flex flex-col items-start"
       >
         {!open && (
-          <span className="mb-1.5 bg-[#0D99FF] text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-lg animate-pulse">
+          <span className="mb-1.5 bg-[#0D99FF] text-white text-[10px] md:text-xs font-bold px-2 md:px-2.5 py-0.5 md:py-1 rounded-full shadow-lg animate-pulse">
             BiBi
           </span>
         )}
-        <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite] overflow-visible">
+        <div className="relative w-16 h-16 md:w-28 md:h-28 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite] overflow-visible">
           <img
             src={EMOTIONS[open ? emotion : "tedio"]}
             alt="BiBi"
-            className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg group-hover:-rotate-6 transition-transform"
+            className="w-14 h-14 md:w-24 md:h-24 object-contain drop-shadow-lg group-hover:-rotate-6 transition-transform"
           />
         </div>
       </button>
 
       {/* Chat panel */}
       {open && (
-        <div className="fixed bottom-32 right-6 z-[9999] w-[calc(100vw-3rem)] max-w-sm h-[28rem] flex flex-col rounded-2xl shadow-2xl bg-neutral-900/95 backdrop-blur-xl border border-white/10 overflow-hidden animate-[bibi-in_0.25s_ease-out]">
+        <div className="fixed bottom-24 right-4 left-4 md:left-auto md:bottom-32 md:right-6 z-[9999] md:w-[calc(100vw-3rem)] max-w-sm h-[26rem] md:h-[28rem] flex flex-col rounded-2xl shadow-2xl bg-neutral-900/95 backdrop-blur-xl border border-white/10 overflow-hidden animate-[bibi-in_0.25s_ease-out]">
           <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-gradient-to-r from-orange-600/20 to-transparent">
             <div className="relative w-11 h-11 rounded-full bg-orange-500 flex items-center justify-center shrink-0 overflow-visible">
               <img src={EMOTIONS[emotion]} alt="" className="w-9 h-9 object-contain" />
