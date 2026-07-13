@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { X, Send } from "lucide-react";
 import bibiFeliz from "@/assets/bibi-feliz.png";
 import bibiTriste from "@/assets/bibi-triste.png";
