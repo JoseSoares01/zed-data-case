@@ -122,11 +122,11 @@ export function BiBiChat() {
             BiBi
           </span>
         )}
-        <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-orange-500 flex items-end justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite] overflow-visible">
+        <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-orange-500 flex items-end justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite] overflow-visible">
           <img
             src={EMOTIONS[open ? emotion : "tedio"]}
             alt="BiBi"
-            className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg group-hover:-rotate-6 transition-transform absolute -top-3"
+            className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-lg group-hover:-rotate-6 transition-transform absolute -top-5"
           />
         </div>
       </button>
