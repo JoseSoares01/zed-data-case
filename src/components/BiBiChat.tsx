@@ -118,11 +118,13 @@ export function BiBiChat() {
         className="fixed bottom-6 right-6 z-[9998] group"
       >
         <div className="relative">
-          <img
-            src={EMOTIONS[open ? emotion : "tedio"]}
-            alt="BiBi"
-            className="w-20 h-20 md:w-24 md:h-24 drop-shadow-2xl transition-transform group-hover:scale-110 group-hover:-rotate-6 animate-[bibi-float_4s_ease-in-out_infinite]"
-          />
+          <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite]">
+            <img
+              src={EMOTIONS[open ? emotion : "tedio"]}
+              alt="BiBi"
+              className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-lg group-hover:-rotate-6 transition-transform"
+            />
+          </div>
           {!open && (
             <span className="absolute -top-2 -left-2 bg-[#0D99FF] text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-lg animate-pulse">
               BiBi
@@ -135,7 +137,9 @@ export function BiBiChat() {
       {open && (
         <div className="fixed bottom-32 right-6 z-[9999] w-[calc(100vw-3rem)] max-w-sm h-[28rem] flex flex-col rounded-2xl shadow-2xl bg-neutral-900/95 backdrop-blur-xl border border-white/10 overflow-hidden animate-[bibi-in_0.25s_ease-out]">
           <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-gradient-to-r from-orange-600/20 to-transparent">
-            <img src={EMOTIONS[emotion]} alt="" className="w-10 h-10" />
+            <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
+              <img src={EMOTIONS[emotion]} alt="" className="w-8 h-8 object-contain" />
+            </div>
             <div className="flex-1">
               <div className="font-display text-white text-lg leading-none">BiBi</div>
               <div className="text-white/50 text-[11px]">assistente pessoal do Zé (contra a vontade)</div>
