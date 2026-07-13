@@ -135,6 +135,7 @@ function RootComponent() {
       <LayoutLoader page={page}>
         <Outlet />
         <FloatingToggle />
+        <BiBiChat />
         <Toaster position="top-right" richColors />
       </LayoutLoader>
     </QueryClientProvider>
