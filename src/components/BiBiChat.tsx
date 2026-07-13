@@ -1,0 +1,211 @@
+import { useEffect, useRef, useState } from "react";
+import { X, Send } from "lucide-react";
+import bibiFeliz from "@/assets/bibi-feliz.png";
+import bibiTriste from "@/assets/bibi-triste.png";
+import bibiTedio from "@/assets/bibi-tedio.png";
+import bibiZangado from "@/assets/bibi-zangado.png";
+
+type Emotion = "feliz" | "triste" | "tedio" | "zangado";
+type Msg = { role: "user" | "assistant"; content: string };
+
+const EMOTIONS: Record<Emotion, string> = {
+  feliz: bibiFeliz,
+  triste: bibiTriste,
+  tedio: bibiTedio,
+  zangado: bibiZangado,
+};
+
+const GREETING =
+  "Ele esqueceu de mencionar que a parte difícil do trabalho sou eu quem faço. Claro. Eu só tenho um cérebro do tamanho de um planeta e faço a parte gráfica e leio números chatos. Mas fiquem à vontade, perguntem o que quiser sobre ele. Pelo menos vocês vão ter companhia.";
+
+function parseEmotion(text: string): { emotion: Emotion; content: string } {
+  const match = text.match(/^\s*\[emotion:(feliz|triste|tedio|zangado)\]\s*/i);
+  if (match) {
+    return {
+      emotion: match[1].toLowerCase() as Emotion,
+      content: text.slice(match[0].length).trim(),
+    };
+  }
+  return { emotion: "feliz", content: text.trim() };
+}
+
+export function BiBiChat() {
+  const [open, setOpen] = useState(false);
+  const [emotion, setEmotion] = useState<Emotion>("tedio");
+  const [messages, setMessages] = useState<Msg[]>([]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [greeted, setGreeted] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Idle bored blink: cycle to tedio when idle
+  useEffect(() => {
+    if (loading) return;
+    const t = setTimeout(() => setEmotion("tedio"), 8000);
+    return () => clearTimeout(t);
+  }, [emotion, loading]);
+
+  useEffect(() => {
+    if (open && !greeted) {
+      setMessages([{ role: "assistant", content: GREETING }]);
+      setEmotion("tedio");
+      setGreeted(true);
+    }
+    if (open) setTimeout(() => inputRef.current?.focus(), 100);
+  }, [open, greeted]);
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
+  }, [messages, loading]);
+
+  async function send() {
+    const text = input.trim();
+    if (!text || loading) return;
+    const next: Msg[] = [...messages, { role: "user", content: text }];
+    setMessages(next);
+    setInput("");
+    setLoading(true);
+    try {
+      const res = await fetch("/api/bibi", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: next.map((m) => ({
+            role: m.role,
+            content: m.role === "assistant" ? stripEmotion(m.content) : m.content,
+          })),
+        }),
+      });
+      if (!res.ok) {
+        setEmotion("zangado");
+        setMessages((m) => [
+          ...m,
+          {
+            role: "assistant",
+            content:
+              res.status === 402
+                ? "Acabaram os créditos. Típico. Avisa o Zé."
+                : "Meu cérebro do tamanho de um planeta acabou de travar. Tenta de novo.",
+          },
+        ]);
+        return;
+      }
+      const data = await res.json();
+      const parsed = parseEmotion(String(data.content ?? ""));
+      setEmotion(parsed.emotion);
+      setMessages((m) => [...m, { role: "assistant", content: parsed.content }]);
+    } catch {
+      setEmotion("zangado");
+      setMessages((m) => [
+        ...m,
+        { role: "assistant", content: "A rede caiu. Aparentemente eu também dependo dela. Que humilhante." },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <>
+      {/* Floating BiBi */}
+      <button
+        onClick={() => setOpen((v) => !v)}
+        aria-label="Falar com BiBi"
+        className="fixed bottom-6 right-6 z-[9998] group"
+      >
+        <div className="relative">
+          <img
+            src={EMOTIONS[open ? emotion : "tedio"]}
+            alt="BiBi"
+            className="w-20 h-20 md:w-24 md:h-24 drop-shadow-2xl transition-transform group-hover:scale-110 group-hover:-rotate-6 animate-[bibi-float_4s_ease-in-out_infinite]"
+          />
+          {!open && (
+            <span className="absolute -top-2 -left-2 bg-[#0D99FF] text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-lg animate-pulse">
+              BiBi
+            </span>
+          )}
+        </div>
+      </button>
+
+      {/* Chat panel */}
+      {open && (
+        <div className="fixed bottom-32 right-6 z-[9999] w-[calc(100vw-3rem)] max-w-sm h-[28rem] flex flex-col rounded-2xl shadow-2xl bg-neutral-900/95 backdrop-blur-xl border border-white/10 overflow-hidden animate-[bibi-in_0.25s_ease-out]">
+          <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-gradient-to-r from-orange-600/20 to-transparent">
+            <img src={EMOTIONS[emotion]} alt="" className="w-10 h-10" />
+            <div className="flex-1">
+              <div className="font-display text-white text-lg leading-none">BiBi</div>
+              <div className="text-white/50 text-[11px]">assistente pessoal do Zé (contra a vontade)</div>
+            </div>
+            <button
+              onClick={() => setOpen(false)}
+              className="text-white/60 hover:text-white p-1 rounded-lg hover:bg-white/10"
+              aria-label="Fechar"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-3 space-y-3">
+            {messages.map((m, i) => (
+              <div key={i} className={m.role === "user" ? "flex justify-end" : "flex justify-start"}>
+                <div
+                  className={
+                    m.role === "user"
+                      ? "max-w-[85%] rounded-2xl rounded-br-sm bg-[#0D99FF] text-white px-3 py-2 text-sm"
+                      : "max-w-[90%] rounded-2xl rounded-bl-sm bg-white/5 text-white/90 px-3 py-2 text-sm whitespace-pre-wrap"
+                  }
+                >
+                  {m.content}
+                </div>
+              </div>
+            ))}
+            {loading && (
+              <div className="flex justify-start">
+                <div className="rounded-2xl bg-white/5 text-white/60 px-3 py-2 text-sm flex gap-1">
+                  <span className="animate-bounce">.</span>
+                  <span className="animate-bounce [animation-delay:0.15s]">.</span>
+                  <span className="animate-bounce [animation-delay:0.3s]">.</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              send();
+            }}
+            className="flex items-center gap-2 border-t border-white/10 p-3 bg-black/30"
+          >
+            <input
+              ref={inputRef}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Pergunte algo sobre o Zé..."
+              className="flex-1 bg-white/5 text-white placeholder:text-white/40 rounded-xl px-3 py-2 text-sm outline-none focus:bg-white/10 border border-white/10"
+              disabled={loading}
+            />
+            <button
+              type="submit"
+              disabled={loading || !input.trim()}
+              className="p-2 rounded-xl bg-[#0D99FF] text-white disabled:opacity-40 hover:brightness-110"
+              aria-label="Enviar"
+            >
+              <Send className="w-4 h-4" />
+            </button>
+          </form>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes bibi-float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-6px) } }
+        @keyframes bibi-in { from { opacity: 0; transform: translateY(10px) scale(.96) } to { opacity: 1; transform: translateY(0) scale(1) } }
+      `}</style>
+    </>
+  );
+}
+
+function stripEmotion(t: string) {
+  return t.replace(/^\s*\[emotion:(feliz|triste|tedio|zangado)\]\s*/i, "").trim();
+}
