@@ -17,7 +17,7 @@ const EMOTIONS: Record<Emotion, string> = {
 };
 
 const GREETING =
-  "Ele esqueceu de mencionar que a parte difícil do trabalho sou eu quem faço. Claro. Eu só tenho um cérebro do tamanho de um planeta e faço a parte gráfica e leio números chatos. Mas fiquem à vontade, perguntem o que quiser sobre ele. Pelo menos vocês vão ter companhia.";
+  "Olá, ele esqueceu de mencionar sobre mim e que a parte difícil do trabalho sou eu quem faço. Claro. Eu só tenho um cérebro do tamanho de um planeta e faço a parte gráfica, leio os numeros chatos. Mas fiquem à vontade, perguntem o que quiser sobre ele. Pelo menos vocês vão ter companhia.";
 
 function parseEmotion(text: string): { emotion: Emotion; content: string } {
   const match = text.match(/^\s*\[emotion:(feliz|triste|tedio|zangado)\]\s*/i);
