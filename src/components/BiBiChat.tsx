@@ -163,7 +163,7 @@ export function BiBiChat() {
                       : "max-w-[90%] rounded-2xl rounded-bl-sm bg-white/5 text-white/90 px-3 py-2 text-sm whitespace-pre-wrap"
                   }
                 >
-                  {m.content}
+                  {m.role === "assistant" ? <LinkedText text={m.content} /> : m.content}
                 </div>
               </div>
             ))}
@@ -216,4 +216,74 @@ export function BiBiChat() {
 
 function stripEmotion(t: string) {
   return t.replace(/^\s*\[emotion:(feliz|triste|tedio|zangado)\]\s*/i, "").trim();
+}
+
+function LinkedText({ text }: { text: string }) {
+  // Convert Markdown links [label](url) and plain URLs into anchor tags.
+  const parts: React.ReactNode[] = [];
+  const markdownLink = /\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+)\)/g;
+  const plainUrl = /(https?:\/\/[^\s\]\)\,]+)/g;
+
+  let last = 0;
+  let match: RegExpExecArray | null;
+
+  // First pass: markdown links
+  while ((match = markdownLink.exec(text)) !== null) {
+    if (match.index > last) {
+      parts.push(<PlainTextWithLinks key={`${last}-pre`} text={text.slice(last, match.index)} />);
+    }
+    const [, label, href] = match;
+    parts.push(
+      <a
+        key={match.index}
+        href={href}
+        target={href.startsWith("mailto:") ? undefined : "_blank"}
+        rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+        className="underline text-[#0D99FF] hover:text-white transition-colors"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {label}
+      </a>,
+    );
+    last = match.index + match[0].length;
+  }
+
+  if (last < text.length) {
+    parts.push(<PlainTextWithLinks key={`${last}-post`} text={text.slice(last)} />);
+  }
+
+  return <>{parts.length ? parts : text}</>;
+}
+
+function PlainTextWithLinks({ text }: { text: string }) {
+  const parts: React.ReactNode[] = [];
+  const plainUrl = /(https?:\/\/[^\s\]\)\,]+)/g;
+  let last = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = plainUrl.exec(text)) !== null) {
+    if (match.index > last) {
+      parts.push(text.slice(last, match.index));
+    }
+    const href = match[0];
+    parts.push(
+      <a
+        key={match.index}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline text-[#0D99FF] hover:text-white transition-colors break-all"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {href}
+      </a>,
+    );
+    last = match.index + match[0].length;
+  }
+
+  if (last < text.length) {
+    parts.push(text.slice(last));
+  }
+
+  return <>{parts.length ? parts : text}</>;
 }
