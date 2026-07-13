@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { X, Send } from "lucide-react";
-import bibiFeliz from "@/assets/bibi-feliz.png";
-import bibiTriste from "@/assets/bibi-triste.png";
-import bibiTedio from "@/assets/bibi-tedio.png";
-import bibiZangado from "@/assets/bibi-zangado.png";
+import bibiFeliz from "@/assets/bibi-feliz.png.asset.json";
+import bibiTriste from "@/assets/bibi-triste.png.asset.json";
+import bibiTedio from "@/assets/bibi-tedio.png.asset.json";
+import bibiZangado from "@/assets/bibi-zangado.png.asset.json";
 
 type Emotion = "feliz" | "triste" | "tedio" | "zangado";
 type Msg = { role: "user" | "assistant"; content: string };
 
 const EMOTIONS: Record<Emotion, string> = {
-  feliz: bibiFeliz,
-  triste: bibiTriste,
-  tedio: bibiTedio,
-  zangado: bibiZangado,
+  feliz: bibiFeliz.url,
+  triste: bibiTriste.url,
+  tedio: bibiTedio.url,
+  zangado: bibiZangado.url,
 };
 
 const GREETING =
