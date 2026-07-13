@@ -107,7 +107,9 @@ export function BiBiChat() {
     }
   }
 
-  return (
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
     <>
       {/* Floating BiBi */}
       <button
