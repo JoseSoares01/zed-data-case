@@ -163,7 +163,7 @@ export function BiBiChat() {
                       : "max-w-[90%] rounded-2xl rounded-bl-sm bg-white/5 text-white/90 px-3 py-2 text-sm whitespace-pre-wrap"
                   }
                 >
-                  {m.content}
+                  {m.role === "assistant" ? <LinkedText text={m.content} /> : m.content}
                 </div>
               </div>
             ))}
