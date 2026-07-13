@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import { Toaster } from "sonner";
 import { LayoutLoader } from "@/editor/LayoutLoader";
 import { FloatingToggle } from "@/editor/FloatingToggle";
+import { BiBiChat } from "@/components/BiBiChat";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
