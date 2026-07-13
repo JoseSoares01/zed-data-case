@@ -205,7 +205,8 @@ export function BiBiChat() {
         @keyframes bibi-float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-6px) } }
         @keyframes bibi-in { from { opacity: 0; transform: translateY(10px) scale(.96) } to { opacity: 1; transform: translateY(0) scale(1) } }
       `}</style>
-    </>
+    </>,
+    document.body,
   );
 }
 
