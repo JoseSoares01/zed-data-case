@@ -38,6 +38,9 @@ const projects = [
   { title: "Pause Flow", tag: "App · Produtividade", url: "https://pause-floww.lovable.app/", img: pauseflowLogo.url, year: "2024" },
   { title: "MMBus", tag: "Mobilidade · Transporte", url: "https://mmbus.lovable.app", img: mmbusLogo.url, year: "2025" },
   { title: "Ferramentas Servinform", tag: "Utilitários · Ferramentas", url: "https://ferramentasservinform.pt/index.html", img: servinformLogo.url, year: "2023" },
+  { title: "DotaWork", tag: "Plataforma · Dota Pro Connect", url: "https://dota-pro-connect.lovable.app", img: undefined, year: "2023", color: "#E63946" },
+  { title: "Dev2Data", tag: "Educação · Dados", url: "https://dev2data.lovable.app", img: undefined, year: "2024", color: "#2A9D8F" },
+  { title: "GreeNest One", tag: "App · Sustentabilidade", url: "https://greenest-one.lovable.app/auth", img: undefined, year: "2022", color: "#E9C46A" },
 ];
 
 
