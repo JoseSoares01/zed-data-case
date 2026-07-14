@@ -115,7 +115,7 @@ export function BiBiChat() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label="Falar com BiBi"
-        className="fixed bottom-4 right-4 md:top-6 md:bottom-auto md:right-6 z-[9998] group flex flex-col items-center"
+        className="fixed bottom-4 right-4 md:top-24 md:bottom-auto md:right-6 z-[9998] group flex flex-col items-center"
       >
         <div className="relative w-14 h-14 md:w-20 md:h-20 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite] overflow-visible">
           <img
