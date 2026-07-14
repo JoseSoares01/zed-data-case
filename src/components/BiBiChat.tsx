@@ -158,7 +158,7 @@ export function BiBiChat() {
                   className={
                     m.role === "user"
                       ? "max-w-[85%] rounded-2xl rounded-br-sm bg-[#0D99FF] text-white px-3 py-2 text-sm"
-                      : "max-w-[90%] rounded-2xl rounded-bl-sm bg-white/5 text-white/90 px-3 py-2 text-sm whitespace-pre-wrap"
+                      : "max-w-[90%] rounded-2xl rounded-bl-sm bg-white/8 text-white/90 px-3 py-2 text-sm whitespace-pre-wrap backdrop-blur-md border border-white/5"
                   }
                 >
                   {m.role === "assistant" ? <LinkedText text={m.content} /> : m.content}
