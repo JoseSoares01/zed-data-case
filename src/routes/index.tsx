@@ -22,6 +22,9 @@ import profJaquelineLogo from "@/assets/prof-jaqueline-logo.png.asset.json";
 import mauricioLogo from "@/assets/mauricio-logo.png.asset.json";
 import pataAmigaLogo from "@/assets/pata-amiga-logo.png.asset.json";
 import joaquimMendesLogo from "@/assets/joaquim-mendes-logo.png.asset.json";
+import greenestLogo from "@/assets/greenest.png.asset.json";
+import dotaworkLogo from "@/assets/dotawork.png.asset.json";
+import dev2dataLogo from "@/assets/dev2data.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -38,9 +41,9 @@ const projects = [
   { title: "Pause Flow", tag: "App · Produtividade", url: "https://pause-floww.lovable.app/", img: pauseflowLogo.url, year: "2024" },
   { title: "MMBus", tag: "Mobilidade · Transporte", url: "https://mmbus.lovable.app", img: mmbusLogo.url, year: "2025" },
   { title: "Ferramentas Servinform", tag: "Utilitários · Ferramentas", url: "https://ferramentasservinform.pt/index.html", img: servinformLogo.url, year: "2023" },
-  { title: "DotaWork", tag: "Plataforma · Dota Pro Connect", url: "https://dota-pro-connect.lovable.app", img: undefined, year: "2023", color: "#E63946" },
-  { title: "Dev2Data", tag: "Educação · Dados", url: "https://dev2data.lovable.app", img: undefined, year: "2024", color: "#2A9D8F" },
-  { title: "GreeNest One", tag: "App · Sustentabilidade", url: "https://greenest-one.lovable.app/auth", img: undefined, year: "2022", color: "#E9C46A" },
+  { title: "DotaWork", tag: "Plataforma · Dota Pro Connect", url: "https://dota-pro-connect.lovable.app", img: dotaworkLogo.url, year: "2023" },
+  { title: "Dev2Data", tag: "Educação · Dados", url: "https://dev2data.lovable.app", img: dev2dataLogo.url, year: "2024" },
+  { title: "GreeNest One", tag: "App · Gestão", url: "https://greenest-one.lovable.app/auth", img: greenestLogo.url, year: "2022" },
 ];
 
 
@@ -320,21 +323,12 @@ function Index() {
               >
                 <div className="col-span-2 md:col-span-1 flex items-center gap-3">
                   <span className="font-mono text-sm opacity-60">{String(i + 1).padStart(2, "0")}</span>
-                  {p.img ? (
-                    <img
-                      src={p.img}
-                      alt=""
-                      className="w-6 h-6 rounded-full object-cover opacity-70 group-hover:opacity-100 transition-opacity border border-ink/10 group-hover:border-cream/20"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div
-                      className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white opacity-90 group-hover:opacity-100 transition-opacity"
-                      style={{ backgroundColor: p.color || "#0D99FF" }}
-                    >
-                      {p.title.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase()}
-                    </div>
-                  )}
+                  <img
+                    src={p.img}
+                    alt=""
+                    className="w-6 h-6 rounded-full object-cover opacity-70 group-hover:opacity-100 transition-opacity border border-ink/10 group-hover:border-cream/20"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="col-span-8 md:col-span-5 font-display text-2xl md:text-4xl italic">
                   {p.title}
