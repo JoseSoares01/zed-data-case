@@ -115,20 +115,20 @@ export function BiBiChat() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label="Falar com BiBi"
-        className="fixed bottom-4 right-4 md:top-24 md:bottom-auto md:right-6 z-[9998] group flex flex-col items-center"
+        className="fixed bottom-4 right-4 md:top-24 md:bottom-auto md:right-6 z-[9998] group flex flex-col items-center md:flex-row md:items-center md:gap-2"
       >
-        <div className="relative w-14 h-14 md:w-20 md:h-20 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite] overflow-visible">
+        {!open && (
+          <span className="order-2 md:order-1 mt-1.5 md:mt-0 bg-[#0D99FF] text-white text-[10px] md:text-xs font-bold px-2 md:px-2.5 py-0.5 md:py-1 rounded-full shadow-lg animate-pulse whitespace-nowrap">
+            BiBi
+          </span>
+        )}
+        <div className="relative order-1 md:order-2 w-14 h-14 md:w-20 md:h-20 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite] overflow-visible">
           <img
             src={EMOTIONS[open ? emotion : "tedio"]}
             alt="BiBi"
             className="w-12 h-12 md:w-[4.5rem] md:h-[4.5rem] object-contain drop-shadow-lg group-hover:-rotate-6 transition-transform"
           />
         </div>
-        {!open && (
-          <span className="mt-1.5 bg-[#0D99FF] text-white text-[10px] md:text-xs font-bold px-2 md:px-2.5 py-0.5 md:py-1 rounded-full shadow-lg animate-pulse">
-            BiBi
-          </span>
-        )}
       </button>
 
       {/* Chat panel */}
