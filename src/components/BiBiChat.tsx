@@ -115,25 +115,25 @@ export function BiBiChat() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label="Falar com BiBi"
-        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9998] group flex flex-col items-center"
+        className="fixed bottom-4 right-4 md:top-24 md:bottom-auto md:left-6 md:right-auto z-[9998] group flex flex-col items-center md:flex-row md:items-center md:gap-2"
       >
-        <div className="relative w-14 h-14 md:w-20 md:h-20 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite] overflow-visible">
+        {!open && (
+          <span className="order-2 md:order-1 mt-1.5 md:mt-0 bg-[#0D99FF] text-white text-[10px] md:text-xs font-bold px-2 md:px-2.5 py-0.5 md:py-1 rounded-full shadow-lg animate-pulse whitespace-nowrap">
+            BiBi
+          </span>
+        )}
+        <div className="relative order-1 md:order-2 w-14 h-14 md:w-20 md:h-20 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite] overflow-visible">
           <img
             src={EMOTIONS[open ? emotion : "tedio"]}
             alt="BiBi"
             className="w-12 h-12 md:w-[4.5rem] md:h-[4.5rem] object-contain drop-shadow-lg group-hover:-rotate-6 transition-transform"
           />
         </div>
-        {!open && (
-          <span className="mt-1.5 bg-[#0D99FF] text-white text-[10px] md:text-xs font-bold px-2 md:px-2.5 py-0.5 md:py-1 rounded-full shadow-lg animate-pulse">
-            BiBi
-          </span>
-        )}
       </button>
 
       {/* Chat panel */}
       {open && (
-        <div className="fixed bottom-24 right-4 left-4 md:left-auto md:bottom-32 md:right-6 z-[9999] md:w-[calc(100vw-3rem)] max-w-sm h-[26rem] md:h-[28rem] flex flex-col rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] bg-black/35 backdrop-blur-2xl border border-white/15 overflow-hidden animate-[bibi-in_0.25s_ease-out]">
+        <div className="fixed bottom-24 right-4 left-4 md:left-6 md:right-auto md:top-44 md:bottom-auto z-[9999] md:w-[calc(100vw-3rem)] max-w-sm h-[26rem] md:h-[28rem] flex flex-col rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] bg-black/35 backdrop-blur-2xl border border-white/15 overflow-hidden animate-[bibi-in_0.25s_ease-out]">
           <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-white/5 backdrop-blur-xl">
             <div className="relative w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shrink-0 overflow-visible">
               <img src={EMOTIONS[emotion]} alt="" className="w-8 h-8 object-contain" />
