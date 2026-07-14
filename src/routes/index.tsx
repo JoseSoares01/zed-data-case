@@ -323,21 +323,12 @@ function Index() {
               >
                 <div className="col-span-2 md:col-span-1 flex items-center gap-3">
                   <span className="font-mono text-sm opacity-60">{String(i + 1).padStart(2, "0")}</span>
-                  {p.img ? (
-                    <img
-                      src={p.img}
-                      alt=""
-                      className="w-6 h-6 rounded-full object-cover opacity-70 group-hover:opacity-100 transition-opacity border border-ink/10 group-hover:border-cream/20"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div
-                      className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white opacity-90 group-hover:opacity-100 transition-opacity"
-                      style={{ backgroundColor: p.color || "#0D99FF" }}
-                    >
-                      {p.title.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase()}
-                    </div>
-                  )}
+                  <img
+                    src={p.img}
+                    alt=""
+                    className="w-6 h-6 rounded-full object-cover opacity-70 group-hover:opacity-100 transition-opacity border border-ink/10 group-hover:border-cream/20"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="col-span-8 md:col-span-5 font-display text-2xl md:text-4xl italic">
                   {p.title}
