@@ -310,7 +310,7 @@ function Index() {
 
 
           <div className="mt-12 border-t border-ink/15">
-            {projects.map((p, i) => (
+            {visibleProjects.map((p, i) => (
               <a
                 key={p.title}
                 href={p.url}
@@ -320,12 +320,21 @@ function Index() {
               >
                 <div className="col-span-2 md:col-span-1 flex items-center gap-3">
                   <span className="font-mono text-sm opacity-60">0{i + 1}</span>
-                  <img
-                    src={p.img}
-                    alt=""
-                    className="w-6 h-6 rounded-full object-cover opacity-70 group-hover:opacity-100 transition-opacity border border-ink/10 group-hover:border-cream/20"
-                    loading="lazy"
-                  />
+                  {p.img ? (
+                    <img
+                      src={p.img}
+                      alt=""
+                      className="w-6 h-6 rounded-full object-cover opacity-70 group-hover:opacity-100 transition-opacity border border-ink/10 group-hover:border-cream/20"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div
+                      className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white opacity-90 group-hover:opacity-100 transition-opacity"
+                      style={{ backgroundColor: p.color || "#0D99FF" }}
+                    >
+                      {p.title.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase()}
+                    </div>
+                  )}
                 </div>
                 <div className="col-span-8 md:col-span-5 font-display text-2xl md:text-4xl italic">
                   {p.title}
@@ -347,6 +356,19 @@ function Index() {
               </a>
             ))}
           </div>
+
+          {projects.length > 5 && (
+            <div className="flex justify-center mt-10">
+              <button
+                type="button"
+                onClick={() => setShowAllProjects((v) => !v)}
+                className="inline-flex items-center gap-2 rounded-full border border-ink px-6 py-3 text-sm font-medium hover:bg-ink hover:text-cream transition-colors"
+              >
+                {showAllProjects ? "ver menos" : "ver mais"}
+                <ArrowUpRight className={`w-4 h-4 transition-transform ${showAllProjects ? "rotate-180" : ""}`} />
+              </button>
+            </div>
+          )}
         </section></Editable>
 
         {/* Contact CTA */}
