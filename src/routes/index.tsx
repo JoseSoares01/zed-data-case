@@ -38,11 +38,16 @@ const projects = [
   { title: "Pause Flow", tag: "App · Produtividade", url: "https://pause-floww.lovable.app/", img: pauseflowLogo.url, year: "2024" },
   { title: "MMBus", tag: "Mobilidade · Transporte", url: "https://mmbus.lovable.app", img: mmbusLogo.url, year: "2025" },
   { title: "Ferramentas Servinform", tag: "Utilitários · Ferramentas", url: "https://ferramentasservinform.pt/index.html", img: servinformLogo.url, year: "2023" },
+  { title: "DotaWork", tag: "Plataforma · Dota Pro Connect", url: "https://dota-pro-connect.lovable.app", img: undefined, year: "2023", color: "#E63946" },
+  { title: "Dev2Data", tag: "Educação · Dados", url: "https://dev2data.lovable.app", img: undefined, year: "2024", color: "#2A9D8F" },
+  { title: "GreeNest One", tag: "App · Sustentabilidade", url: "https://greenest-one.lovable.app/auth", img: undefined, year: "2022", color: "#E9C46A" },
 ];
 
 
 function Index() {
   const [introDone, setIntroDone] = useState(false);
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const visibleProjects = showAllProjects ? projects : projects.slice(0, 5);
   return (
     <div className="min-h-screen bg-cream text-ink overflow-x-hidden w-full">
       <SmoothScroll />
@@ -305,7 +310,7 @@ function Index() {
 
 
           <div className="mt-12 border-t border-ink/15">
-            {projects.map((p, i) => (
+            {visibleProjects.map((p, i) => (
               <a
                 key={p.title}
                 href={p.url}
@@ -314,13 +319,22 @@ function Index() {
                 className="group grid grid-cols-12 items-center gap-x-4 gap-y-2 border-b border-ink/15 py-8 hover:bg-ink hover:text-cream transition-colors px-2"
               >
                 <div className="col-span-2 md:col-span-1 flex items-center gap-3">
-                  <span className="font-mono text-sm opacity-60">0{i + 1}</span>
-                  <img
-                    src={p.img}
-                    alt=""
-                    className="w-6 h-6 rounded-full object-cover opacity-70 group-hover:opacity-100 transition-opacity border border-ink/10 group-hover:border-cream/20"
-                    loading="lazy"
-                  />
+                  <span className="font-mono text-sm opacity-60">{String(i + 1).padStart(2, "0")}</span>
+                  {p.img ? (
+                    <img
+                      src={p.img}
+                      alt=""
+                      className="w-6 h-6 rounded-full object-cover opacity-70 group-hover:opacity-100 transition-opacity border border-ink/10 group-hover:border-cream/20"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div
+                      className="w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-bold text-white opacity-90 group-hover:opacity-100 transition-opacity"
+                      style={{ backgroundColor: p.color || "#0D99FF" }}
+                    >
+                      {p.title.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase()}
+                    </div>
+                  )}
                 </div>
                 <div className="col-span-8 md:col-span-5 font-display text-2xl md:text-4xl italic">
                   {p.title}
@@ -342,6 +356,19 @@ function Index() {
               </a>
             ))}
           </div>
+
+          {projects.length > 5 && (
+            <div className="flex justify-center mt-10">
+              <button
+                type="button"
+                onClick={() => setShowAllProjects((v) => !v)}
+                className="inline-flex items-center gap-2 rounded-full border border-ink px-6 py-3 text-sm font-medium hover:bg-ink hover:text-cream transition-colors"
+              >
+                {showAllProjects ? "ver menos" : "ver mais"}
+                <ArrowUpRight className={`w-4 h-4 transition-transform ${showAllProjects ? "rotate-180" : ""}`} />
+              </button>
+            </div>
+          )}
         </section></Editable>
 
         {/* Contact CTA */}
