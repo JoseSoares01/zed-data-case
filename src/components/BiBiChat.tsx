@@ -133,8 +133,8 @@ export function BiBiChat() {
 
       {/* Chat panel */}
       {open && (
-        <div className="fixed bottom-24 right-4 left-4 md:left-auto md:bottom-32 md:right-6 z-[9999] md:w-[calc(100vw-3rem)] max-w-sm h-[26rem] md:h-[28rem] flex flex-col rounded-2xl shadow-2xl bg-neutral-900/95 backdrop-blur-xl border border-white/10 overflow-hidden animate-[bibi-in_0.25s_ease-out]">
-          <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-gradient-to-r from-orange-600/20 to-transparent">
+        <div className="fixed bottom-24 right-4 left-4 md:left-auto md:bottom-32 md:right-6 z-[9999] md:w-[calc(100vw-3rem)] max-w-sm h-[26rem] md:h-[28rem] flex flex-col rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] bg-black/35 backdrop-blur-2xl border border-white/15 overflow-hidden animate-[bibi-in_0.25s_ease-out]">
+          <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-white/5 backdrop-blur-xl">
             <div className="relative w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shrink-0 overflow-visible">
               <img src={EMOTIONS[emotion]} alt="" className="w-8 h-8 object-contain" />
             </div>
@@ -158,7 +158,7 @@ export function BiBiChat() {
                   className={
                     m.role === "user"
                       ? "max-w-[85%] rounded-2xl rounded-br-sm bg-[#0D99FF] text-white px-3 py-2 text-sm"
-                      : "max-w-[90%] rounded-2xl rounded-bl-sm bg-white/5 text-white/90 px-3 py-2 text-sm whitespace-pre-wrap"
+                      : "max-w-[90%] rounded-2xl rounded-bl-sm bg-white/8 text-white/90 px-3 py-2 text-sm whitespace-pre-wrap backdrop-blur-md border border-white/5"
                   }
                 >
                   {m.role === "assistant" ? <LinkedText text={m.content} /> : m.content}
@@ -167,7 +167,7 @@ export function BiBiChat() {
             ))}
             {loading && (
               <div className="flex justify-start">
-                <div className="rounded-2xl bg-white/5 text-white/60 px-3 py-2 text-sm flex gap-1">
+                <div className="rounded-2xl bg-white/8 text-white/60 px-3 py-2 text-sm flex gap-1 backdrop-blur-md border border-white/5">
                   <span className="animate-bounce">.</span>
                   <span className="animate-bounce [animation-delay:0.15s]">.</span>
                   <span className="animate-bounce [animation-delay:0.3s]">.</span>
@@ -181,14 +181,14 @@ export function BiBiChat() {
               e.preventDefault();
               send();
             }}
-            className="flex items-center gap-2 border-t border-white/10 p-3 bg-black/30"
+            className="flex items-center gap-2 border-t border-white/10 p-3 bg-white/5 backdrop-blur-xl"
           >
             <input
               ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Pergunte algo sobre o Zé..."
-              className="flex-1 bg-white/5 text-white placeholder:text-white/40 rounded-xl px-3 py-2 text-sm outline-none focus:bg-white/10 border border-white/10"
+              className="flex-1 bg-black/25 text-white placeholder:text-white/40 rounded-xl px-3 py-2 text-sm outline-none focus:bg-black/35 border border-white/10 backdrop-blur-md"
               disabled={loading}
             />
             <button
