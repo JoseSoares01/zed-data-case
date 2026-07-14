@@ -117,11 +117,11 @@ export function BiBiChat() {
         aria-label="Falar com BiBi"
         className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9998] group flex flex-col items-center"
       >
-        <div className="relative w-16 h-16 md:w-28 md:h-28 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite] overflow-visible">
+        <div className="relative w-14 h-14 md:w-20 md:h-20 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite] overflow-visible">
           <img
             src={EMOTIONS[open ? emotion : "tedio"]}
             alt="BiBi"
-            className="w-14 h-14 md:w-24 md:h-24 object-contain drop-shadow-lg group-hover:-rotate-6 transition-transform"
+            className="w-12 h-12 md:w-[4.5rem] md:h-[4.5rem] object-contain drop-shadow-lg group-hover:-rotate-6 transition-transform"
           />
         </div>
         {!open && (
