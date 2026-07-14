@@ -135,8 +135,8 @@ export function BiBiChat() {
       {open && (
         <div className="fixed bottom-24 right-4 left-4 md:left-auto md:bottom-32 md:right-6 z-[9999] md:w-[calc(100vw-3rem)] max-w-sm h-[26rem] md:h-[28rem] flex flex-col rounded-2xl shadow-2xl bg-neutral-900/95 backdrop-blur-xl border border-white/10 overflow-hidden animate-[bibi-in_0.25s_ease-out]">
           <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-gradient-to-r from-orange-600/20 to-transparent">
-            <div className="relative w-11 h-11 rounded-full bg-orange-500 flex items-center justify-center shrink-0 overflow-visible">
-              <img src={EMOTIONS[emotion]} alt="" className="w-9 h-9 object-contain" />
+            <div className="relative w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shrink-0 overflow-visible">
+              <img src={EMOTIONS[emotion]} alt="" className="w-8 h-8 object-contain" />
             </div>
             <div className="flex-1">
               <div className="font-display text-white text-lg leading-none">BiBi</div>
