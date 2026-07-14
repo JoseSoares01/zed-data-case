@@ -181,14 +181,14 @@ export function BiBiChat() {
               e.preventDefault();
               send();
             }}
-            className="flex items-center gap-2 border-t border-white/10 p-3 bg-black/30"
+            className="flex items-center gap-2 border-t border-white/10 p-3 bg-white/5 backdrop-blur-xl"
           >
             <input
               ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Pergunte algo sobre o Zé..."
-              className="flex-1 bg-white/5 text-white placeholder:text-white/40 rounded-xl px-3 py-2 text-sm outline-none focus:bg-white/10 border border-white/10"
+              className="flex-1 bg-black/25 text-white placeholder:text-white/40 rounded-xl px-3 py-2 text-sm outline-none focus:bg-black/35 border border-white/10 backdrop-blur-md"
               disabled={loading}
             />
             <button
