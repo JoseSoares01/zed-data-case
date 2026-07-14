@@ -167,7 +167,7 @@ export function BiBiChat() {
             ))}
             {loading && (
               <div className="flex justify-start">
-                <div className="rounded-2xl bg-white/5 text-white/60 px-3 py-2 text-sm flex gap-1">
+                <div className="rounded-2xl bg-white/8 text-white/60 px-3 py-2 text-sm flex gap-1 backdrop-blur-md border border-white/5">
                   <span className="animate-bounce">.</span>
                   <span className="animate-bounce [animation-delay:0.15s]">.</span>
                   <span className="animate-bounce [animation-delay:0.3s]">.</span>
