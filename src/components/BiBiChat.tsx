@@ -115,13 +115,8 @@ export function BiBiChat() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label="Falar com BiBi"
-        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9998] group flex flex-col items-start"
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9998] group flex flex-col items-center"
       >
-        {!open && (
-          <span className="mb-1.5 bg-[#0D99FF] text-white text-[10px] md:text-xs font-bold px-2 md:px-2.5 py-0.5 md:py-1 rounded-full shadow-lg animate-pulse">
-            BiBi
-          </span>
-        )}
         <div className="relative w-16 h-16 md:w-28 md:h-28 rounded-full bg-orange-500 flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110 animate-[bibi-float_4s_ease-in-out_infinite] overflow-visible">
           <img
             src={EMOTIONS[open ? emotion : "tedio"]}
@@ -129,6 +124,11 @@ export function BiBiChat() {
             className="w-14 h-14 md:w-24 md:h-24 object-contain drop-shadow-lg group-hover:-rotate-6 transition-transform"
           />
         </div>
+        {!open && (
+          <span className="mt-1.5 bg-[#0D99FF] text-white text-[10px] md:text-xs font-bold px-2 md:px-2.5 py-0.5 md:py-1 rounded-full shadow-lg animate-pulse">
+            BiBi
+          </span>
+        )}
       </button>
 
       {/* Chat panel */}
