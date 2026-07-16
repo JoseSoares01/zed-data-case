@@ -115,7 +115,7 @@ export function BiBiChat() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-label="Falar com BiBi"
-        className="fixed bottom-4 right-4 md:anslate-y-1/2 md:bottom-auto md:left-auto md:right-8 z-[9998] group flex flex-col items-center md:flex-row md:items-center md:gap-2"
+        className="fixed bottom-4 right-4 md:top-[65vh] md:-translate-y-1/2 md:bottom-auto md:left-auto md:right-8 z-[9998] group flex flex-col items-center md:flex-row md:items-center md:gap-2"
       >
         {!open && (
           <span className="order-2 md:order-1 mt-1.5 md:mt-0 bg-[#0D99FF] text-white text-[10px] md:text-xs font-bold px-2 md:px-2.5 py-0.5 md:py-1 rounded-full shadow-lg animate-pulse whitespace-nowrap">
