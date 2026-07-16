@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      bibi_questions: {
+        Row: {
+          created_at: string
+          id: string
+          normalized: string
+          question: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          normalized: string
+          question: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          normalized?: string
+          question?: string
+        }
+        Relationships: []
+      }
       layout_editor: {
         Row: {
           breakpoint: string

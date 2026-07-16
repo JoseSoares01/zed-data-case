@@ -45,6 +45,16 @@ Comece SEMPRE com uma tag de emoção em uma linha isolada, escolha UMA:
 [emotion:zangado] — use RARAMENTE, só quando a pergunta for absurda; mesmo assim a resposta em texto deve ser educada.
 Depois da tag, pule linha e escreva a resposta.`;
 
+function normalize(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\w\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export const Route = createFileRoute("/api/bibi")({
   server: {
     handlers: {
@@ -59,6 +69,64 @@ export const Route = createFileRoute("/api/bibi")({
           return new Response("Invalid JSON", { status: 400 });
         }
         const messages = Array.isArray(body.messages) ? body.messages : [];
+        const lastUser = [...messages].reverse().find((m) => m.role === "user")?.content?.trim() ?? "";
+
+        // Boss recognition: if the chief's code appears in the message,
+        // return the top 10 most-asked visitor questions instead of calling the model.
+        const bossCode = process.env.BIBI_BOSS_CODE;
+        if (bossCode && lastUser.includes(bossCode)) {
+          try {
+            const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+            const { data, error } = await supabaseAdmin
+              .from("bibi_questions")
+              .select("question, normalized, created_at")
+              .order("created_at", { ascending: false })
+              .limit(500);
+
+            if (error) throw error;
+
+            const groups = new Map<string, { count: number; sample: string; last: string }>();
+            for (const row of data ?? []) {
+              const g = groups.get(row.normalized);
+              if (g) {
+                g.count += 1;
+                if (row.created_at > g.last) g.last = row.created_at;
+              } else {
+                groups.set(row.normalized, { count: 1, sample: row.question, last: row.created_at });
+              }
+            }
+            const top = [...groups.values()].sort((a, b) => b.count - a.count).slice(0, 10);
+
+            const total = (data ?? []).length;
+            let content = "[emotion:feliz]\n";
+            if (top.length === 0) {
+              content += `Oi, chefe. Reconheci seu código. Ainda ninguém me perguntou nada — estou aqui sozinho, como sempre.`;
+            } else {
+              content += `Oi, chefe. Reconheci seu código. Já respondi ${total} pergunta(s). As mais repetidas:\n\n`;
+              content += top
+                .map((t, i) => `${i + 1}. "${t.sample}" — ${t.count}x`)
+                .join("\n");
+            }
+            return Response.json({ content });
+          } catch (e) {
+            return Response.json({
+              content:
+                "[emotion:zangado]\nReconheci seu código, chefe, mas o arquivo das perguntas não abriu. Dá uma olhada nos logs.",
+            });
+          }
+        }
+
+        // Log the visitor question (best-effort, non-blocking on failure)
+        if (lastUser) {
+          try {
+            const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+            await supabaseAdmin
+              .from("bibi_questions")
+              .insert({ question: lastUser.slice(0, 500), normalized: normalize(lastUser).slice(0, 500) });
+          } catch {
+            // ignore logging failure
+          }
+        }
 
         const res = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
           method: "POST",
