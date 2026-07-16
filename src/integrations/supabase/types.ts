@@ -35,6 +35,36 @@ export type Database = {
         }
         Relationships: []
       }
+      bibi_security_events: {
+        Row: {
+          created_at: string
+          detail: string | null
+          id: string
+          ip: string | null
+          kind: string
+          severity: string
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string
+          detail?: string | null
+          id?: string
+          ip?: string | null
+          kind: string
+          severity?: string
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string
+          detail?: string | null
+          id?: string
+          ip?: string | null
+          kind?: string
+          severity?: string
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       layout_editor: {
         Row: {
           breakpoint: string

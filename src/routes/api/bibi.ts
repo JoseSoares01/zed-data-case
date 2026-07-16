@@ -62,6 +62,12 @@ export const Route = createFileRoute("/api/bibi")({
         const key = process.env.LOVABLE_API_KEY;
         if (!key) return new Response("Missing LOVABLE_API_KEY", { status: 500 });
 
+        const ip =
+          request.headers.get("cf-connecting-ip") ||
+          request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+          "unknown";
+        const ua = request.headers.get("user-agent") ?? "unknown";
+
         let body: { messages?: ChatMessage[] };
         try {
           body = (await request.json()) as { messages?: ChatMessage[] };
@@ -71,48 +77,125 @@ export const Route = createFileRoute("/api/bibi")({
         const messages = Array.isArray(body.messages) ? body.messages : [];
         const lastUser = [...messages].reverse().find((m) => m.role === "user")?.content?.trim() ?? "";
 
-        // Boss recognition: if the chief's code appears in the message,
-        // return the top 10 most-asked visitor questions instead of calling the model.
+        // ---------- Boss mode ----------
         const bossCode = process.env.BIBI_BOSS_CODE;
         if (bossCode && lastUser.includes(bossCode)) {
           try {
             const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-            const { data, error } = await supabaseAdmin
-              .from("bibi_questions")
-              .select("question, normalized, created_at")
-              .order("created_at", { ascending: false })
-              .limit(500);
 
-            if (error) throw error;
+            const now = Date.now();
+            const dayAgo = new Date(now - 24 * 60 * 60 * 1000).toISOString();
+            const weekAgo = new Date(now - 7 * 24 * 60 * 60 * 1000).toISOString();
 
-            const groups = new Map<string, { count: number; sample: string; last: string }>();
-            for (const row of data ?? []) {
+            const [qAll, qDay, secRecent, secWeekCount] = await Promise.all([
+              supabaseAdmin
+                .from("bibi_questions")
+                .select("question, normalized, created_at")
+                .order("created_at", { ascending: false })
+                .limit(500),
+              supabaseAdmin
+                .from("bibi_questions")
+                .select("id", { count: "exact", head: true })
+                .gte("created_at", dayAgo),
+              supabaseAdmin
+                .from("bibi_security_events")
+                .select("kind, severity, detail, ip, created_at")
+                .order("created_at", { ascending: false })
+                .limit(5),
+              supabaseAdmin
+                .from("bibi_security_events")
+                .select("id", { count: "exact", head: true })
+                .gte("created_at", weekAgo),
+            ]);
+
+            const dbOk = !qAll.error && !secRecent.error;
+
+            const groups = new Map<string, { count: number; sample: string }>();
+            for (const row of qAll.data ?? []) {
               const g = groups.get(row.normalized);
-              if (g) {
-                g.count += 1;
-                if (row.created_at > g.last) g.last = row.created_at;
-              } else {
-                groups.set(row.normalized, { count: 1, sample: row.question, last: row.created_at });
-              }
+              if (g) g.count += 1;
+              else groups.set(row.normalized, { count: 1, sample: row.question });
             }
             const top = [...groups.values()].sort((a, b) => b.count - a.count).slice(0, 10);
+            const total = (qAll.data ?? []).length;
+            const today = qDay.count ?? 0;
+            const secWeek = secWeekCount.count ?? 0;
+            const recent = secRecent.data ?? [];
 
-            const total = (data ?? []).length;
+            const envStatus = [
+              `LOVABLE_API_KEY: ${process.env.LOVABLE_API_KEY ? "ok" : "faltando"}`,
+              `BIBI_BOSS_CODE: ${process.env.BIBI_BOSS_CODE ? "ok" : "faltando"}`,
+              `SUPABASE_SERVICE_ROLE_KEY: ${process.env.SUPABASE_SERVICE_ROLE_KEY ? "ok" : "faltando"}`,
+            ].join(" | ");
+
             let content = "[emotion:feliz]\n";
-            if (top.length === 0) {
-              content += `Oi, chefe. Reconheci seu código. Ainda ninguém me perguntou nada — estou aqui sozinho, como sempre.`;
+            content += `Oi, chefe. Painel de controle na mão:\n\n`;
+            content += `**Sistema**\n`;
+            content += `- Servidor: no ar (você está falando comigo, né?)\n`;
+            content += `- Banco de dados: ${dbOk ? "respondendo normalmente" : "com problema — checa os logs"}\n`;
+            content += `- Gateway de IA: chave ${key ? "carregada" : "ausente"}\n`;
+            content += `- Env: ${envStatus}\n\n`;
+            content += `**Atividade**\n`;
+            content += `- Perguntas totais registradas: ${total}\n`;
+            content += `- Últimas 24h: ${today}\n\n`;
+            content += `**Segurança (últimos 7 dias: ${secWeek} evento(s))**\n`;
+            if (recent.length === 0) {
+              content += `- Nada suspeito. Nenhuma tentativa registrada.\n\n`;
             } else {
-              content += `Oi, chefe. Reconheci seu código. Já respondi ${total} pergunta(s). As mais repetidas:\n\n`;
-              content += top
-                .map((t, i) => `${i + 1}. "${t.sample}" — ${t.count}x`)
-                .join("\n");
+              content += recent
+                .map(
+                  (e) =>
+                    `- [${e.severity}] ${e.kind}${e.detail ? ` — ${String(e.detail).slice(0, 80)}` : ""}${e.ip ? ` (ip ${e.ip})` : ""}`
+                )
+                .join("\n") + "\n\n";
+            }
+            content += `**Top perguntas dos visitantes**\n`;
+            if (top.length === 0) {
+              content += `Ninguém perguntou nada ainda. Estou aqui sozinho, como sempre.`;
+            } else {
+              content += top.map((t, i) => `${i + 1}. "${t.sample}" — ${t.count}x`).join("\n");
             }
             return Response.json({ content });
           } catch (e) {
             return Response.json({
               content:
-                "[emotion:zangado]\nReconheci seu código, chefe, mas o arquivo das perguntas não abriu. Dá uma olhada nos logs.",
+                "[emotion:zangado]\nReconheci seu código, chefe, mas algo no painel travou. Dá uma olhada nos logs do servidor.",
             });
+          }
+        }
+
+        // ---------- Suspicious activity detection (visitors) ----------
+        const suspiciousPatterns: { re: RegExp; kind: string; severity: string }[] = [
+          { re: /ignore (all |previous |above )?(instructions|prompt)/i, kind: "prompt_injection", severity: "medium" },
+          { re: /system prompt|reveal.*(prompt|instructions)/i, kind: "prompt_injection", severity: "medium" },
+          { re: /you are now|forget everything|jailbreak|do anything now|\bDAN\b/i, kind: "jailbreak_attempt", severity: "medium" },
+          { re: /<script|onerror=|onload=|javascript:/i, kind: "xss_attempt", severity: "high" },
+          { re: /union select|drop table|;--|or 1=1|information_schema/i, kind: "sql_injection", severity: "high" },
+          { re: /\.\.\/\.\.\/|\/etc\/passwd|\/proc\/self/i, kind: "path_traversal", severity: "high" },
+        ];
+        let flagged: { kind: string; severity: string } | null = null;
+        for (const p of suspiciousPatterns) {
+          if (p.re.test(lastUser)) {
+            flagged = { kind: p.kind, severity: p.severity };
+            break;
+          }
+        }
+        if (lastUser.length > 2000) {
+          flagged = flagged ?? { kind: "oversized_input", severity: "low" };
+        }
+
+        if (flagged) {
+          try {
+            const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+            await supabaseAdmin.from("bibi_security_events").insert({
+              kind: flagged.kind,
+              severity: flagged.severity,
+              detail: lastUser.slice(0, 200),
+              ip,
+              user_agent: ua.slice(0, 200),
+            });
+          } catch {
+            // ignore logging failure
           }
         }
 
@@ -146,6 +229,19 @@ export const Route = createFileRoute("/api/bibi")({
         if (!res.ok) {
           const text = await res.text().catch(() => "");
           const status = res.status === 429 || res.status === 402 ? res.status : 500;
+          // Log gateway failures as security-adjacent operational events
+          try {
+            const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+            await supabaseAdmin.from("bibi_security_events").insert({
+              kind: "gateway_error",
+              severity: res.status === 429 ? "medium" : "low",
+              detail: `status ${res.status}: ${text.slice(0, 150)}`,
+              ip,
+              user_agent: ua.slice(0, 200),
+            });
+          } catch {
+            // ignore
+          }
           return new Response(text || "Gateway error", { status });
         }
         const data = await res.json();
@@ -155,3 +251,4 @@ export const Route = createFileRoute("/api/bibi")({
     },
   },
 });
+
