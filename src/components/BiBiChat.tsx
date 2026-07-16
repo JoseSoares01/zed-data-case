@@ -133,7 +133,7 @@ export function BiBiChat() {
 
       {/* Chat panel */}
       {open && (
-        <div className="fixed bottom-24 right-4 left-4 md:left-auto md:right-[7.5rem] md:bottom-auto md:top-[50vh] md:-translate-y-1/2 z-[9999] md:w-[22rem] max-w-sm md:max-w-none h-[26rem] md:h-[min(32rem,90vh)] flex flex-col rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] bg-black/35 backdrop-blur-2xl border border-white/15 overflow-hidden animate-[bibi-in_0.25s_ease-out]">
+        <div className="fixed bottom-24 right-4 left-4 md:left-auto md:right-[9rem] md:bottom-auto md:top-[50vh] md:-translate-y-1/2 z-[9999] md:w-[22rem] max-w-sm md:max-w-none h-[26rem] md:h-[min(32rem,90vh)] flex flex-col rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] bg-black/35 backdrop-blur-2xl border border-white/15 overflow-hidden animate-[bibi-in_0.25s_ease-out]">
           <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-white/5 backdrop-blur-xl">
             <div className="relative w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shrink-0 overflow-visible">
               <img src={EMOTIONS[emotion]} alt="" className="w-8 h-8 object-contain" />
