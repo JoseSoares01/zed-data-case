@@ -25,8 +25,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [introDone, setIntroDone] = useState(false);
-  const [showAllProjects, setShowAllProjects] = useState(false);
-  const visibleProjects = showAllProjects ? projects : projects.slice(0, 5);
+  const visibleProjects = projects.slice(0, 5);
   return (
     <div className="min-h-screen bg-cream text-ink overflow-x-hidden w-full">
       <SmoothScroll />
