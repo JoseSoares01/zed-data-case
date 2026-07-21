@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProjetosRouteImport } from './routes/projetos'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiBibiRouteImport } from './routes/api/bibi'
 
+const ProjetosRoute = ProjetosRouteImport.update({
+  id: '/projetos',
+  path: '/projetos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -32,35 +38,46 @@ const ApiBibiRoute = ApiBibiRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/projetos': typeof ProjetosRoute
   '/api/bibi': typeof ApiBibiRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/projetos': typeof ProjetosRoute
   '/api/bibi': typeof ApiBibiRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/projetos': typeof ProjetosRoute
   '/api/bibi': typeof ApiBibiRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/api/bibi'
+  fullPaths: '/' | '/auth' | '/projetos' | '/api/bibi'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/api/bibi'
-  id: '__root__' | '/' | '/auth' | '/api/bibi'
+  to: '/' | '/auth' | '/projetos' | '/api/bibi'
+  id: '__root__' | '/' | '/auth' | '/projetos' | '/api/bibi'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  ProjetosRoute: typeof ProjetosRoute
   ApiBibiRoute: typeof ApiBibiRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/projetos': {
+      id: '/projetos'
+      path: '/projetos'
+      fullPath: '/projetos'
+      preLoaderRoute: typeof ProjetosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  ProjetosRoute: ProjetosRoute,
   ApiBibiRoute: ApiBibiRoute,
 }
 export const routeTree = rootRouteImport
