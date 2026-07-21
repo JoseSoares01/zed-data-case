@@ -452,7 +452,11 @@ function Index() {
           </div>
           <nav className="flex gap-6 text-ink/70">
             {["Início", "Sobre", "Portfólio", "Projetos", "Contato"].map((l, i) => (
-              <a key={l} href={`#s${i}`} className="hover:text-accent">{l}</a>
+              l === "Projetos" ? (
+                <Link key={l} to="/projetos" className="hover:text-accent">{l}</Link>
+              ) : (
+                <a key={l} href={`#s${i}`} className="hover:text-accent">{l}</a>
+              )
             ))}
           </nav>
           <div className="text-ink/60">© 2026 — Lisboa, PT</div>
