@@ -322,7 +322,13 @@ function Index() {
                 className="group grid grid-cols-12 items-center gap-x-4 gap-y-2 border-b border-ink/15 py-8 hover:bg-ink hover:text-cream transition-colors px-2"
               >
                 <div className="col-span-2 md:col-span-1 flex items-center gap-3">
-                  <span className="font-mono text-sm opacity-60">{String(i + 1).padStart(2, "0")}</span>
+                  <span
+                    aria-hidden
+                    className="font-display italic text-2xl leading-none flex items-center justify-center w-10 h-12 rounded-md border border-current/70 text-transparent"
+                    style={{ WebkitTextStroke: "1px currentColor" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <img
                     src={p.img}
                     alt=""
