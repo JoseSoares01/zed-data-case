@@ -336,14 +336,13 @@ function Index() {
 
           {projects.length > 5 && (
             <div className="flex justify-center mt-10">
-              <button
-                type="button"
-                onClick={() => setShowAllProjects((v) => !v)}
+              <Link
+                to="/projetos"
                 className="inline-flex items-center gap-2 rounded-full border border-ink px-6 py-3 text-sm font-medium hover:bg-ink hover:text-cream transition-colors"
               >
-                {showAllProjects ? "ver menos" : "ver mais"}
-                <ArrowUpRight className={`w-4 h-4 transition-transform ${showAllProjects ? "rotate-180" : ""}`} />
-              </button>
+                ver todos os projetos
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
             </div>
           )}
         </section></Editable>
