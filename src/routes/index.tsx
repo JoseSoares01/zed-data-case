@@ -42,10 +42,17 @@ function Index() {
           </a>
           <nav className="hidden md:flex items-center gap-1 text-sm">
             {["Início", "Sobre", "Portfólio", "Projetos", "Contato"].map((l, i) => (
-              <a key={l} href={`#s${i}`} className="px-4 py-2 hover:text-accent transition-colors flex items-center gap-4">
-                {i > 0 && <span className="text-ink/30">/</span>}
-                {l}
-              </a>
+              l === "Projetos" ? (
+                <Link key={l} to="/projetos" className="px-4 py-2 hover:text-accent transition-colors flex items-center gap-4">
+                  {i > 0 && <span className="text-ink/30">/</span>}
+                  {l}
+                </Link>
+              ) : (
+                <a key={l} href={`#s${i}`} className="px-4 py-2 hover:text-accent transition-colors flex items-center gap-4">
+                  {i > 0 && <span className="text-ink/30">/</span>}
+                  {l}
+                </a>
+              )
             ))}
           </nav>
           <div className="hidden md:flex items-center gap-2 text-sm">
