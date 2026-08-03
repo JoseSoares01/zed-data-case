@@ -33,4 +33,5 @@ export const projects: Project[] = [
   { title: "DotaWork", tag: "Plataforma · Dota Pro Connect", url: "https://dota-pro-connect.lovable.app", img: dotaworkLogo.url, year: "2023" },
   { title: "Dev2Data", tag: "Educação · Dados", url: "https://dev2data.lovable.app", img: dev2dataLogo.url, year: "2024" },
   { title: "GreeNest One", tag: "App · Gestão", url: "https://greenest-one.lovable.app/auth", img: greenestLogo.url, year: "2022" },
+  { title: "Alex Pfiffer", tag: "Esporte · Marca Pessoal", url: "https://alex-pfiffer.lovable.app", img: alexPfifferImg, year: "2026" },
 ];
