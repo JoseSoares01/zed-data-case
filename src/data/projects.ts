@@ -10,6 +10,7 @@ import joaquimMendesLogo from "@/assets/joaquim-mendes-logo.png.asset.json";
 import greenestLogo from "@/assets/greenest.png.asset.json";
 import dotaworkLogo from "@/assets/dotawork.png.asset.json";
 import dev2dataLogo from "@/assets/dev2data.png.asset.json";
+import alexPfifferImg from "@/assets/alex-pfiffer.png";
 
 export type Project = {
   title: string;
