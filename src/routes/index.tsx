@@ -9,6 +9,7 @@ import { IntroLoader } from "@/components/IntroLoader";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Editable } from "@/editor/Editable";
 import { BlueprintNumber } from "@/components/BlueprintNumber";
+import { TypewriterText } from "@/components/TypewriterText";
 import { projects } from "@/data/projects";
 
 import proj1 from "@/assets/proj1.jpg";
