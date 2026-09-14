@@ -9,6 +9,7 @@ import { IntroLoader } from "@/components/IntroLoader";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Editable } from "@/editor/Editable";
 import { BlueprintNumber } from "@/components/BlueprintNumber";
+import { TypewriterText } from "@/components/TypewriterText";
 import { projects } from "@/data/projects";
 
 import proj1 from "@/assets/proj1.jpg";
@@ -236,18 +237,15 @@ function Index() {
                 <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[0.95] mb-6 break-words">
                   web designer,<br />analista de dados<br />& desenvolvedor.
                 </h2>
-                <p className="text-cream/70 leading-relaxed mb-4 break-words">
-                  Transformo dados em decisões, ideias em produtos e processos em soluções inteligentes.
-                </p>
-                <p className="text-cream/70 leading-relaxed mb-4 break-words">
-                  Sou Analista de Dados e Desenvolvedor de Software, apaixonado por criar soluções que unem tecnologia, design e estratégia para resolver problemas reais. Mais do que desenvolver aplicações ou dashboards, meu objetivo é simplificar processos.
-                </p>
-                <p className="text-cream/70 leading-relaxed mb-4 break-words">
-                  Atualmente atuo na Servinform Portugal. Minha experiência combina Python, SQL, Power BI, React, TypeScript, JavaScript e Microsoft Azure, além de uma constante dedicação ao estudo de Ciência de Dados, Inteligência Artificial e desenvolvimento de produtos digitais. Acredito que tecnologia não deve ser apenas funcional, mas também intuitiva, escalável e capaz de gerar valor duradouro no mundo real.
-                </p>
-                <p className="text-cream/70 leading-relaxed break-words">
-                  Cada projeto representa uma oportunidade de transformar desafios complexos em soluções simples, elegantes, é essa combinação entre análise, desenvolvimento e criatividade que define a forma como trabalho.
-                </p>
+                <TypewriterText
+                  className="text-cream/70 leading-relaxed break-words"
+                  paragraphs={[
+                    "Transformo dados em decisões, ideias em produtos e processos em soluções inteligentes.",
+                    "Sou Analista de Dados e Desenvolvedor de Software, apaixonado por criar soluções que unem tecnologia, design e estratégia para resolver problemas reais. Mais do que desenvolver aplicações ou dashboards, meu objetivo é simplificar processos.",
+                    "Atualmente atuo na Servinform Portugal. Minha experiência combina Python, SQL, Power BI, React, TypeScript, JavaScript e Microsoft Azure, além de uma constante dedicação ao estudo de Ciência de Dados, Inteligência Artificial e desenvolvimento de produtos digitais. Acredito que tecnologia não deve ser apenas funcional, mas também intuitiva, escalável e capaz de gerar valor duradouro no mundo real.",
+                    "Cada projeto representa uma oportunidade de transformar desafios complexos em soluções simples, elegantes, é essa combinação entre análise, desenvolvimento e criatividade que define a forma como trabalho.",
+                  ]}
+                />
                 <div className="mt-8 grid grid-cols-3 gap-4 text-sm">
                   <div><div className="font-display text-2xl text-accent">06+</div><div className="text-cream/60 mt-1">anos</div></div>
                   <div><div className="font-display text-2xl text-accent">MSc</div><div className="text-cream/60 mt-1">ciência de dados</div></div>
