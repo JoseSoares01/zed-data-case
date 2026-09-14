@@ -154,40 +154,77 @@ function Index() {
                 <Globe className="w-3 h-3 md:w-7 md:h-7 text-cream" />
               </a>
 
+              {/* Mobile: vertical stack of left-side icons */}
+              <div
+                className="absolute md:hidden left-4 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20"
+              >
+                <a
+                  href="#portfolio"
+                  className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform w-9 h-9"
+                  style={{
+                    border: "3px solid #fff",
+                    boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
+                  }}
+                >
+                  <Camera className="w-5 h-5" />
+                </a>
+                <a
+                  href="#sobre"
+                  className="rounded-full bg-[#f5a623] flex items-center justify-center text-ink hover:scale-105 transition-transform w-10 h-10"
+                  style={{
+                    border: "3px solid #fff",
+                    boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
+                  }}
+                >
+                  <User className="w-5 h-5" />
+                </a>
+                <a
+                  href="#projetos"
+                  className="rounded-full bg-ink flex items-center justify-center text-cream hover:scale-105 transition-transform w-9 h-9"
+                  style={{
+                    border: "3px solid #fff",
+                    boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
+                  }}
+                >
+                  <ArrowUpRight className="w-5 h-5" />
+                </a>
+              </div>
+
+              {/* Desktop: individually positioned left-side icons */}
               {/* Camera icon – overlay (image 4.96%, 68.39%; container-corrected 5.00%, 67.80%) */}
               <a
                 href="#portfolio"
-                className="absolute rounded-full bg-[#f5a623] flex items-center justify-center text-ink z-20 hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] [left:calc(5.00%-18px)] [top:calc(67.80%-18px)] md:[left:calc(5.00%-38px)] md:[top:calc(67.80%-38px)]"
+                className="hidden md:flex absolute rounded-full bg-[#f5a623] items-center justify-center text-ink z-20 hover:scale-105 transition-transform w-[76px] h-[76px] [left:calc(5.00%-38px)] [top:calc(67.80%-38px)]"
                 style={{
                   border: "3px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
                 }}
               >
-                <Camera className="w-5 h-5 md:w-6 md:h-6" />
+                <Camera className="w-6 h-6" />
               </a>
 
               {/* Person icon – overlay (image 5.17%, 79.56%; container-corrected 5.17%, 79.30%) */}
               <a
                 href="#sobre"
-                className="absolute rounded-full bg-[#f5a623] flex items-center justify-center text-ink z-20 hover:scale-105 transition-transform w-[40px] h-[40px] md:w-[88px] md:h-[88px] [left:calc(5.17%-20px)] [top:calc(79.30%-20px)] md:[left:calc(5.17%-44px)] md:[top:calc(79.30%-44px)]"
+                className="hidden md:flex absolute rounded-full bg-[#f5a623] items-center justify-center text-ink z-20 hover:scale-105 transition-transform w-[88px] h-[88px] [left:calc(5.17%-44px)] [top:calc(79.30%-44px)]"
                 style={{
                   border: "3px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
                 }}
               >
-                <User className="w-5 h-5 md:w-7 md:h-7" />
+                <User className="w-7 h-7" />
               </a>
 
               {/* Arrow icon – overlay (image 5.02%, 92.22%; container-corrected 5.02%, 90.88%) */}
               <a
                 href="#projetos"
-                className="absolute rounded-full bg-ink flex items-center justify-center text-cream z-20 hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[76px] md:h-[76px] [left:calc(5.02%-18px)] [top:calc(90.88%-18px)] md:[left:calc(5.02%-38px)] md:[top:calc(90.88%-38px)]"
+                className="hidden md:flex absolute rounded-full bg-ink items-center justify-center text-cream z-20 hover:scale-105 transition-transform w-[76px] h-[76px] [left:calc(5.02%-38px)] [top:calc(90.88%-38px)]"
                 style={{
                   border: "3px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
                 }}
               >
-                <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6" />
+                <ArrowUpRight className="w-6 h-6" />
               </a>
 
 
