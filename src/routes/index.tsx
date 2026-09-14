@@ -144,13 +144,13 @@ function Index() {
               {/* Floating globe – overlay on drawn icon (image center 90.71%, 7.91%; container-corrected 90.71%, 9.23%) */}
               <a
                 href="#contato"
-                className="absolute rounded-full bg-ink flex items-center justify-center z-20 hover:scale-105 transition-transform w-[44px] h-[44px] md:w-[88px] md:h-[88px] [left:calc(90.71%-22px)] [top:calc(9.23%-22px)] md:[left:calc(90.71%-44px)] md:[top:calc(9.23%-44px)]"
+                className="absolute rounded-full bg-ink flex items-center justify-center z-20 hover:scale-105 transition-transform w-[36px] h-[36px] md:w-[88px] md:h-[88px] [left:calc(90.71%-18px)] [top:calc(9.23%-18px)] md:[left:calc(90.71%-44px)] md:[top:calc(9.23%-44px)]"
                 style={{
                   border: "3px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
                 }}
               >
-                <Globe className="w-3.5 h-3.5 md:w-7 md:h-7 text-cream" />
+                <Globe className="w-3 h-3 md:w-7 md:h-7 text-cream" />
               </a>
 
               {/* Camera icon – overlay (image 4.96%, 68.39%; container-corrected 5.00%, 67.80%) */}
