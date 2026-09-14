@@ -13,7 +13,7 @@ import { TypewriterText } from "@/components/TypewriterText";
 import { projects } from "@/data/projects";
 
 import proj1 from "@/assets/proj1.jpg";
-import proj2 from "@/assets/proj2.jpg";
+import pauseflowDashboard from "@/assets/pauseflow-dashboard.png.asset.json";
 import proj3 from "@/assets/proj3.jpg";
 import proj4 from "@/assets/proj4.jpg";
 import proj5 from "@/assets/proj5.jpg";
@@ -270,7 +270,7 @@ function Index() {
               <img src={proj4} alt="" className="w-full h-full object-cover" loading="lazy" />
             </div>
             <div className="aspect-square rounded-3xl overflow-hidden bg-muted lg:col-start-4">
-              <img src={proj2} alt="" className="w-full h-full object-cover" loading="lazy" />
+              <img src={pauseflowDashboard.url} alt="" className="w-full h-full object-cover" loading="lazy" />
             </div>
             <div className="aspect-square rounded-3xl overflow-hidden bg-muted col-start-1">
               <img src={proj5} alt="" className="w-full h-full object-cover" loading="lazy" />
