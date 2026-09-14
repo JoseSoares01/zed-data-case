@@ -166,10 +166,10 @@ function Index() {
                 <Camera className="w-5 h-5 md:w-6 md:h-6" />
               </a>
 
-              {/* Person icon – overlay (image 5.17%, 79.56%; container-corrected 5.17%, 78.63%) */}
+              {/* Person icon – overlay (image 5.17%, 79.56%; container-corrected 5.17%, 79.30%) */}
               <a
                 href="#sobre"
-                className="absolute rounded-full bg-[#f5a623] flex items-center justify-center text-ink z-20 hover:scale-105 transition-transform w-[40px] h-[40px] md:w-[88px] md:h-[88px] [left:calc(5.17%-20px)] [top:calc(78.63%-20px)] md:[left:calc(5.17%-44px)] md:[top:calc(78.63%-44px)]"
+                className="absolute rounded-full bg-[#f5a623] flex items-center justify-center text-ink z-20 hover:scale-105 transition-transform w-[40px] h-[40px] md:w-[88px] md:h-[88px] [left:calc(5.17%-20px)] [top:calc(79.30%-20px)] md:[left:calc(5.17%-44px)] md:[top:calc(79.30%-44px)]"
                 style={{
                   border: "3px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
