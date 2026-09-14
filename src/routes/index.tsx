@@ -270,7 +270,7 @@ function Index() {
               <img src={proj4} alt="" className="w-full h-full object-cover" loading="lazy" />
             </div>
             <div className="aspect-square rounded-3xl overflow-hidden bg-muted lg:col-start-4">
-              <img src={proj2} alt="" className="w-full h-full object-cover" loading="lazy" />
+              <img src={pauseflowDashboard.url} alt="" className="w-full h-full object-cover" loading="lazy" />
             </div>
             <div className="aspect-square rounded-3xl overflow-hidden bg-muted col-start-1">
               <img src={proj5} alt="" className="w-full h-full object-cover" loading="lazy" />
