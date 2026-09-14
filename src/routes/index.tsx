@@ -169,13 +169,13 @@ function Index() {
               {/* Person icon – overlay (image 5.17%, 79.56%; container-corrected 5.17%, 78.63%) */}
               <a
                 href="#sobre"
-                className="absolute rounded-full bg-[#f5a623] flex items-center justify-center text-ink z-20 hover:scale-105 transition-transform w-[44px] h-[44px] md:w-[96px] md:h-[96px] [left:calc(5.17%-22px)] [top:calc(78.63%-22px)] md:[left:calc(5.17%-48px)] md:[top:calc(78.63%-48px)]"
+                className="absolute rounded-full bg-[#f5a623] flex items-center justify-center text-ink z-20 hover:scale-105 transition-transform w-[40px] h-[40px] md:w-[88px] md:h-[88px] [left:calc(5.17%-20px)] [top:calc(78.63%-20px)] md:[left:calc(5.17%-44px)] md:[top:calc(78.63%-44px)]"
                 style={{
                   border: "3px solid #fff",
                   boxShadow: "0 12px 35px rgba(0,0,0,0.18)",
                 }}
               >
-                <User className="w-6 h-6 md:w-8 md:h-8" />
+                <User className="w-5 h-5 md:w-7 md:h-7" />
               </a>
 
               {/* Arrow icon – overlay (image 5.02%, 92.22%; container-corrected 5.02%, 90.88%) */}
