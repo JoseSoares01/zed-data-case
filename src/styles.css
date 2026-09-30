@@ -7,6 +7,7 @@
   --color-foreground: var(--foreground);
   --color-ink: var(--ink);
   --color-cream: var(--cream);
+  --color-paper: var(--paper);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-muted: var(--muted);
@@ -18,15 +19,16 @@
 }
 
 :root {
-  --background: oklch(0.977 0.008 90);
-  --foreground: oklch(0.15 0 0);
-  --ink: oklch(0.12 0 0);
-  --cream: oklch(0.977 0.008 90);
-  --accent: oklch(0.76 0.17 55);
-  --accent-foreground: oklch(0.15 0 0);
-  --muted: oklch(0.93 0.01 80);
-  --muted-foreground: oklch(0.45 0.01 80);
-  --border: oklch(0.88 0.01 80);
+  --background: #F5F3EE;
+  --foreground: #080808;
+  --ink: #080808;
+  --cream: #F5F3EE;
+  --paper: #FFFFFF;
+  --accent: #FF8A24;
+  --accent-foreground: #080808;
+  --muted: #ECE9E2;
+  --muted-foreground: #77736C;
+  --border: #D8D5CE;
 }
 
 @layer base {
@@ -66,3 +68,11 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .marquee-track { animation: none; }
+}
+@utility marquee-slow { animation: marquee 45s linear infinite; }
