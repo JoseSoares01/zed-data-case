@@ -220,7 +220,7 @@ function Index() {
                 </Reveal>
                 <Reveal delay={300}>
                   <div className="mt-8 flex flex-wrap gap-3">
-                    <a href="#projetos" className={btnPrimary}>Ver projetos <ArrowRight className="h-4 w-4" /></a>
+                    <a href="#projetos" className={`${btnPrimary} btn-shine`}>Ver projetos <ArrowRight className="h-4 w-4" /></a>
                     <a href="#sobre" className={btnOutline}>Sobre mim</a>
                   </div>
                 </Reveal>
@@ -369,7 +369,7 @@ function Index() {
                     href={p.url}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="group block overflow-hidden rounded-xl border border-border bg-paper transition-all duration-500 hover:-translate-y-1 hover:border-ink/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    className="group block overflow-hidden rounded-xl border border-border bg-paper transition-all duration-500 hover:-translate-y-2 hover:border-accent/60 hover:shadow-[0_24px_50px_-20px_rgba(255,138,36,0.45)] card-tilt focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   >
                     <div className="relative aspect-[16/10] overflow-hidden bg-muted">
                       <img src={p.img} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
