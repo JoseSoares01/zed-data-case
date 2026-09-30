@@ -204,7 +204,7 @@ function Index() {
       <main>
         {/* Hero */}
         <Editable id="Hero" label="Hero">
-          <section id="inicio" className="relative mx-auto max-w-[1320px] px-5 pt-12 pb-16 lg:px-10 lg:pt-20 lg:pb-24">
+          <section id="inicio" className="relative overflow-x-clip mx-auto max-w-[1320px] px-5 pt-12 pb-16 lg:px-10 lg:pt-20 lg:pb-24">
             <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
               <div>
                 <Reveal><Label>Data Analyst · Developer · Automation</Label></Reveal>

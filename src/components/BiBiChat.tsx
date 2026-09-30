@@ -37,6 +37,8 @@ export function BiBiChat() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [greeted, setGreeted] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -107,7 +109,7 @@ export function BiBiChat() {
     }
   }
 
-  if (typeof document === "undefined") return null;
+  if (!mounted) return null;
 
   return createPortal(
     <>
