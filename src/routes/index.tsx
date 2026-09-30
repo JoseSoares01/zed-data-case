@@ -246,14 +246,14 @@ function Index() {
                   <img src={heroZeCartoon.url} alt="Zé dos Dados" width={1024} height={1024} className="h-full w-full object-contain" />
                   <span className="absolute right-4 top-4 h-3 w-3 rounded-full bg-accent ring-4 ring-paper/70" />
                 </div>
-                <div className="absolute left-4 top-4 flex items-center gap-2 rounded-md bg-ink/90 px-3 py-2 text-cream backdrop-blur">
+                <div className="liquid-glass absolute left-4 top-4 flex items-center gap-2 rounded-2xl px-3.5 py-2.5 text-ink">
                   <MapPin className="h-3.5 w-3.5 text-accent" />
                   <div className="leading-tight">
                     <div className="text-xs font-semibold">Lisboa, Portugal</div>
-                    <div className="text-[10px] text-cream/60">GMT +1</div>
+                    <div className="text-[10px] text-ink/60">GMT +1</div>
                   </div>
                 </div>
-                <div className="absolute -bottom-6 right-4 w-52 rounded-lg border border-border bg-paper p-4 shadow-[0_20px_40px_-24px_rgba(8,8,8,0.35)] sm:-right-6">
+                <div className="liquid-glass absolute -bottom-6 right-4 w-52 rounded-3xl p-4 sm:-right-6">
                   <BarChart3 className="h-5 w-5 text-accent" />
                   <p className="mt-3 text-sm font-semibold leading-tight">Transformar dados em decisões<Dot /></p>
                   <p className="mt-1 text-[11px] text-muted-foreground">Esse é o meu foco.</p>
