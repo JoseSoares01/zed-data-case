@@ -298,7 +298,7 @@ function Index() {
         {/* About */}
         <Editable id="About" label="About">
           <section id="sobre" className="bg-ink text-cream">
-            <div className="mx-auto grid max-w-[1320px] lg:grid-cols-[1.1fr_0.9fr_1fr]">
+            <div className="mx-auto grid max-w-[1320px] lg:grid-cols-[1.2fr_1.15fr_0.65fr]">
               <div className="px-5 py-16 lg:px-10 lg:py-24">
                 <Reveal><Label n="01" dark>Sobre mim</Label></Reveal>
                 <Reveal delay={100}>
