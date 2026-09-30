@@ -99,3 +99,10 @@
   pointer-events: none;
   z-index: -1;
 }
+
+/* Títulos extra grossos, como no mockup */
+h1.font-display, h2.font-display {
+  -webkit-text-stroke: 0.028em currentColor;
+  paint-order: stroke fill;
+  letter-spacing: -0.035em;
+}
