@@ -4,6 +4,7 @@ import {
   Github, Linkedin, Mail, MapPin, Menu, MessageCircle, Rocket, Settings, X,
 } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import heroZeCartoon from "@/assets/hero-ze-new.png.asset.json";
 import aboutPortrait from "@/assets/about-portrait.png.asset.json";
 import { MusicPlayer } from "@/components/MusicPlayer";
 import { IntroLoader } from "@/components/IntroLoader";
@@ -241,8 +242,8 @@ function Index() {
               </div>
 
               <Reveal delay={200} className="relative mx-auto w-full max-w-[520px]">
-                <div className="relative overflow-hidden rounded-2xl bg-muted aspect-[4/5]">
-                  <img src={aboutPortrait.url} alt="Retrato de Zé dos Dados" width={1024} height={1280} className="h-full w-full object-cover object-top" />
+                <div className="relative overflow-hidden rounded-2xl aspect-[496/563]">
+                  <img src={heroZeCartoon.url} alt="Zé dos Dados" width={1024} height={1024} className="h-full w-full object-contain" />
                   <span className="absolute right-4 top-4 h-3 w-3 rounded-full bg-accent ring-4 ring-paper/70" />
                 </div>
                 <div className="absolute left-4 top-4 flex items-center gap-2 rounded-md bg-ink/90 px-3 py-2 text-cream backdrop-blur">
