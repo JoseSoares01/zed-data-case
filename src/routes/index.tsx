@@ -253,7 +253,7 @@ function Index() {
                     <div className="text-[10px] text-ink/60">GMT +1</div>
                   </div>
                 </div>
-                <div className="liquid-glass absolute -bottom-12 right-4 w-52 rounded-[2rem] p-4 sm:-right-6">
+                <div className="liquid-glass absolute -bottom-12 right-4 w-52 rounded-[2.75rem] px-6 py-5 sm:-right-6">
                   <BarChart3 className="h-5 w-5 text-accent" />
                   <p className="mt-3 text-sm font-semibold leading-tight">Transformar dados em decisões<Dot /></p>
                   <p className="mt-1 text-[11px] text-muted-foreground">Esse é o meu foco.</p>
