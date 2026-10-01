@@ -21,7 +21,7 @@ export type Project = {
   year: string;
 };
 
-export const projects: Project[] = [
+const projectList: Project[] = [
   { title: "Pata Amiga", tag: "App · Resgate de Animais", url: "https://pata-amiga.lovable.app/auth", img: pataAmigaLogo.url, year: "2024" },
   { title: "Mauricío Soares", tag: "Político · Marca Pessoal", url: "https://www.drmauriciosoares.com.br/", img: mauricioLogo.url, year: "2026" },
   { title: "Dra. Joaquina Maria", tag: "Campanha Política", url: "https://joaquina-maria-deputada.lovable.app", img: proj1, year: "2026" },
@@ -37,3 +37,7 @@ export const projects: Project[] = [
   { title: "Alex Pfiffer", tag: "Esporte · Marca Pessoal", url: "https://alex-pfiffer.lovable.app", img: alexPfifferImg, year: "2026" },
   { title: "OrbitRH", tag: "App · Gestão de Pessoas", url: "https://rh-trivalor.lovable.app/login", img: orbitrhLogo.url, year: "2026" },
 ];
+
+export const projects: Project[] = [...projectList].sort((a, b) =>
+  a.title.localeCompare(b.title, "pt", { sensitivity: "base" }),
+);
