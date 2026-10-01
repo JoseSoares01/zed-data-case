@@ -38,6 +38,11 @@ const projectList: Project[] = [
   { title: "OrbitRH", tag: "App · Gestão de Pessoas", url: "https://rh-trivalor.lovable.app/login", img: orbitrhLogo.url, year: "2026" },
 ];
 
-export const projects: Project[] = [...projectList].sort((a, b) =>
-  a.title.localeCompare(b.title, "pt", { sensitivity: "base" }),
-);
+const featured = ["Alex Pfiffer", "Pause Flow", "OrbitRH", "Ferramentas Servinform", "MMBus"];
+
+export const projects: Project[] = [
+  ...featured.map((t) => projectList.find((p) => p.title === t)!).filter(Boolean),
+  ...projectList
+    .filter((p) => !featured.includes(p.title))
+    .sort((a, b) => a.title.localeCompare(b.title, "pt", { sensitivity: "base" })),
+];
