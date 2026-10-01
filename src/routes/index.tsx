@@ -414,10 +414,21 @@ function Index() {
               <Reveal key={s.title} delay={i * 100}>
                 <li className="relative">
                   <div className="flex items-center gap-4">
-                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-ink/80">
-                      <s.icon className="h-5 w-5" strokeWidth={1.5} />
+                    <span className={`step-circle step-${i + 1} relative grid h-14 w-14 shrink-0 place-items-center rounded-full border border-ink/80`}>
+                      {i === 2 ? (
+                        <svg className="step-icon h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path className="code-lt" d="m8 7-5 5 5 5" />
+                          <path className="code-slash" d="m14 4-4 16" />
+                          <path className="code-gt" d="m16 7 5 5-5 5" />
+                        </svg>
+                      ) : (
+                        <s.icon className="step-icon h-5 w-5" strokeWidth={1.5} />
+                      )}
+                      {i === 3 && (
+                        <span className="rocket-trail" aria-hidden="true"><i /><i /><i /></span>
+                      )}
                     </span>
-                    {i < STEPS.length - 1 && <span className="hidden h-px flex-1 bg-border lg:block" />}
+                    {i < STEPS.length - 1 && <span className="step-line hidden h-px flex-1 bg-border lg:block" />}
                   </div>
                   <p className="mt-5 text-xs font-semibold text-accent">0{i + 1}</p>
                   <h3 className="mt-1 text-lg font-bold">{s.title}</h3>
