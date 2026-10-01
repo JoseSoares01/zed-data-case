@@ -143,3 +143,7 @@ h1.font-display, h2.font-display {
 @media (prefers-reduced-motion: reduce) {
   .step-circle .step-icon, .step-circle .step-icon path, .step-line, .rocket-trail i { transition: none !important; animation: none !important; transform: none !important; }
 }
+
+/* Hide page scrollbars (scrolling still works) */
+html, body { scrollbar-width: none; -ms-overflow-style: none; }
+html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; height: 0; }
