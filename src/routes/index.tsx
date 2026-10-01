@@ -497,7 +497,7 @@ function Index() {
 
       {/* Footer */}
       <Editable id="Footer" label="Footer">
-        <footer className="bg-ink text-cream">
+        <footer className="relative left-1/2 w-screen -translate-x-1/2 rounded-t-[2rem] bg-ink text-cream lg:rounded-t-[2.5rem]">
           <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-14 lg:grid-cols-3 lg:px-10">
             <div>
               <Logo dark />
