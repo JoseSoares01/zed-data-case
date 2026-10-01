@@ -455,8 +455,8 @@ function Index() {
                   <h3 className="mt-2 text-[11px] font-semibold uppercase tracking-[0.2em]">{g.title}</h3>
                   <ul className="mt-6 space-y-2.5">
                     {g.items.map((it) => (
-                      <li key={it} className="flex items-center gap-3 text-lg font-semibold tracking-tight">
-                        <span className="h-px w-4 bg-ink/30" />{it}
+                      <li key={it} tabIndex={0} className="group flex w-fit cursor-default items-center gap-3 text-lg font-semibold tracking-tight outline-none transition-colors duration-200 hover:text-accent focus:text-accent active:text-accent selection:bg-accent/30 selection:text-accent">
+                        <span className="h-px w-4 bg-ink/30 transition-all duration-200 group-hover:w-6 group-hover:bg-accent group-focus:w-6 group-focus:bg-accent" />{it}
                       </li>
                     ))}
                   </ul>
