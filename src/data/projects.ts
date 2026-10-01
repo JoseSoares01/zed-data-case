@@ -34,4 +34,5 @@ export const projects: Project[] = [
   { title: "Dev2Data", tag: "Educação · Dados", url: "https://dev2data.lovable.app", img: dev2dataLogo.url, year: "2024" },
   { title: "GreeNest One", tag: "App · Gestão", url: "https://greenest-one.lovable.app/auth", img: greenestLogo.url, year: "2022" },
   { title: "Alex Pfiffer", tag: "Esporte · Marca Pessoal", url: "https://alex-pfiffer.lovable.app", img: alexPfifferImg, year: "2026" },
+  { title: "RH Trivalor", tag: "App · Recursos Humanos", url: "https://rh-trivalor.lovable.app/login", img: proj1, year: "2026" },
 ];
