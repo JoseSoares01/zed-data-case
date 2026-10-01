@@ -122,3 +122,24 @@ h1.font-display, h2.font-display {
 .reveal.is-in .card-tilt { animation: card-pop .7s cubic-bezier(.2,.7,.2,1) both; }
 @keyframes card-pop { from { opacity: 0; transform: translateY(30px) scale(.97); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .btn-shine, .btn-shine::after, .card-tilt { animation: none !important; } }
+
+/* Microanimações dos ícones das etapas */
+.step-circle .step-icon, .step-circle .step-icon path, .step-line { transition: transform .35s cubic-bezier(.2,.7,.2,1), opacity .3s ease; }
+.step-1:hover .step-icon { transform: translateY(-4px) rotate(-6deg); }
+.step-2:hover .step-icon { animation: paper-fold .55s cubic-bezier(.4,0,.2,1); }
+@keyframes paper-fold { 0%,100% { transform: scaleX(1); } 45% { transform: scaleX(.15); } }
+.step-3 .step-icon { overflow: visible; }
+.step-3:hover .code-lt { transform: translateX(-2.5px); }
+.step-3:hover .code-gt { transform: translateX(2.5px); }
+.step-3:hover .code-slash { opacity: 0; }
+.step-3:hover + .step-line { opacity: 0; }
+.step-4:hover .step-icon { transform: translate(2px,-3px) rotate(-8deg); }
+.rocket-trail { position: absolute; left: 14px; top: 32px; width: 12px; height: 12px; pointer-events: none; transform: rotate(45deg); }
+.rocket-trail i { position: absolute; top: 0; height: 1.5px; border-radius: 2px; background: currentColor; opacity: 0; transform: translateX(4px) scaleX(0); transform-origin: right; transition: opacity .3s ease, transform .3s ease; }
+.rocket-trail i:nth-child(1) { top: 0; width: 7px; right: 0; }
+.rocket-trail i:nth-child(2) { top: 4px; width: 10px; right: 0; transition-delay: .04s; }
+.rocket-trail i:nth-child(3) { top: 8px; width: 6px; right: 0; transition-delay: .08s; }
+.step-4:hover .rocket-trail i { opacity: .7; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .step-circle .step-icon, .step-circle .step-icon path, .step-line, .rocket-trail i { transition: none !important; animation: none !important; transform: none !important; }
+}
