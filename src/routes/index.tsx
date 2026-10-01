@@ -557,6 +557,21 @@ function Testimonials() {
   const safe = Math.min(idx, max);
   const shown = TESTIMONIALS.slice(safe, safe + perView);
   const pad = (n: number) => String(n).padStart(2, "0");
+  const [pausedAt, setPausedAt] = useState(0);
+
+  useEffect(() => {
+    const delay = pausedAt ? 4000 : 3500;
+    const t = setTimeout(() => {
+      setPausedAt(0);
+      setIdx((i) => (Math.min(i, max) >= max ? 0 : Math.min(i, max) + 1));
+    }, delay);
+    return () => clearTimeout(t);
+  }, [idx, pausedAt, max]);
+
+  const go = (dir: 1 | -1) => {
+    setPausedAt(Date.now());
+    setIdx(dir === 1 ? (safe >= max ? 0 : safe + 1) : (safe <= 0 ? max : safe - 1));
+  };
 
   return (
     <section id="depoimentos" className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
@@ -573,12 +588,12 @@ function Testimonials() {
           <span className="text-xs font-semibold tabular-nums text-muted-foreground">
             {pad(safe + 1)} / {pad(TESTIMONIALS.length)}
           </span>
-          <button onClick={() => setIdx(Math.max(0, safe - 1))} disabled={safe === 0} aria-label="Anterior"
-            className="grid h-10 w-10 place-items-center rounded-full border border-border transition-colors hover:border-ink disabled:opacity-30">
+          <button onClick={() => go(-1)} aria-label="Anterior"
+            className="grid h-10 w-10 place-items-center rounded-full border border-border transition-colors hover:border-ink">
             <ChevronLeft className="h-4 w-4" />
           </button>
-          <button onClick={() => setIdx(Math.min(max, safe + 1))} disabled={safe >= max} aria-label="Próximo"
-            className="grid h-10 w-10 place-items-center rounded-full border border-border transition-colors hover:border-ink disabled:opacity-30">
+          <button onClick={() => go(1)} aria-label="Próximo"
+            className="grid h-10 w-10 place-items-center rounded-full border border-border transition-colors hover:border-ink">
             <ChevronRight className="h-4 w-4" />
           </button>
         </div>
