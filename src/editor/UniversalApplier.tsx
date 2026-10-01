@@ -24,6 +24,8 @@ export function UniversalApplier() {
       obs?.disconnect();
       for (const key of keys) {
         if (!isAutoKey(key)) continue;
+        // Never move the whole-page wrapper (an accidental edit shifted the site sideways).
+        if (key === "auto:body>div:nth-child-stable(1)") continue;
         const el = resolveAutoKey(key);
         if (!el) continue;
         applyPropsToElement(el, editor.getEffectiveProps(key));
