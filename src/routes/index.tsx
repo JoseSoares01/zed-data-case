@@ -242,7 +242,7 @@ function Index() {
               </div>
 
               <Reveal delay={200} className="relative mx-auto w-full max-w-[520px]">
-                <div className="relative overflow-hidden rounded-2xl aspect-[496/563]">
+                <div className="relative overflow-hidden rounded-[3.5rem] aspect-[496/563]">
                   <img src={heroZeCartoon.url} alt="Zé dos Dados" width={1024} height={1024} className="h-full w-full object-contain" />
                   <span className="absolute right-4 top-4 h-3 w-3 rounded-full bg-accent ring-4 ring-paper/70" />
                 </div>
