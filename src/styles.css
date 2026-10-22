@@ -147,3 +147,19 @@ h1.font-display, h2.font-display {
 /* Hide page scrollbars (scrolling still works) */
 html, body { scrollbar-width: none; -ms-overflow-style: none; }
 html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
+/* Borda com mancha de cor animada (Ferramentas do ofício) */
+.blob-border { background: var(--color-border); }
+.blob-border-glow {
+  position: absolute; top: 50%; left: 50%; width: 45%; aspect-ratio: 1; border-radius: 9999px;
+  background: linear-gradient(90deg, #ec4899, var(--color-accent), #facc15);
+  filter: blur(18px); z-index: 0; animation: blob-orbit 6s linear infinite;
+}
+@keyframes blob-orbit {
+  0% { transform: translate(-110%, -100%); }
+  25% { transform: translate(10%, -100%); }
+  50% { transform: translate(10%, 0%); }
+  75% { transform: translate(-110%, 0%); }
+  100% { transform: translate(-110%, -100%); }
+}
+@media (prefers-reduced-motion: reduce) { .blob-border-glow { animation: none; } }

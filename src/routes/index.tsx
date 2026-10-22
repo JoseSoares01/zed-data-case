@@ -426,7 +426,9 @@ function Index() {
                 Ferramentas do ofício<Dot />
               </h2>
             </Reveal>
-            <div className="mt-14 grid gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-3">
+            <div className="blob-border relative mt-14 overflow-hidden rounded-[14px] p-[3px]">
+              <div className="blob-border-glow" aria-hidden />
+            <div className="relative z-10 grid gap-px overflow-hidden rounded-[11px] bg-border md:grid-cols-3">
               {SKILLS.map((g, i) => (
                 <div key={g.title} className="bg-cream p-8">
                   <p className="text-xs font-semibold text-accent">0{i + 1}</p>
@@ -440,6 +442,7 @@ function Index() {
                   </ul>
                 </div>
               ))}
+            </div>
             </div>
           </div>
         </section>
