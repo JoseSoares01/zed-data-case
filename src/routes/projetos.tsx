@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowUpRight, Search } from "lucide-react";
+import { ProjectFolder } from "@/components/ProjectFolder";
+import { ArrowLeft, Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import logoZeDosDados from "@/assets/logo-ze-dos-dados.png.asset.json";
-import { BlueprintNumber } from "@/components/BlueprintNumber";
 import { projects } from "@/data/projects";
 
 export const Route = createFileRoute("/projetos")({

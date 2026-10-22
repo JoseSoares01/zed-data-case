@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ProjectFolder } from "@/components/ProjectFolder";
 import {
   ArrowRight, ArrowUpRight, BarChart3, ChevronLeft, ChevronRight, Code2, FileText,
   Github, Linkedin, Mail, MapPin, Menu, MessageCircle, Rocket, Settings, X,
