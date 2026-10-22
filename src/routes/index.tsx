@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ProjectFolder } from "@/components/ProjectFolder";
 import {
   ArrowRight, ArrowUpRight, BarChart3, ChevronLeft, ChevronRight, Code2, FileText,
   Github, Linkedin, Mail, MapPin, Menu, MessageCircle, Rocket, Settings, X,
@@ -362,32 +363,9 @@ function Index() {
               </Reveal>
             </div>
 
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {featured.map((p, i) => (
-                <Reveal key={p.title} delay={(i % 3) * 100}>
-                  <a
-                    href={p.url}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="group block overflow-hidden rounded-xl border border-border bg-paper transition-all duration-500 hover:-translate-y-2 hover:border-accent/60 hover:shadow-[0_24px_50px_-20px_rgba(255,138,36,0.45)] card-tilt focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                  >
-                    <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-                      <img src={p.img} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
-                      <span className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-ink text-cream transition-transform duration-500 group-hover:rotate-45">
-                        <ArrowRight className="h-4 w-4 -rotate-45" />
-                      </span>
-                    </div>
-                    <div className="p-5">
-                      <div className="flex items-center justify-between gap-3">
-                        <h3 className="flex items-center gap-1.5 text-lg font-bold transition-transform duration-500 group-hover:translate-x-1">
-                          {p.title} <ArrowUpRight className="h-4 w-4 opacity-60" />
-                        </h3>
-                        <span className="text-xs text-muted-foreground">{p.year}</span>
-                      </div>
-                      <span className="mt-3 inline-flex rounded bg-accent/10 px-2 py-1 text-[11px] font-medium text-ink/80">{p.tag}</span>
-                    </div>
-                  </a>
-                </Reveal>
+                <ProjectFolder key={p.title} project={p} index={i} />
               ))}
             </div>
           </section>
