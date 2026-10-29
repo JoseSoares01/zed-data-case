@@ -12,6 +12,7 @@ import dotaworkLogo from "@/assets/dotawork.png.asset.json";
 import dev2dataLogo from "@/assets/dev2data.png.asset.json";
 import alexPfifferImg from "@/assets/alex-pfiffer.png";
 import orbitrhLogo from "@/assets/orbitrh.png.asset.json";
+import torraImg from "@/assets/torra.jpg.asset.json";
 
 export type Project = {
   title: string;
@@ -36,6 +37,7 @@ const projectList: Project[] = [
   { title: "GreeNest One", tag: "App · Gestão", url: "https://greenest-one.lovable.app/auth", img: greenestLogo.url, year: "2022" },
   { title: "Alex Pfiffer", tag: "Esporte · Marca Pessoal", url: "https://alex-pfiffer.lovable.app", img: alexPfifferImg, year: "2026" },
   { title: "OrbitRH", tag: "App · Gestão de Pessoas", url: "https://rh-trivalor.lovable.app/login", img: orbitrhLogo.url, year: "2026" },
+  { title: "Torra Café", tag: "Site · Cafeteria", url: "https://torra-demo.vercel.app/", img: torraImg.url, year: "2026" },
 ];
 
 const featured = ["Alex Pfiffer", "Pause Flow", "OrbitRH", "Ferramentas Servinform", "MMBus"];
