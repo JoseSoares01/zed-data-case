@@ -13,6 +13,7 @@ import dev2dataLogo from "@/assets/dev2data.png.asset.json";
 import alexPfifferImg from "@/assets/alex-pfiffer.png";
 import orbitrhLogo from "@/assets/orbitrh.png.asset.json";
 import torraImg from "@/assets/torra.jpg.asset.json";
+import fermentoImg from "@/assets/fermento.jpg.asset.json";
 
 export type Project = {
   title: string;
@@ -38,6 +39,7 @@ const projectList: Project[] = [
   { title: "Alex Pfiffer", tag: "Esporte · Marca Pessoal", url: "https://alex-pfiffer.lovable.app", img: alexPfifferImg, year: "2026" },
   { title: "OrbitRH", tag: "App · Gestão de Pessoas", url: "https://rh-trivalor.lovable.app/login", img: orbitrhLogo.url, year: "2026" },
   { title: "Torra Café", tag: "Site · Cafeteria", url: "https://torra-demo.vercel.app/", img: torraImg.url, year: "2026" },
+  { title: "Fermento", tag: "Site · Pizzaria", url: "https://fermento-demo.vercel.app/", img: fermentoImg.url, year: "2026" },
 ];
 
 const featured = ["Alex Pfiffer", "Pause Flow", "OrbitRH", "Ferramentas Servinform", "MMBus"];
