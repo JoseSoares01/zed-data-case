@@ -214,7 +214,7 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
   return (
     <div
       ref={playerRef}
-      className="absolute top-[104px] md:top-[106px] lg:top-[122px] right-4 sm:right-6 lg:right-10 z-50 flex items-center gap-1.5 sm:gap-2 rounded-full border border-ink/15 bg-cream/90 backdrop-blur-md px-2 py-1.5 sm:px-3 sm:py-2 shadow-lg max-w-[calc(100vw-1.5rem)] -translate-y-1/2"
+      className="absolute top-[104px] md:top-[106px] lg:top-[122px] right-4 sm:right-6 lg:right-10 xl:top-[126px] xl:right-[max(3rem,calc((100%-1320px)/2+3rem))] z-50 flex items-center gap-1.5 sm:gap-2 rounded-full border border-ink/15 bg-cream/90 backdrop-blur-md px-2 py-1.5 sm:px-3 sm:py-2 xl:px-4 xl:py-2.5 xl:gap-3 shadow-lg max-w-[calc(100vw-1.5rem)] -translate-y-1/2"
       style={pos && !isNarrow ? { left: pos.x, top: pos.y, right: "auto", transform: "none" } : undefined}
     >
       {canDrag && (
@@ -264,7 +264,7 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
         aria-label="Volume"
         className="hidden sm:block w-20 accent-ink"
       />
-      <span className="hidden md:inline text-xs text-ink/60 pr-1">{current.title}</span>
+      <span className="hidden md:inline text-xs text-ink/60 pr-1 xl:whitespace-nowrap">{current.title}</span>
     </div>
   );
 }
