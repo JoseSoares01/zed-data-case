@@ -224,7 +224,7 @@ function Index() {
                   </h1>
                 </Reveal>
                 <Reveal delay={200}>
-                  <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground lg:text-lg xl:mt-7 xl:max-w-[580px] xl:text-[clamp(1.2rem,1.45vw,1.5rem)] xl:leading-[1.5]">
+                  <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground lg:text-lg xl:mt-7 xl:max-w-[580px] xl:text-[clamp(1.15rem,1.3vw,1.375rem)] xl:leading-[1.5]">
                     Transformo dados, ideias e processos em soluções digitais que geram resultados reais para pessoas e negócios.
                   </p>
                 </Reveal>
@@ -235,7 +235,7 @@ function Index() {
                   </div>
                 </Reveal>
                 <Reveal delay={400}>
-                  <dl className="mt-14 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-border pt-8 sm:grid-cols-4 xl:mt-11 xl:gap-x-0 xl:pt-9">
+                  <dl className="mt-14 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-border pt-8 sm:grid-cols-4 xl:mt-11 xl:grid-cols-[1.15fr_1.15fr_1fr_0.9fr] xl:gap-x-0 xl:pt-9">
                     {[
                       { v: "+250k", l: "linhas de código escritas" },
                       { v: "+800k", l: "data points analisados" },
@@ -243,7 +243,7 @@ function Index() {
                       { v: "6+", l: "anos de experiência" },
                     ].map((s, i) => (
                       <div key={s.l} className={`min-w-0 ${i > 0 ? "xl:border-l xl:border-border xl:pl-6" : ""} xl:pr-4`}>
-                        <dt className="font-display text-3xl tracking-tight lg:text-4xl xl:text-[clamp(2.25rem,2.6vw,2.75rem)] xl:leading-none">{s.v}</dt>
+                        <dt className="font-display text-3xl tracking-tight lg:text-4xl xl:text-[clamp(2rem,2.2vw,2.5rem)] xl:leading-none">{s.v}</dt>
                         <dd className="mt-1 text-xs leading-snug text-muted-foreground xl:mt-3 xl:text-sm">{s.l}</dd>
                       </div>
                     ))}

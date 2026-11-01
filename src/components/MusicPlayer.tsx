@@ -264,7 +264,7 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
         aria-label="Volume"
         className="hidden sm:block w-20 accent-ink"
       />
-      <span className="hidden md:inline text-xs text-ink/60 pr-1">{current.title}</span>
+      <span className="hidden md:inline text-xs text-ink/60 pr-1 xl:whitespace-nowrap">{current.title}</span>
     </div>
   );
 }
