@@ -106,9 +106,9 @@ function Dot() {
   return <span className="text-accent">.</span>;
 }
 
-function Label({ n, children, dark = false }: { n?: string; children: ReactNode; dark?: boolean }) {
+function Label({ n, children, dark = false, className = "" }: { n?: string; children: ReactNode; dark?: boolean; className?: string }) {
   return (
-    <p className={`flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] ${dark ? "text-cream/60" : "text-muted-foreground"}`}>
+    <p className={`flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] ${dark ? "text-cream/60" : "text-muted-foreground"} ${className}`}>
       {n && <span className="text-accent">{n}.</span>}
       {children}
     </p>
@@ -121,9 +121,9 @@ const btnPrimary = `${btnBase} bg-ink text-cream hover:bg-ink/85 [&_svg]:transit
 const btnOutline = `${btnBase} border border-ink text-ink hover:bg-ink hover:text-cream`;
 const btnOutlineDark = `${btnBase} border border-cream/40 text-cream hover:bg-cream hover:text-ink`;
 
-function Logo({ dark = false }: { dark?: boolean }) {
+function Logo({ dark = false, className = "" }: { dark?: boolean; className?: string }) {
   return (
-    <a href="#inicio" className={`font-display leading-[0.85] text-lg ${dark ? "text-cream" : "text-ink"}`} aria-label="Zé dos Dados — início">
+    <a href="#inicio" className={`font-display leading-[0.85] text-lg ${dark ? "text-cream" : "text-ink"} ${className}`} aria-label="Zé dos Dados — início">
       ZÉ <span className="text-[0.6em] align-top">DOS</span>
       <br />
       DADOS<Dot />
