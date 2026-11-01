@@ -147,21 +147,25 @@ function Index() {
       {/* Header */}
       <Editable id="Navbar" label="Navbar">
         <header className="sticky top-0 z-50 border-b border-border/70 bg-cream/85 backdrop-blur-md">
-          <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-6 px-5 py-4 lg:px-10">
-            <Logo />
-            <nav className="hidden lg:flex items-center gap-7 text-[13px] font-medium" aria-label="Principal">
+          <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-6 px-5 py-4 lg:px-10 xl:px-12">
+            <div className="flex items-center xl:gap-8">
+              <Logo className="xl:text-[1.35rem]" />
+              <span aria-hidden className="hidden xl:block h-8 w-px bg-border" />
+            </div>
+            <nav className="hidden lg:flex items-center gap-7 text-[13px] font-medium xl:gap-8 xl:text-[15px]" aria-label="Principal">
               {NAV.map((n) =>
                 n.label === "Projetos" ? (
-                  <Link key={n.label} to="/projetos" className="text-ink/70 hover:text-ink transition-colors">{n.label}</Link>
+                  <Link key={n.label} to="/projetos" className="text-ink/70 hover:text-ink transition-colors xl:text-ink/85">{n.label}</Link>
                 ) : (
-                  <a key={n.label} href={n.href} className="text-ink/70 hover:text-ink transition-colors">{n.label}</a>
+                  <a key={n.label} href={n.href} className="text-ink/70 hover:text-ink transition-colors xl:text-ink/85">{n.label}</a>
                 ),
               )}
             </nav>
-            <div className="hidden lg:flex items-center gap-5 text-xs">
+            <div className="hidden lg:flex items-center gap-5 text-xs xl:text-[13px]">
               <span className="flex items-center gap-1.5 text-ink/70"><MapPin className="h-3.5 w-3.5 text-accent" /> Lisboa, PT</span>
               <span className="flex items-center gap-1.5 text-muted-foreground"><span className="h-1.5 w-1.5 rounded-full bg-accent" /> Disponível</span>
-              <a href="#contato" className={`${btnPrimary} py-2.5`}>Vamos conversar <ArrowRight className="h-4 w-4" /></a>
+              <span aria-hidden className="hidden xl:block h-8 w-px bg-border" />
+              <a href="#contato" className={`${btnPrimary} py-2.5 xl:px-6 xl:py-3 xl:text-[15px] xl:rounded-lg`}>Vamos conversar <ArrowRight className="h-4 w-4" /></a>
             </div>
             <button
               className="lg:hidden grid h-10 w-10 place-items-center rounded-md border border-border"
@@ -205,61 +209,66 @@ function Index() {
       <main>
         {/* Hero */}
         <Editable id="Hero" label="Hero">
-          <section id="inicio" className="relative overflow-x-clip mx-auto max-w-[1320px] px-5 pt-12 pb-16 lg:px-10 lg:pt-20 lg:pb-24">
-            <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
-              <div>
-                <Reveal><Label>Data Analyst · Developer · Automation</Label></Reveal>
+          <section id="inicio" className="relative overflow-x-clip mx-auto max-w-[1320px] px-5 pt-12 pb-16 lg:px-10 lg:pt-20 lg:pb-24 xl:px-12 xl:pt-24 xl:pb-24">
+            <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] xl:grid-cols-[minmax(0,52fr)_minmax(0,48fr)] xl:gap-16 2xl:gap-20">
+              <div className="min-w-0">
+                <Reveal>
+                  <Label className="xl:gap-5 xl:text-[13px] xl:tracking-[0.28em]">
+                    <span aria-hidden className="hidden xl:inline-block h-px w-14 bg-border" />
+                    Data Analyst · Developer · Automation
+                  </Label>
+                </Reveal>
                 <Reveal delay={100}>
-                  <h1 className="mt-6 font-display text-[18vw] leading-[0.86] tracking-[-0.04em] sm:text-[7rem] lg:text-[8.5rem] xl:text-[9.5rem]">
+                  <h1 className="mt-6 font-display text-[18vw] leading-[0.86] tracking-[-0.04em] sm:text-[7rem] lg:text-[8.5rem] xl:mt-7 xl:text-[clamp(7.5rem,9.4vw,10rem)] xl:leading-[0.94]">
                     Zé dos<br />Dados<Dot />
                   </h1>
                 </Reveal>
                 <Reveal delay={200}>
-                  <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground lg:text-lg">
+                  <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground lg:text-lg xl:mt-7 xl:max-w-[580px] xl:text-[clamp(1.2rem,1.45vw,1.5rem)] xl:leading-[1.5]">
                     Transformo dados, ideias e processos em soluções digitais que geram resultados reais para pessoas e negócios.
                   </p>
                 </Reveal>
                 <Reveal delay={300}>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <a href="#projetos" className={`${btnPrimary} btn-shine`}>Ver projetos <ArrowRight className="h-4 w-4" /></a>
-                    <a href="#sobre" className={btnOutline}>Sobre mim</a>
+                  <div className="mt-8 flex flex-wrap gap-3 xl:flex-nowrap xl:gap-5">
+                    <a href="#projetos" className={`${btnPrimary} btn-shine xl:h-[52px] xl:rounded-lg xl:px-8 xl:text-base`}>Ver projetos <ArrowRight className="h-4 w-4 xl:h-5 xl:w-5" /></a>
+                    <a href="#sobre" className={`${btnOutline} xl:h-[52px] xl:rounded-lg xl:px-8 xl:text-base`}>Sobre mim</a>
                   </div>
                 </Reveal>
                 <Reveal delay={400}>
-                  <dl className="mt-14 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-border pt-8 sm:grid-cols-4">
+                  <dl className="mt-14 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-border pt-8 sm:grid-cols-4 xl:mt-11 xl:gap-x-0 xl:pt-9">
                     {[
                       { v: "+250k", l: "linhas de código escritas" },
                       { v: "+800k", l: "data points analisados" },
                       { v: `${projects.length}+`, l: "projetos desenvolvidos" },
                       { v: "6+", l: "anos de experiência" },
-                    ].map((s) => (
-                      <div key={s.l}>
-                        <dt className="font-display text-3xl tracking-tight lg:text-4xl">{s.v}</dt>
-                        <dd className="mt-1 text-xs leading-snug text-muted-foreground">{s.l}</dd>
+                    ].map((s, i) => (
+                      <div key={s.l} className={`min-w-0 ${i > 0 ? "xl:border-l xl:border-border xl:pl-6" : ""} xl:pr-4`}>
+                        <dt className="font-display text-3xl tracking-tight lg:text-4xl xl:text-[clamp(2.25rem,2.6vw,2.75rem)] xl:leading-none">{s.v}</dt>
+                        <dd className="mt-1 text-xs leading-snug text-muted-foreground xl:mt-3 xl:text-sm">{s.l}</dd>
                       </div>
                     ))}
                   </dl>
                 </Reveal>
               </div>
 
-              <Reveal delay={200} className="relative mx-auto w-full max-w-[520px]">
+              <Reveal delay={200} className="relative mx-auto w-full max-w-[520px] xl:mx-0 xl:ml-auto xl:mr-8 xl:max-w-[600px]">
                 <div className="relative overflow-hidden rounded-[3.5rem] aspect-[496/563]">
                   <img src={heroZeCartoon.url} alt="Zé dos Dados" width={1024} height={1024} className="h-full w-full object-contain" />
-                  <span className="absolute right-4 top-4 h-3 w-3 rounded-full bg-accent ring-4 ring-paper/70" />
+                  <span className="absolute right-4 top-4 h-3 w-3 rounded-full bg-accent ring-4 ring-paper/70 xl:hidden" />
                 </div>
-                <div className="liquid-glass absolute left-4 top-4 flex items-center gap-2 rounded-2xl px-3.5 py-2.5 text-ink">
-                  <MapPin className="h-3.5 w-3.5 text-accent" />
+                <div className="liquid-glass absolute left-4 top-4 flex items-center gap-2 rounded-2xl px-3.5 py-2.5 text-ink xl:left-[6%] xl:top-[3.5%] xl:gap-2.5 xl:px-5 xl:py-3">
+                  <MapPin className="h-3.5 w-3.5 text-accent xl:h-4 xl:w-4" />
                   <div className="leading-tight">
-                    <div className="text-xs font-semibold">Lisboa, Portugal</div>
-                    <div className="text-[10px] text-ink/60">GMT +1</div>
+                    <div className="text-xs font-semibold xl:text-sm">Lisboa, Portugal</div>
+                    <div className="text-[10px] text-ink/60 xl:text-[11px]">GMT +1</div>
                   </div>
                 </div>
-                <div className="liquid-glass absolute -bottom-12 right-4 w-52 rounded-[2.75rem] px-6 py-5 sm:-right-6">
-                  <BarChart3 className="h-5 w-5 text-accent" />
-                  <p className="mt-3 text-sm font-semibold leading-tight">Transformar dados em decisões<Dot /></p>
-                  <p className="mt-1 text-[11px] text-muted-foreground">Esse é o meu foco.</p>
+                <div className="liquid-glass absolute -bottom-12 right-4 w-52 rounded-[2.75rem] px-6 py-5 sm:-right-6 xl:-bottom-14 xl:-right-8 xl:w-[17rem] xl:px-8 xl:py-6">
+                  <BarChart3 className="h-5 w-5 text-accent xl:h-6 xl:w-6" />
+                  <p className="mt-3 text-sm font-semibold leading-tight xl:text-lg">Transformar dados em decisões<Dot /></p>
+                  <p className="mt-1 text-[11px] text-muted-foreground xl:text-sm">Esse é o meu foco.</p>
                 </div>
-                <p className="absolute -right-2 -top-8 hidden rotate-[8deg] font-script text-2xl leading-none text-ink/70 2xl:block">
+                <p className="absolute -right-2 -top-8 hidden rotate-[8deg] font-script text-2xl leading-none text-ink/70 2xl:block 2xl:-left-16 2xl:right-auto 2xl:-top-14 2xl:rotate-[-8deg]">
                   Dados<br />Código<br />Soluções
                 </p>
               </Reveal>
