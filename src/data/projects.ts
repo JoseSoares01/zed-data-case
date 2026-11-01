@@ -14,6 +14,8 @@ import alexPfifferImg from "@/assets/alex-pfiffer.png";
 import orbitrhLogo from "@/assets/orbitrh.png.asset.json";
 import torraImg from "@/assets/torra.jpg.asset.json";
 import fermentoImg from "@/assets/fermento.jpg.asset.json";
+import overstoryImg from "@/assets/overstory.jpg.asset.json";
+import frescoImg from "@/assets/fresco.jpg.asset.json";
 
 export type Project = {
   title: string;
@@ -40,6 +42,8 @@ const projectList: Project[] = [
   { title: "OrbitRH", tag: "App · Gestão de Pessoas", url: "https://rh-trivalor.lovable.app/login", img: orbitrhLogo.url, year: "2026" },
   { title: "Torra Café", tag: "Site · Cafeteria", url: "https://torra-demo.vercel.app/", img: torraImg.url, year: "2026" },
   { title: "Fermento", tag: "Site · Pizzaria", url: "https://fermento-demo.vercel.app/", img: fermentoImg.url, year: "2026" },
+  { title: "Overstory Studio", tag: "Site · Estúdio de Design", url: "https://21stdev-my-components-one.vercel.app/#overstory-studio-landing", img: overstoryImg.url, year: "2026" },
+  { title: "Fresco", tag: "Site · Revista Editorial", url: "https://21stdev-my-components-one.vercel.app/#fresco-interview-template", img: frescoImg.url, year: "2026" },
 ];
 
 const featured = ["Alex Pfiffer", "Pause Flow", "OrbitRH", "Ferramentas Servinform", "MMBus"];
