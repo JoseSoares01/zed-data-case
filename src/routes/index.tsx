@@ -243,7 +243,7 @@ function Index() {
                       { v: "6+", l: "anos de experiência" },
                     ].map((s, i) => (
                       <div key={s.l} className={`min-w-0 ${i > 0 ? "xl:border-l xl:border-border xl:pl-6" : ""} xl:pr-4`}>
-                        <dt className="font-display text-3xl tracking-tight lg:text-4xl xl:text-[clamp(2rem,2.2vw,2.5rem)] xl:leading-none">{s.v}</dt>
+                        <dt className="font-display text-3xl tracking-tight lg:text-4xl xl:text-[clamp(2rem,2.1vw,2.25rem)] xl:leading-none">{s.v}</dt>
                         <dd className="mt-1 text-xs leading-snug text-muted-foreground xl:mt-3 xl:text-sm">{s.l}</dd>
                       </div>
                     ))}
