@@ -163,3 +163,25 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
   100% { transform: translate(-110%, -100%); }
 }
 @media (prefers-reduced-motion: reduce) { .blob-border-glow { animation: none; } }
+
+/* Hero (mobile): tinta laranja diagonal a partir do quadrado, só dentro das letras */
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+  .hero-paint {
+    display: block;
+    white-space: nowrap;
+    -webkit-mask-image: linear-gradient(135deg, transparent 47%, #000 53%);
+    mask-image: linear-gradient(135deg, transparent 47%, #000 53%);
+    -webkit-mask-size: 220% 220%;
+    mask-size: 220% 220%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    animation: hero-paint 4s linear infinite;
+  }
+}
+@keyframes hero-paint {
+  0% { -webkit-mask-position: 0% 0%; mask-position: 0% 0%; opacity: 1; animation-timing-function: cubic-bezier(.45,.05,.35,1); }
+  32.5% { -webkit-mask-position: 100% 100%; mask-position: 100% 100%; opacity: 1; }
+  37.5% { -webkit-mask-position: 100% 100%; mask-position: 100% 100%; opacity: 1; }
+  37.6%, 99.9% { -webkit-mask-position: 100% 100%; mask-position: 100% 100%; opacity: 0; }
+  100% { -webkit-mask-position: 0% 0%; mask-position: 0% 0%; opacity: 0; }
+}

@@ -219,8 +219,11 @@ function Index() {
                   </Label>
                 </Reveal>
                 <Reveal delay={100}>
-                  <h1 className="mt-6 font-display text-[18vw] leading-[0.86] tracking-[-0.04em] sm:text-[7rem] lg:text-[8.5rem] xl:mt-7 xl:text-[clamp(7.5rem,9.4vw,10rem)] xl:leading-[0.94]">
+                  <h1 className="relative mt-6 font-display text-[18vw] leading-[0.86] tracking-[-0.04em] sm:text-[7rem] lg:text-[8.5rem] xl:mt-7 xl:text-[clamp(7.5rem,9.4vw,10rem)] xl:leading-[0.94]">
                     Zé dos<br />Dados<Dot />
+                    <span aria-hidden className="hero-paint pointer-events-none absolute left-0 top-0 hidden select-none text-accent">
+                      Zé dos<br />Dados<Dot />
+                    </span>
                   </h1>
                 </Reveal>
                 <Reveal delay={200}>
