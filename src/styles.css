@@ -179,9 +179,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; heig
   }
 }
 @keyframes hero-paint {
-  0% { -webkit-mask-position: 0% 0%; mask-position: 0% 0%; opacity: 1; animation-timing-function: ease-in-out; }
-  32.5% { -webkit-mask-position: 100% 100%; mask-position: 100% 100%; opacity: 1; }
-  37.5% { -webkit-mask-position: 100% 100%; mask-position: 100% 100%; opacity: 1; }
-  37.6%, 99.9% { -webkit-mask-position: 100% 100%; mask-position: 100% 100%; opacity: 0; }
-  100% { -webkit-mask-position: 0% 0%; mask-position: 0% 0%; opacity: 0; }
+  0% { -webkit-mask-position: 0% 0%; mask-position: 0% 0%; animation-timing-function: ease-in-out; }
+  37.5% { -webkit-mask-position: 100% 100%; mask-position: 100% 100%; }
+  42.5% { -webkit-mask-position: 100% 100%; mask-position: 100% 100%; animation-timing-function: ease-in-out; }
+  80%, 100% { -webkit-mask-position: 0% 0%; mask-position: 0% 0%; }
+}
 }
