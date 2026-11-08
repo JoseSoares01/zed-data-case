@@ -102,6 +102,50 @@ function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; 
   );
 }
 
+
+/* scroll-linked horizontal entrance (transform + opacity only) */
+function ScrollSlide({ children, from, className = "" }: { children: ReactNode; from: "left" | "right"; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0;
+    const dist = from === "right" ? 1 : -1;
+    const update = () => {
+      raf = 0;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const t = Math.min(1, Math.max(0, (vh - r.top) / (vh * 0.75)));
+      const e = 1 - Math.pow(1 - t, 3);
+      const amount = Math.min(120, window.innerWidth * 0.08);
+      el.style.transform = `translate3d(${(1 - e) * amount * dist}px,0,0)`;
+      el.style.opacity = String(0.4 + 0.6 * e);
+    };
+    const on = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
+    window.addEventListener("scroll", on, { passive: true });
+    window.addEventListener("resize", on);
+    return () => { window.removeEventListener("scroll", on); window.removeEventListener("resize", on); cancelAnimationFrame(raf); };
+  }, [from]);
+  return <div ref={ref} className={`will-change-transform ${className}`}>{children}</div>;
+}
+
+/* keeps the hero pinned behind while the next section slides over it */
+function StickyStage({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const set = () => { el.style.top = `${Math.min(0, window.innerHeight - el.offsetHeight)}px`; };
+    set();
+    const ro = new ResizeObserver(set);
+    ro.observe(el);
+    window.addEventListener("resize", set);
+    return () => { ro.disconnect(); window.removeEventListener("resize", set); };
+  }, []);
+  return <div ref={ref} className="sticky z-0">{children}</div>;
+}
+
 function Dot() {
   return <span className="text-accent">.</span>;
 }
@@ -137,6 +181,13 @@ function Index() {
   const [introDone, setIntroDone] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const featured = projects.slice(0, 6);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const on = () => setScrolled(window.scrollY > 8);
+    on();
+    window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, []);
 
   return (
     <div className="min-h-screen bg-cream text-ink overflow-x-hidden w-full">
@@ -146,7 +197,7 @@ function Index() {
 
       {/* Header */}
       <Editable id="Navbar" label="Navbar">
-        <header className="sticky top-0 z-50 border-b border-border/70 bg-cream/85 backdrop-blur-md">
+        <header className={`sticky top-0 z-50 border-b bg-cream/90 backdrop-blur-md transition-shadow duration-300 ${scrolled ? "border-border/70 shadow-[0_6px_24px_-14px_rgba(8,8,8,0.25)]" : "border-transparent"}`}>
           <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-6 px-5 py-4 lg:px-10 xl:px-12">
             <div className="flex items-center xl:gap-8">
               <Logo className="xl:text-[1.35rem]" />
@@ -206,7 +257,8 @@ function Index() {
         </div>
       )}
 
-      <main>
+      <main className="relative z-10 bg-cream">
+        <StickyStage>
         {/* Hero */}
         <Editable id="Hero" label="Hero">
           <section id="inicio" className="relative overflow-x-clip mx-auto max-w-[1320px] px-5 pt-12 pb-16 lg:px-10 lg:pt-20 lg:pb-24 xl:px-12 xl:pt-24 xl:pb-24">
@@ -308,10 +360,12 @@ function Index() {
           </section>
         </Editable>
 
+        </StickyStage>
+
         {/* About */}
         <Editable id="About" label="About">
-          <section id="sobre" className="bg-ink text-cream">
-            <div className="mx-auto grid max-w-[1320px] lg:grid-cols-[1.1fr_1.9fr_0.5fr]">
+          <section id="sobre" className="relative z-10 rounded-t-[2rem] bg-ink text-cream shadow-[0_-30px_60px_-30px_rgba(8,8,8,0.45)] lg:rounded-t-[2.5rem]">
+            <div className="mx-auto grid max-w-[1320px] lg:grid-cols-[1.1fr_1.6fr_0.8fr]">
               <div className="px-5 py-16 lg:px-10 lg:py-24">
                 <Reveal><Label n="01" dark>Sobre mim</Label></Reveal>
                 <Reveal delay={100}>
@@ -330,17 +384,17 @@ function Index() {
                 </Reveal>
                 <p className="mt-8 font-script text-3xl text-cream/80">Zé Soares</p>
               </div>
-              <div className="relative min-h-[420px] overflow-hidden bg-cream/5">
+              <div className="relative min-h-[420px] overflow-hidden bg-cream/5 lg:my-10 lg:rounded-[2rem]">
                 <img src={aboutPortrait.url} alt="Retrato de Zé dos Dados" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-top" />
               </div>
-              <div className="flex flex-col justify-center gap-2 px-5 py-16 lg:px-10">
+              <div className="flex flex-col justify-center gap-3 px-5 py-16 lg:px-8">
                 {[
                   { icon: BarChart3, t: "Data Analytics", d: "Dashboards, KPIs, insights e visualização de dados." },
                   { icon: Code2, t: "Desenvolvimento", d: "Web apps, sistemas e interfaces modernas." },
                   { icon: Settings, t: "Automação", d: "Processos, integrações, Python e APIs." },
                 ].map((a, i) => (
                   <Reveal key={a.t} delay={i * 100}>
-                    <div className="flex gap-4 border-b border-cream/10 py-6">
+                    <div className="flex gap-4 rounded-2xl border border-cream/10 bg-cream/[0.04] p-5 transition-colors hover:border-accent/40">
                       <span className="grid h-11 w-11 shrink-0 place-items-center rounded-md bg-cream/5 text-accent">
                         <a.icon className="h-5 w-5" />
                       </span>
@@ -359,7 +413,7 @@ function Index() {
 
         {/* Projects */}
         <Editable id="Projects" label="Projects">
-          <section id="projetos" className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
+          <section id="projetos" className="relative z-10 bg-cream"><ScrollSlide from="right" className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-28">
             <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
               <div>
                 <Reveal><Label n="02">Projetos em destaque</Label></Reveal>
@@ -380,11 +434,11 @@ function Index() {
                 <ProjectFolder key={p.title} project={p} index={i} />
               ))}
             </div>
-          </section>
+          </ScrollSlide></section>
         </Editable>
 
         {/* Process */}
-        <section className="mx-auto max-w-[1320px] px-5 pb-20 lg:px-10 lg:pb-28">
+        <section className="relative z-10 bg-cream"><ScrollSlide from="left" className="mx-auto max-w-[1320px] px-5 pb-20 lg:px-10 lg:pb-28">
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
               <Reveal><Label n="03">Como eu trabalho</Label></Reveal>
@@ -427,10 +481,10 @@ function Index() {
               </Reveal>
             ))}
           </ol>
-        </section>
+        </ScrollSlide></section>
 
         {/* Skills */}
-        <section id="skills" className="border-y border-border bg-paper/50">
+        <section id="skills" className="relative z-10 border-y border-border bg-cream">
           <div className="mx-auto max-w-[1320px] px-5 py-20 lg:px-10 lg:py-24">
             <Reveal><Label n="04">Competências</Label></Reveal>
             <Reveal delay={100}>
@@ -440,10 +494,12 @@ function Index() {
             </Reveal>
             <div className="blob-border relative mt-14 overflow-hidden rounded-[14px] p-[3px]">
               <div className="blob-border-glow" aria-hidden />
-            <div className="relative z-10 grid gap-px overflow-hidden rounded-[11px] bg-border md:grid-cols-3">
+            <div className="relative z-10 grid gap-4 rounded-[11px] bg-cream p-4 md:grid-cols-3">
               {SKILLS.map((g, i) => (
-                <div key={g.title} className="bg-cream p-8">
-                  <p className="text-xs font-semibold text-accent">0{i + 1}</p>
+                <Reveal key={g.title} delay={i * 100} className="h-full">
+                <div className="h-full rounded-2xl border border-border bg-paper p-8 shadow-[0_10px_30px_-20px_rgba(8,8,8,0.2)]">
+                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent">{(() => { const I = [BarChart3, Code2, Settings][i] ?? BarChart3; return <I className="h-5 w-5" />; })()}</span>
+                  <p className="mt-5 text-xs font-semibold text-accent">0{i + 1}</p>
                   <h3 className="mt-2 text-[11px] font-semibold uppercase tracking-[0.2em]">{g.title}</h3>
                   <ul className="mt-6 space-y-2.5">
                     {g.items.map((it) => (
@@ -453,6 +509,7 @@ function Index() {
                     ))}
                   </ul>
                 </div>
+                </Reveal>
               ))}
             </div>
             </div>
@@ -461,13 +518,13 @@ function Index() {
 
         {/* Testimonials */}
         <Editable id="Testimonials" label="Testimonials">
-          <Testimonials />
+          <div className="relative z-10 bg-cream"><Reveal><Testimonials /></Reveal></div>
         </Editable>
 
         {/* CTA */}
         <Editable id="Contact" label="Contact">
           <section id="contato" className="mx-auto max-w-[1320px] px-5 pb-20 lg:px-10">
-            <Reveal>
+            <div>
               <div className="relative grid gap-8 overflow-hidden rounded-2xl bg-accent px-6 py-12 sm:px-12 lg:grid-cols-[1.2fr_1fr_auto] lg:items-center lg:py-16">
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-ink/60">Vamos criar algo juntos?</p>
@@ -483,14 +540,14 @@ function Index() {
                   Ideias<br />Processos<br />Resultados
                 </p>
               </div>
-            </Reveal>
+            </div>
           </section>
         </Editable>
       </main>
 
       {/* Footer */}
       <Editable id="Footer" label="Footer">
-        <footer className="w-full bg-ink text-cream">
+        <footer className="sticky bottom-0 z-0 w-full bg-ink text-cream">
           <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-14 lg:grid-cols-3 lg:px-10">
             <div>
               <Logo dark />
