@@ -38,7 +38,8 @@ export function MusicPlayer({ autoStart = true }: { autoStart?: boolean }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const playerRef = useRef<HTMLDivElement | null>(null);
   const dragRef = useRef<{ startX: number; startY: number; initialLeft: number; initialTop: number; dragging: boolean } | null>(null);
-  const [index, setIndex] = useState<number>(() => pickInitialIndex());
+  const [index, setIndex] = useState<number>(0);
+  useEffect(() => { setIndex(pickInitialIndex()); }, []);
   const [playing, setPlaying] = useState(false);
   const [volume, setVolume] = useState(0.15);
   const [muted, setMuted] = useState(true);
