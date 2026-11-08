@@ -196,7 +196,7 @@ function Index() {
       <MusicPlayer autoStart={introDone} />
 
       {/* Header */}
-      <Editable id="Navbar" label="Navbar">
+      <Editable id="Navbar" label="Navbar" className="sticky top-0 z-50 block">
         <header className={`sticky top-0 z-50 border-b bg-cream/90 backdrop-blur-md transition-shadow duration-300 ${scrolled ? "border-border/70 shadow-[0_6px_24px_-14px_rgba(8,8,8,0.25)]" : "border-transparent"}`}>
           <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-6 px-5 py-4 lg:px-10 xl:px-12">
             <div className="flex items-center xl:gap-8">
@@ -546,8 +546,8 @@ function Index() {
       </main>
 
       {/* Footer */}
-      <Editable id="Footer" label="Footer">
-        <footer className="sticky bottom-0 z-0 w-full bg-ink text-cream">
+      <Editable id="Footer" label="Footer" className="sticky bottom-0 z-0 block">
+        <footer className="w-full bg-ink text-cream">
           <div className="mx-auto grid max-w-[1320px] gap-10 px-5 py-14 lg:grid-cols-3 lg:px-10">
             <div>
               <Logo dark />
