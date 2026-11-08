@@ -258,6 +258,7 @@ function Index() {
       )}
 
       <main className="relative z-10 bg-cream">
+        <div className="relative">
         <StickyStage>
         {/* Hero */}
         <Editable id="Hero" label="Hero">
@@ -410,6 +411,8 @@ function Index() {
             </div>
           </section>
         </Editable>
+
+        </div>
 
         {/* Projects */}
         <Editable id="Projects" label="Projects">
