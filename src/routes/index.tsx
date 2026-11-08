@@ -190,7 +190,7 @@ function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-cream text-ink overflow-x-hidden w-full">
+    <div className="min-h-screen bg-cream text-ink overflow-x-clip w-full">
       <SmoothScroll />
       {!introDone && <IntroLoader onComplete={() => setIntroDone(true)} />}
       <MusicPlayer autoStart={introDone} />
